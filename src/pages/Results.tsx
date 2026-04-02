@@ -1,19 +1,16 @@
 import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { resultsData } from '../lib/resultsData';
-import { Shell } from 'lucide-react';
 
 export function Results() {
   const { type } = useParams<{ type: string }>();
   const [searchParams] = useSearchParams();
 
-  // Validate type
   const validTypes = ['stress-soother', 'comfort-seeker', 'autopilot-eater', 'perfectionist-restrictor'];
   const resultType = type && validTypes.includes(type) ? type : 'stress-soother';
-  
+
   const data = resultsData[resultType as keyof typeof resultsData];
 
-  // Extract dynamic blocks based on query params
   const renderDynamicBlock1 = () => {
     const anyData = data as any;
     if (resultType === 'stress-soother') {
@@ -53,7 +50,6 @@ export function Results() {
       {/* Header */}
       <header className="py-6 px-6 flex justify-center items-center bg-warm-linen border-b border-sand/20">
         <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-          <Shell className="text-deep-sage" size={28} strokeWidth={1.5} />
           <span className="font-sans font-bold text-sm tracking-widest uppercase text-deep-sage">
             Stop Emotional Eating
           </span>
@@ -62,7 +58,7 @@ export function Results() {
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="bg-deep-sage text-warm-linen py-20 px-6">
+        <section className="bg-deep-sage text-warm-linen py-20 md:py-28 px-6">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -82,28 +78,25 @@ export function Results() {
           </div>
         </section>
 
-        {/* Trust Badges */}
-        <section className="bg-oat py-8 border-b border-sand/20">
-          <div className="max-w-5xl mx-auto px-6 flex flex-wrap justify-center gap-8 md:gap-16 text-center">
-            <div className="flex flex-col items-center">
-              <span className="font-serif text-2xl font-bold text-deep-sage">18+</span>
-              <span className="font-sans text-xs uppercase tracking-widest text-soft-black/70">Peer-Reviewed Studies</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <span className="font-serif text-2xl font-bold text-deep-sage">50k+</span>
-              <span className="font-sans text-xs uppercase tracking-widest text-soft-black/70">Quizzes Taken</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <span className="font-serif text-2xl font-bold text-deep-sage">100%</span>
-              <span className="font-sans text-xs uppercase tracking-widest text-soft-black/70">Science-Backed</span>
-            </div>
+        {/* Hero Image */}
+        <section className="bg-oat border-b border-sand/20">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              <div className="aspect-[16/7] bg-sand/20 flex items-center justify-center">
+                <span className="font-sans text-sm text-sand uppercase tracking-wider">Result image placeholder</span>
+              </div>
+            </motion.div>
           </div>
         </section>
 
         {/* Content Section */}
         <section className="py-20 px-6">
           <div className="max-w-3xl mx-auto space-y-16">
-            
+
             {/* Section 1: Pattern */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -114,9 +107,9 @@ export function Results() {
               <h2 className="font-serif font-semibold text-3xl md:text-4xl text-deep-sage mb-8">
                 Your Pattern Explained
               </h2>
-              <div className="font-sans text-lg md:text-xl text-soft-black leading-relaxed whitespace-pre-wrap space-y-6">
-                <p>{data.section1Intro}</p>
-                <div className="bg-oat p-6 md:p-8 rounded-xl border-l-4 border-muted-teal mt-8">
+              <div className="font-sans text-lg md:text-xl text-soft-black leading-relaxed space-y-6">
+                <p className="whitespace-pre-wrap">{data.section1Intro}</p>
+                <div className="bg-oat p-6 md:p-8 rounded-xl border-l-4 border-muted-teal">
                   <p className="font-medium text-deep-sage mb-4">{renderDynamicBlock1()}</p>
                   {renderDynamicBlock2() && (
                     <p className="font-medium text-deep-sage">{renderDynamicBlock2()}</p>
@@ -125,17 +118,29 @@ export function Results() {
               </div>
             </motion.div>
 
+            {/* Inline Image */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="rounded-2xl overflow-hidden border border-sand/30"
+            >
+              <div className="aspect-[16/9] bg-sand/20 flex items-center justify-center">
+                <span className="font-sans text-sm text-sand uppercase tracking-wider">Illustration placeholder</span>
+              </div>
+            </motion.div>
+
             {/* Section 2: Strategy */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-warm-linen border border-sand rounded-2xl p-8 md:p-12 shadow-sm"
+              className="bg-deep-sage text-warm-linen rounded-2xl p-8 md:p-12"
             >
-              <h3 className="font-sans font-semibold text-2xl md:text-3xl text-deep-sage mb-6">
+              <h3 className="font-sans font-semibold text-2xl md:text-3xl mb-6">
                 {data.section2Title}
               </h3>
-              <p className="font-sans text-lg md:text-xl text-soft-black leading-relaxed">
+              <p className="font-sans text-lg md:text-xl leading-relaxed opacity-90">
                 {data.section2Body}
               </p>
             </motion.div>
@@ -150,12 +155,19 @@ export function Results() {
               <div className="font-sans text-xl md:text-2xl text-soft-black leading-relaxed whitespace-pre-wrap max-w-2xl mx-auto">
                 {data.section3Intro}
               </div>
-              
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
-                <button className="w-full sm:w-auto bg-terracotta text-white font-sans font-medium text-lg px-8 py-4 rounded-lg hover:bg-terracotta/90 transition-colors shadow-lg">
+
+              {/* Product Image */}
+              <div className="max-w-md mx-auto rounded-xl overflow-hidden border border-sand/30 mb-8">
+                <div className="aspect-[4/3] bg-sand/20 flex items-center justify-center">
+                  <span className="font-sans text-sm text-sand uppercase tracking-wider">Product image placeholder</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                <button className="w-full sm:w-auto bg-terracotta text-white font-sans font-medium text-lg px-8 py-4 rounded-lg hover:bg-terracotta/90 transition-colors shadow-lg cursor-pointer">
                   Get the Guide — $27
                 </button>
-                <button className="w-full sm:w-auto bg-transparent border-2 border-deep-sage text-deep-sage font-sans font-medium text-lg px-8 py-4 rounded-lg hover:bg-deep-sage hover:text-white transition-colors">
+                <button className="w-full sm:w-auto bg-transparent border-2 border-deep-sage text-deep-sage font-sans font-medium text-lg px-8 py-4 rounded-lg hover:bg-deep-sage hover:text-white transition-colors cursor-pointer">
                   Get Guide + Audio Course — $39
                 </button>
               </div>
