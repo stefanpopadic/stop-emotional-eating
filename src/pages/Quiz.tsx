@@ -58,12 +58,23 @@ export function Quiz() {
     }, 300);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
     const resultType = calculateQuizResult(answers);
+
+    // Send email to Emailit in the background — don't block navigation
+    try {
+      fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, quizType: resultType, answers }),
+      });
+    } catch {
+      // Silently fail — don't block the user
+    }
+
     const params = new URLSearchParams(answers);
-    params.append('email', email);
     navigate(`/results/${resultType}?${params.toString()}`);
   };
 

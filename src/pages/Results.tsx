@@ -2,6 +2,10 @@ import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { resultsData } from '../lib/resultsData';
 import { Logo } from '../components/Logo';
+import { Check, ShieldCheck, BookOpen, CalendarDays, FileText, Headphones } from 'lucide-react';
+
+const GUMROAD_CORE_URL = 'https://stopemotionaleating.gumroad.com/l/guide';
+const GUMROAD_PREMIUM_URL = 'https://stopemotionaleating.gumroad.com/l/guide-premium';
 
 export function Results() {
   const { type } = useParams<{ type: string }>();
@@ -144,34 +148,125 @@ export function Results() {
               </p>
             </motion.div>
 
-            {/* Section 3: CTA */}
+            {/* Section 3: Value Stack + CTA */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center space-y-8 pt-8 border-t border-sand/30"
+              className="space-y-10 pt-8 border-t border-sand/30"
             >
-              <div className="font-sans text-xl md:text-2xl text-soft-black leading-relaxed whitespace-pre-wrap max-w-2xl mx-auto">
+              <div className="font-sans text-xl md:text-2xl text-soft-black leading-relaxed whitespace-pre-wrap max-w-2xl mx-auto text-center">
                 {data.section3Intro}
               </div>
 
               {/* Product Image */}
-              <div className="max-w-md mx-auto rounded-xl overflow-hidden border border-sand/30 mb-8">
+              <div className="max-w-md mx-auto rounded-xl overflow-hidden border border-sand/30">
                 <div className="aspect-[4/3] bg-sand/20 flex items-center justify-center">
                   <span className="font-sans text-sm text-sand uppercase tracking-wider">Product image placeholder</span>
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                <button className="w-full sm:w-auto bg-terracotta text-white font-sans font-medium text-lg px-8 py-4 rounded-lg hover:bg-terracotta/90 transition-colors shadow-lg cursor-pointer">
+              {/* Value Stack */}
+              <div className="bg-oat rounded-2xl p-8 md:p-10 border border-sand/20">
+                <h3 className="font-sans font-semibold text-2xl text-deep-sage mb-8 text-center">
+                  Everything You Get
+                </h3>
+
+                <div className="space-y-5 mb-8">
+                  <div className="flex items-start gap-4">
+                    <BookOpen className="text-terracotta flex-shrink-0 mt-1" size={22} />
+                    <div>
+                      <p className="font-sans font-medium text-lg text-soft-black">The Emotional Eating Guide</p>
+                      <p className="font-sans text-sm text-soft-black/70">Science-backed framework: Craving → Emotion → Hormone → Alternative Action</p>
+                      <p className="font-sans text-sm font-medium text-sand mt-1">Value: $19</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <CalendarDays className="text-terracotta flex-shrink-0 mt-1" size={22} />
+                    <div>
+                      <p className="font-sans font-medium text-lg text-soft-black">21-Day Craving Tracker</p>
+                      <p className="font-sans text-sm text-soft-black/70">Daily prompts to map your triggers, emotions, and patterns over 3 weeks</p>
+                      <p className="font-sans text-sm font-medium text-sand mt-1">Value: $14</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <FileText className="text-terracotta flex-shrink-0 mt-1" size={22} />
+                    <div>
+                      <p className="font-sans font-medium text-lg text-soft-black">Craving Decoder Cheat Sheet</p>
+                      <p className="font-sans text-sm text-soft-black/70">One-page reference: what each craving means and what to do instead</p>
+                      <p className="font-sans text-sm font-medium text-sand mt-1">Value: $9</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="border-t border-sand/30 pt-6 text-center">
+                  <p className="font-sans text-sm text-soft-black/60 line-through mb-1">Total value: $42</p>
+                  <p className="font-serif font-semibold text-4xl text-deep-sage mb-2">$27</p>
+                  <p className="font-sans text-sm text-sand">One-time payment. Instant download. Yours forever.</p>
+                </div>
+              </div>
+
+              {/* Premium Option */}
+              <div className="bg-deep-sage rounded-2xl p-8 md:p-10 text-warm-linen relative overflow-hidden">
+                <span className="absolute top-4 right-4 bg-terracotta text-white font-sans font-bold text-xs uppercase tracking-wider px-3 py-1 rounded-full">
+                  Most Popular
+                </span>
+                <h3 className="font-sans font-semibold text-2xl mb-6">
+                  Want the Audio Deep Dive?
+                </h3>
+                <div className="flex items-start gap-4 mb-6">
+                  <Headphones className="text-sand flex-shrink-0 mt-1" size={22} />
+                  <div>
+                    <p className="font-sans font-medium text-lg">10-Track Audio Course (120 min)</p>
+                    <p className="font-sans text-sm opacity-70">Listen while you walk, commute, or wind down. Covers all 4 types, the neuroscience, and guided exercises.</p>
+                    <p className="font-sans text-sm font-medium text-sand mt-1">Value: $19</p>
+                  </div>
+                </div>
+                <div className="border-t border-white/15 pt-6 text-center">
+                  <p className="font-sans text-sm opacity-50 line-through mb-1">Total value: $61</p>
+                  <p className="font-serif font-semibold text-4xl mb-2">$39</p>
+                  <p className="font-sans text-sm text-sand">Guide + Tracker + Cheat Sheet + Audio Course</p>
+                </div>
+              </div>
+
+              {/* Buy Buttons */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a
+                  href={GUMROAD_CORE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto text-center bg-terracotta text-white font-sans font-medium text-lg px-8 py-4 rounded-lg hover:bg-terracotta/90 transition-colors shadow-lg cursor-pointer"
+                >
                   Get the Guide — $27
-                </button>
-                <button className="w-full sm:w-auto bg-transparent border-2 border-deep-sage text-deep-sage font-sans font-medium text-lg px-8 py-4 rounded-lg hover:bg-deep-sage hover:text-white transition-colors cursor-pointer">
-                  Get Guide + Audio Course — $39
-                </button>
+                </a>
+                <a
+                  href={GUMROAD_PREMIUM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto text-center bg-deep-sage text-white font-sans font-medium text-lg px-8 py-4 rounded-lg hover:bg-deep-sage/90 transition-colors shadow-lg border-2 border-deep-sage cursor-pointer"
+                >
+                  Get Guide + Audio — $39
+                </a>
+              </div>
+
+              {/* Guarantee */}
+              <div className="flex items-center justify-center gap-3 bg-warm-linen border border-sand/30 rounded-xl p-6 text-center">
+                <ShieldCheck className="text-muted-teal flex-shrink-0" size={28} />
+                <div>
+                  <p className="font-sans font-medium text-soft-black">30-Day Money-Back Guarantee</p>
+                  <p className="font-sans text-sm text-soft-black/60">Not for you? Full refund, no questions asked. We'd rather you try it risk-free.</p>
+                </div>
               </div>
             </motion.div>
 
+          </div>
+        </section>
+
+        {/* Footer Crisis Resources */}
+        <section className="bg-soft-black text-white/60 py-10 px-6 font-sans text-[13px]">
+          <div className="max-w-3xl mx-auto text-center space-y-2">
+            <p className="text-white/50">Need support? <strong className="text-white/70">NEDA Helpline:</strong> 1-800-931-2237 | <strong className="text-white/70">988 Crisis Lifeline:</strong> Call or text 988</p>
+            <p>This content is educational only. Not a substitute for professional help. <Link to="/privacy" className="underline hover:text-white">Privacy</Link> · <Link to="/terms" className="underline hover:text-white">Terms</Link></p>
           </div>
         </section>
       </main>
