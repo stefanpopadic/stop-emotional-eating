@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { quizFlow, calculateQuizResult } from '../lib/quizData';
 import { Brain, LineChart, Shell } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Logo } from '../components/Logo';
 
 const loadingMessages = [
   "Analyzing your responses...",
@@ -71,10 +72,8 @@ export function Quiz() {
     return (
       <div className="min-h-screen bg-warm-linen flex flex-col">
         <header className="py-6 px-6 flex justify-center items-center">
-          <Link to="/" className="flex items-center gap-3">
-            <span className="font-sans font-bold text-sm tracking-widest uppercase text-deep-sage">
-              Stop Emotional Eating
-            </span>
+          <Link to="/" className="text-deep-sage">
+            <Logo height={28} />
           </Link>
         </header>
 
@@ -140,10 +139,8 @@ export function Quiz() {
     return (
       <div className="min-h-screen bg-warm-linen flex flex-col">
         <header className="py-6 px-6 flex justify-center items-center">
-          <Link to="/" className="flex items-center gap-3">
-            <span className="font-sans font-bold text-sm tracking-widest uppercase text-deep-sage">
-              Stop Emotional Eating
-            </span>
+          <Link to="/" className="text-deep-sage">
+            <Logo height={28} />
           </Link>
         </header>
 

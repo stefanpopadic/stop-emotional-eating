@@ -1,6 +1,7 @@
 import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { resultsData } from '../lib/resultsData';
+import { Logo } from '../components/Logo';
 
 export function Results() {
   const { type } = useParams<{ type: string }>();
@@ -49,10 +50,8 @@ export function Results() {
     <div className="min-h-screen bg-warm-linen flex flex-col">
       {/* Header */}
       <header className="py-6 px-6 flex justify-center items-center bg-warm-linen border-b border-sand/20">
-        <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-          <span className="font-sans font-bold text-sm tracking-widest uppercase text-deep-sage">
-            Stop Emotional Eating
-          </span>
+        <Link to="/" className="text-deep-sage hover:opacity-80 transition-opacity">
+          <Logo height={28} />
         </Link>
       </header>
 

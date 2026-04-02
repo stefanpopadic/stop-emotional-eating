@@ -1,6 +1,7 @@
 import { useScroll } from 'motion/react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Logo } from './Logo';
 
 export function Navigation() {
   const { scrollY } = useScroll();
@@ -21,10 +22,8 @@ export function Navigation() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-center">
-        <Link to="/" className="flex items-center gap-2 cursor-pointer">
-          <span className="font-serif font-semibold text-xl text-deep-sage tracking-wide">
-            Stop Emotional Eating
-          </span>
+        <Link to="/" className="cursor-pointer text-deep-sage">
+          <Logo height={32} />
         </Link>
       </div>
     </header>
