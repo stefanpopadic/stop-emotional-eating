@@ -15,6 +15,7 @@ export function Results() {
   const resultType = type && validTypes.includes(type) ? type : 'stress-soother';
 
   const data = resultsData[resultType as keyof typeof resultsData];
+  const userName = searchParams.get('name') || '';
 
   const renderDynamicBlock1 = () => {
     const anyData = data as any;
@@ -71,6 +72,11 @@ export function Results() {
               <span className="inline-block bg-warm-linen/10 text-warm-linen font-sans font-bold text-xs uppercase tracking-widest px-4 py-2 rounded-full mb-8">
                 {data.badge}
               </span>
+              {userName && (
+                <p className="font-sans text-lg opacity-70 mb-4">
+                  {userName}, your results are in.
+                </p>
+              )}
               <h1 className="font-serif font-semibold text-5xl md:text-6xl mb-6">
                 {data.headline}
               </h1>

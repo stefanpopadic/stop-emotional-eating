@@ -5,7 +5,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { email, quizType, answers } = req.body;
+  const { email, firstName, quizType, answers } = req.body;
 
   if (!email || typeof email !== 'string') {
     return res.status(400).json({ error: 'Email is required' });
@@ -20,7 +20,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const response = await fetch(`https://api.emailit.com/v2/audiences/${audienceId}/subscribers/add`, {
+    const response = await fetch(`https://api.emailit.com/v2/audiences/${audienceId}/subscribers`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${apiKey}`,
@@ -28,7 +28,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       },
       body: JSON.stringify({
         email,
-        fields: {
+        first_name: firstName || '',
+        custom_fields: {
           quiz_type: quizType || '',
           source: 'quiz',
           ...(answers ? { quiz_answers: JSON.stringify(answers) } : {}),
@@ -39,14 +40,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (!response.ok) {
       const errorData = await response.text();
       console.error('Emailit API error:', response.status, errorData);
-      // Don't block the user flow even if email capture fails
       return res.status(200).json({ success: true, emailCaptured: false });
     }
 
     return res.status(200).json({ success: true, emailCaptured: true });
   } catch (error) {
     console.error('Emailit API error:', error);
-    // Don't block the user flow even if email capture fails
     return res.status(200).json({ success: true, emailCaptured: false });
   }
 }

@@ -17,6 +17,7 @@ const loadingMessages = [
 export function Quiz() {
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
   const [showLoading, setShowLoading] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
@@ -68,13 +69,14 @@ export function Quiz() {
       fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, quizType: resultType, answers }),
+        body: JSON.stringify({ email, firstName, quizType: resultType, answers }),
       });
     } catch {
       // Silently fail — don't block the user
     }
 
     const params = new URLSearchParams(answers);
+    if (firstName) params.append('name', firstName);
     navigate(`/results/${resultType}?${params.toString()}`);
   };
 
@@ -187,9 +189,16 @@ export function Quiz() {
 
               <form onSubmit={handleSubmit} className="max-w-md mx-auto">
                 <input
+                  type="text"
+                  placeholder="Your first name"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  className="w-full bg-white border-2 border-sand rounded-xl px-6 py-4 text-lg font-sans text-soft-black placeholder:text-soft-black/40 focus:outline-none focus:border-deep-sage focus:ring-1 focus:ring-deep-sage mb-4 transition-colors"
+                />
+                <input
                   type="email"
                   required
-                  placeholder="Enter your email address"
+                  placeholder="Your email address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full bg-white border-2 border-sand rounded-xl px-6 py-4 text-lg font-sans text-soft-black placeholder:text-soft-black/40 focus:outline-none focus:border-deep-sage focus:ring-1 focus:ring-deep-sage mb-6 transition-colors"
