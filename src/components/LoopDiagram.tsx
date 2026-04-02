@@ -2,12 +2,12 @@ import { FadeIn } from './FadeIn';
 import { ArrowDown } from 'lucide-react';
 
 const loopSteps = [
-  { color: 'bg-deep-sage', text: "Emotional trigger — stress, boredom, loneliness, overwhelm" },
-  { color: 'bg-muted-teal', text: "Cortisol spikes — prefrontal cortex goes offline" },
-  { color: 'bg-sand', text: "Brain signals a need — demands fastest dopamine source" },
-  { color: 'bg-terracotta', text: "You eat — brief neurochemical relief, not resolution" },
-  { color: 'bg-dusty-blush', text: "Guilt response — new stress hormones released" },
-  { color: 'bg-[#b8a090]', text: "Neural pathway strengthens — the loop becomes automatic" }
+  { color: 'bg-deep-sage', text: "Something triggers your brain" },
+  { color: 'bg-muted-teal', text: "Cortisol spikes — your thinking brain goes offline" },
+  { color: 'bg-sand', text: "Your brain takes over and demands a quick fix" },
+  { color: 'bg-terracotta', text: "You eat — brief relief, nothing resolved" },
+  { color: 'bg-dusty-blush', text: "Guilt hits — new stress hormones flood in" },
+  { color: 'bg-[#b8a090]', text: "The loop gets stronger every time it runs" }
 ];
 
 export function LoopDiagram() {

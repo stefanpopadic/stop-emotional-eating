@@ -132,7 +132,7 @@ export function Results() {
               viewport={{ once: true }}
               className="bg-warm-linen border border-sand rounded-2xl p-8 md:p-12 shadow-sm"
             >
-              <h3 className="font-serif font-semibold text-2xl md:text-3xl text-deep-sage mb-6">
+              <h3 className="font-sans font-semibold text-2xl md:text-3xl text-deep-sage mb-6">
                 {data.section2Title}
               </h3>
               <p className="font-sans text-lg md:text-xl text-soft-black leading-relaxed">

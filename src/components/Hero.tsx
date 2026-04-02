@@ -19,7 +19,7 @@ export function Hero() {
 
       <FadeIn delay={0.2}>
         <p className="font-sans text-xl md:text-2xl leading-relaxed text-soft-black mb-12 max-w-3xl mx-auto">
-          Neuroscience shows that when you reach for food and you're not hungry, your brain is signaling an unmet need — stress relief, comfort, stimulation. The free quiz identifies exactly what your brain is asking for and how to give it what it actually needs.
+          You're not addicted to food. It's biology — your brain is taking over and using food to get something it actually needs. The free quiz shows you exactly what that is.
         </p>
       </FadeIn>
 

@@ -10,19 +10,19 @@ export function FinalCTA() {
             Next Step
           </span>
           <h2 className="font-serif font-semibold text-4xl md:text-5xl mb-10 text-balance leading-tight">
-            Your Brain Is Sending a Signal. Find Out What It Is.
+            Your Brain Is Doing This for a Reason. Find Out Why.
           </h2>
         </FadeIn>
 
         <div className="space-y-8 font-sans text-xl md:text-2xl leading-relaxed opacity-90 mb-16">
           <FadeIn delay={0.1}>
             <p>
-              You've seen the science. You recognize the pattern. Now identify the specific neurochemical trigger behind your eating — so you can address it directly.
+              You've seen the science. You recognize the pattern. Now find out why your brain keeps doing this — and what it actually takes to stop.
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>
             <p>
-              The quiz maps your answers to peer-reviewed research and tells you exactly which brain pattern you're running — and how to interrupt it.
+              The quiz identifies your specific pattern and gives you the first step to interrupt it.
             </p>
           </FadeIn>
           <FadeIn delay={0.3}>

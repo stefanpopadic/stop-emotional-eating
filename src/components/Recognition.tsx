@@ -35,10 +35,10 @@ export function Recognition() {
         <FadeIn delay={0.4}>
           <div className="space-y-8 text-center">
             <p className="font-sans text-xl md:text-2xl leading-relaxed opacity-90 max-w-2xl mx-auto">
-              These aren't signs of weakness. They're signals. Your brain has learned to use food to meet a need — and until you identify that need, the pattern won't change.
+              This isn't a willpower problem. Your brain has learned to use food to get something it needs. There's a specific reason it does this — and it's different for everyone.
             </p>
             <p className="font-sans text-xl md:text-2xl leading-relaxed font-medium text-oat max-w-2xl mx-auto">
-              The quiz maps exactly which need your brain is trying to fill: stress relief, emotional comfort, stimulation, or avoidance.
+              The quiz shows you exactly what's driving yours.
             </p>
 
             <div className="pt-8 text-center">

@@ -4,22 +4,22 @@ import { FadeIn } from './FadeIn';
 const stats = [
   {
     number: "53M",
-    text: "Americans experience this neurochemical pattern regularly. 1 in 5 adults. Their brains have learned to use food as the default stress response.",
+    text: "Americans have this brain pattern running on repeat. 1 in 5 adults. Most don't even realize it's happening — they just think they lack discipline.",
     source: "NIH National Study"
   },
   {
     number: "44.9%",
-    text: "of adults who struggle with weight have this brain pattern active. Across 18 studies and 21,237 participants. The connection between emotions and eating is one of the most replicated findings in neuroscience.",
+    text: "of adults who struggle with weight have this pattern active. Across 18 studies and 21,237 participants. It was never about calories. There's something else going on.",
     source: "British Journal of Psychology, 2025"
   },
   {
     number: "70%",
-    text: "of emotional eaters are women. Research shows women process cortisol differently and are more likely to develop food-based coping pathways — not because of weakness, but because of neurochemistry.",
+    text: "of emotional eaters are women. Not because of weakness — because of biology. The brain chemistry works differently, and nobody told them that.",
     source: "NIH National Study"
   },
   {
     number: "5:30 PM",
-    text: "Peak time for stress-driven eating. Cortisol accumulates throughout the day and peaks in late afternoon. Self-regulation is at its lowest. The second peak: 11 PM, when the brain seeks one final dopamine hit before sleep.",
+    text: "Peak time your brain takes over. Cortisol builds all day and peaks in late afternoon. Your self-control is at its lowest. The second peak? 11 PM.",
     source: "Journal of Psychosomatic Research, 2023"
   }
 ];
@@ -36,7 +36,7 @@ export function Stats() {
             The Numbers Behind the Pattern
           </h2>
           <p className="font-sans text-xl md:text-2xl leading-relaxed opacity-90 mb-16">
-            This is one of the most studied behavioral patterns in neuroscience. The data is clear — and it explains why willpower alone never works.
+            This isn't rare. It's one of the most common biological patterns — and it explains why willpower never works.
           </p>
         </FadeIn>
 

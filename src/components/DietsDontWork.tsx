@@ -20,10 +20,10 @@ export function DietsDontWork() {
               Diets assume your problem is what you eat. So they give you food rules. But if the problem was food, diets would have worked for you years ago.
             </p>
             <p>
-              Here's what the research shows: restriction increases cortisol. Cortisol activates your brain's survival response. Your brain demands fast energy. <strong>Dieting literally triggers the neurochemical sequence that causes overeating.</strong>
+              Research shows restriction increases cortisol. Cortisol activates your brain's survival mode. Your brain takes over and demands food. <strong>Dieting literally triggers the thing you're trying to stop.</strong>
             </p>
             <p>
-              You can't override brain chemistry with a meal plan. You have to address the signal your brain is sending.
+              You can't outsmart your own brain with a meal plan. You have to understand why it's doing this in the first place.
             </p>
           </div>
         </FadeIn>
@@ -31,7 +31,7 @@ export function DietsDontWork() {
         <FadeIn delay={0.2}>
           <div className="my-16 bg-oat rounded-2xl p-8 md:p-12 border border-sand/30 shadow-sm relative overflow-hidden">
             <div className="absolute top-0 left-0 w-2 h-full bg-terracotta"></div>
-            <h3 className="font-serif font-semibold text-2xl md:text-3xl text-deep-sage mb-6">
+            <h3 className="font-sans font-semibold text-2xl md:text-3xl text-deep-sage mb-6">
               The Restriction → Binge Cycle (Neuroscience)
             </h3>
             <ol className="space-y-6 font-sans text-lg md:text-xl text-soft-black list-decimal list-inside marker:text-terracotta marker:font-bold">
@@ -47,7 +47,7 @@ export function DietsDontWork() {
         <FadeIn delay={0.3}>
           <div className="space-y-8 font-sans text-xl md:text-2xl leading-relaxed text-soft-black text-center mt-12">
             <p>
-              <strong>To break the cycle, you need to know which signal your brain is sending.</strong> The quiz identifies your specific pattern in 2 minutes.
+              <strong>To break the cycle, you need to know why your brain is doing this.</strong> The quiz tells you in 2 minutes.
             </p>
             <Link to="/quiz" className="inline-flex bg-terracotta text-white font-sans font-medium text-xl px-10 py-5 rounded-lg hover:bg-terracotta/90 hover:-translate-y-1 transition-all duration-300 shadow-lg mt-4 cursor-pointer">
               Take the Free Quiz
