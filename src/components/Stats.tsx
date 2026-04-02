@@ -4,22 +4,22 @@ import { FadeIn } from './FadeIn';
 const stats = [
   {
     number: "53M",
-    text: "Americans emotionally eat on a regular basis. That's 1 in 5 adults. Not occasionally. Regularly. Most will never tell another person — because shame keeps it hidden.",
+    text: "Americans experience this neurochemical pattern regularly. 1 in 5 adults. Their brains have learned to use food as the default stress response.",
     source: "NIH National Study"
   },
   {
     number: "44.9%",
-    text: "of adults who struggle with their weight are emotional eaters. Nearly half. Across 18 studies and 21,237 people. It was never just about calories in, calories out. There's always been something deeper.",
+    text: "of adults who struggle with weight have this brain pattern active. Across 18 studies and 21,237 participants. The connection between emotions and eating is one of the most replicated findings in neuroscience.",
     source: "British Journal of Psychology, 2025"
   },
   {
     number: "70%",
-    text: "of emotional eaters are women. Not because women are weaker. Because women are socialized to suppress, to caretake, to hold it together — and food becomes the one place where they let go.",
+    text: "of emotional eaters are women. Research shows women process cortisol differently and are more likely to develop food-based coping pathways — not because of weakness, but because of neurochemistry.",
     source: "NIH National Study"
   },
   {
     number: "5:30 PM",
-    text: "The exact time binge eating risk peaks. Not midnight. Not after dessert. Right after work, right when the day's cortisol is highest and your self-regulation is lowest. The second peak? 11 PM.",
+    text: "Peak time for stress-driven eating. Cortisol accumulates throughout the day and peaks in late afternoon. Self-regulation is at its lowest. The second peak: 11 PM, when the brain seeks one final dopamine hit before sleep.",
     source: "Journal of Psychosomatic Research, 2023"
   }
 ];
@@ -30,13 +30,13 @@ export function Stats() {
       <div className="max-w-3xl mx-auto">
         <FadeIn>
           <span className="inline-block font-sans font-medium text-sm uppercase tracking-widest text-sand mb-6">
-            The Epidemic
+            The Data
           </span>
           <h2 className="font-serif font-semibold text-4xl md:text-5xl mb-10 text-balance leading-tight">
-            You Are Not the Only One
+            The Numbers Behind the Pattern
           </h2>
           <p className="font-sans text-xl md:text-2xl leading-relaxed opacity-90 mb-16">
-            This isn't a character flaw. It's one of the most common human responses to stress, emotions, and brain chemistry. The only reason it feels like your secret is because everyone else is keeping the same one.
+            This is one of the most studied behavioral patterns in neuroscience. The data is clear — and it explains why willpower alone never works.
           </p>
         </FadeIn>
 
@@ -61,8 +61,8 @@ export function Stats() {
         </div>
 
         <FadeIn delay={0.4} className="text-center mt-20">
-          <Link to="/quiz" className="inline-flex bg-sand text-deep-sage font-sans font-medium text-xl px-10 py-5 rounded-lg hover:bg-white hover:-translate-y-1 transition-all duration-300 shadow-lg">
-            Join 100,000+ Who Took the Quiz
+          <Link to="/quiz" className="inline-flex bg-sand text-deep-sage font-sans font-medium text-xl px-10 py-5 rounded-lg hover:bg-white hover:-translate-y-1 transition-all duration-300 shadow-lg cursor-pointer">
+            Find Your Brain Pattern — Free Quiz
           </Link>
         </FadeIn>
       </div>

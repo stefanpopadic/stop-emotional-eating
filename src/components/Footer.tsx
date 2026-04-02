@@ -15,11 +15,11 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p>© 2026 Stop Emotional Eating. All rights reserved.</p>
+          <p>&copy; 2026 Stop Emotional Eating. All rights reserved.</p>
           <div className="flex gap-4">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors cursor-pointer">Privacy Policy</a>
             <span>|</span>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-white transition-colors cursor-pointer">Terms of Service</a>
           </div>
         </div>
       </div>

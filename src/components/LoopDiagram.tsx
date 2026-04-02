@@ -2,12 +2,12 @@ import { FadeIn } from './FadeIn';
 import { ArrowDown } from 'lucide-react';
 
 const loopSteps = [
-  { color: 'bg-deep-sage', text: "Trigger — stress, loneliness, boredom, overwhelm, conflict" },
-  { color: 'bg-muted-teal', text: "Stress Response — cortisol rises, self-regulation drops" },
-  { color: 'bg-sand', text: "Strong Urge — your brain demands the fastest source of relief" },
-  { color: 'bg-terracotta', text: "Eating — temporary numbing, not resolution" },
-  { color: 'bg-dusty-blush', text: "Guilt — 'Why did I do that again?'" },
-  { color: 'bg-[#b8a090]', text: "More distress — which triggers the loop again" }
+  { color: 'bg-deep-sage', text: "Emotional trigger — stress, boredom, loneliness, overwhelm" },
+  { color: 'bg-muted-teal', text: "Cortisol spikes — prefrontal cortex goes offline" },
+  { color: 'bg-sand', text: "Brain signals a need — demands fastest dopamine source" },
+  { color: 'bg-terracotta', text: "You eat — brief neurochemical relief, not resolution" },
+  { color: 'bg-dusty-blush', text: "Guilt response — new stress hormones released" },
+  { color: 'bg-[#b8a090]', text: "Neural pathway strengthens — the loop becomes automatic" }
 ];
 
 export function LoopDiagram() {
@@ -16,13 +16,13 @@ export function LoopDiagram() {
       <div className="max-w-3xl mx-auto">
         <FadeIn>
           <span className="inline-block font-sans font-medium text-sm uppercase tracking-widest text-sand mb-6">
-            The Trap
+            The Brain Loop
           </span>
           <h2 className="font-serif font-semibold text-4xl md:text-5xl text-deep-sage mb-10 text-balance leading-tight">
-            The Loop You're Stuck In
+            The Neurochemical Cycle Your Brain Runs on Autopilot
           </h2>
           <p className="font-sans text-xl md:text-2xl leading-relaxed text-soft-black mb-16">
-            Researchers call this the affect regulation model. You probably just call it 'why I can't stop.' It's a closed loop, and willpower isn't strong enough to break it. Here's the pattern:
+            Researchers call this the affect regulation model. Every time the loop completes, the neural pathway gets stronger — making the next cycle faster and more automatic. Here's the sequence:
           </p>
         </FadeIn>
 
@@ -44,7 +44,7 @@ export function LoopDiagram() {
               <ArrowDown size={28} strokeWidth={2} />
             </div>
             <div className="font-serif italic text-2xl text-soft-black/70">
-              ...back to the beginning
+              ...the loop repeats, stronger each time
             </div>
           </FadeIn>
         </div>
@@ -52,7 +52,7 @@ export function LoopDiagram() {
         <FadeIn delay={0.6}>
           <div className="border-l-4 border-sand pl-6 md:pl-8 py-2 mb-16">
             <p className="font-serif italic text-2xl md:text-3xl font-medium leading-relaxed text-deep-sage mb-4">
-              "A meta-analysis of ecological momentary assessment studies confirmed: emotional distress triggers the eating. But the eating doesn't resolve the distress. It just restarts the loop."
+              "Ecological momentary assessment confirms: emotional distress triggers the eating. But the eating doesn't resolve the distress. It reinforces the neural pathway."
             </p>
             <p className="font-sans text-sm text-sand uppercase tracking-wider">
               Source: Appetite, 2025

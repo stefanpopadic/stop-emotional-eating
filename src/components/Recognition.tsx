@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 import { FadeIn } from './FadeIn';
 
-const quotes = [
-  "I eat perfectly all day and then demolish an entire bag of chips at 9 PM.",
-  "I literally ordered pizza while watching a weight loss video.",
-  "I know I'm not hungry. But I can't stop.",
-  "I eat my feelings and then feel worse about eating my feelings.",
-  "Every Monday is a fresh start... until Tuesday.",
-  "I'm not eating to stop hunger. I'm eating to stop feeling."
+const signals = [
+  "You eat perfectly all day — then demolish a bag of chips at 9 PM.",
+  "You open the fridge knowing you're not hungry. You eat anyway.",
+  "After a stressful day, food is the first thing your brain reaches for.",
+  "You've tried every diet. They work for a week. Then the pattern returns.",
+  "You eat past full — not because you're hungry, but because stopping feels harder.",
+  "You know exactly what to eat. You just can't make yourself do it consistently."
 ];
 
 export function Recognition() {
@@ -16,16 +16,16 @@ export function Recognition() {
       <div className="max-w-3xl mx-auto">
         <FadeIn>
           <h2 className="font-serif font-semibold text-4xl md:text-5xl text-center mb-16 text-balance mx-auto">
-            Does This Sound Like You?
+            Sound Familiar?
           </h2>
         </FadeIn>
 
         <div className="space-y-8 mb-20">
-          {quotes.map((quote, index) => (
+          {signals.map((signal, index) => (
             <FadeIn key={index} delay={index * 0.1}>
               <div className="border-l-4 border-sand pl-6 md:pl-8 py-2">
                 <p className="font-serif italic text-2xl md:text-4xl leading-snug text-oat">
-                  "{quote}"
+                  "{signal}"
                 </p>
               </div>
             </FadeIn>
@@ -35,15 +35,15 @@ export function Recognition() {
         <FadeIn delay={0.4}>
           <div className="space-y-8 text-center">
             <p className="font-sans text-xl md:text-2xl leading-relaxed opacity-90 max-w-2xl mx-auto">
-              If any of this sounds familiar, stop blaming yourself. You don't lack discipline. Your brain is simply using food to solve an emotional problem.
+              These aren't signs of weakness. They're signals. Your brain has learned to use food to meet a need — and until you identify that need, the pattern won't change.
             </p>
             <p className="font-sans text-xl md:text-2xl leading-relaxed font-medium text-oat max-w-2xl mx-auto">
-              To break the cycle, you need to know exactly which problem your brain is trying to solve. Is it stress? Boredom? Avoidance?
+              The quiz maps exactly which need your brain is trying to fill: stress relief, emotional comfort, stimulation, or avoidance.
             </p>
-            
+
             <div className="pt-8 text-center">
-              <Link to="/quiz" className="font-sans text-lg font-medium text-sand hover:text-white transition-colors underline underline-offset-8 decoration-sand/50 hover:decoration-white">
-                Find your exact trigger in the free 2-minute quiz →
+              <Link to="/quiz" className="font-sans text-lg font-medium text-sand hover:text-white transition-colors underline underline-offset-8 decoration-sand/50 hover:decoration-white cursor-pointer">
+                Identify your brain's pattern in 2 minutes →
               </Link>
             </div>
           </div>

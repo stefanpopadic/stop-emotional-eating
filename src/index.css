@@ -19,7 +19,7 @@
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
     @apply bg-warm-linen text-soft-black font-sans antialiased selection:bg-sand/30;
     /* Subtle paper texture */
@@ -28,6 +28,10 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
+  }
+
+  a, button {
+    cursor: pointer;
   }
 }
 

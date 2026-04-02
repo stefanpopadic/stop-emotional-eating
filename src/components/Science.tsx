@@ -3,23 +3,23 @@ import { FadeIn } from './FadeIn';
 
 const evidenceCards = [
   {
-    title: "1. Stress Shuts Down Your Logic",
-    body: "When you're stressed or exhausted, your body floods with cortisol. This physically shuts down your prefrontal cortex (the logical part of your brain) and activates your survival center.",
+    title: "1. Cortisol Hijacks Your Decision-Making",
+    body: "Under stress, cortisol floods your system and suppresses your prefrontal cortex — the part of your brain responsible for planning and self-control. Your brain literally switches from 'thinking mode' to 'survival mode.'",
     source: "Psychoneuroendocrinology, 2021"
   },
   {
-    title: "2. Your Brain Demands Fast Relief",
-    body: "In this survival state, your brain demands fast, high-calorie energy to feel safe. You aren't 'giving in' to an urge. You are fighting a chemical survival response.",
+    title: "2. Your Brain Sends a Hunger Signal — But It's Not About Food",
+    body: "In survival mode, your brain demands the fastest dopamine hit available. Food — especially sugar and carbs — delivers it in minutes. You're not craving food. Your brain is craving relief, and food is the fastest route it knows.",
     source: "Journal of Psychosomatic Research, 2023"
   },
   {
-    title: "3. Biology Wins Every Time",
-    body: "Willpower is no match for cortisol and ghrelin. The connection between emotions and eating is one of the most replicated findings in nutritional psychology. It's not a character flaw. It's biology.",
+    title: "3. Ghrelin and Leptin Get Disrupted",
+    body: "Chronic stress dysregulates your hunger hormones. Ghrelin (the hunger hormone) spikes. Leptin (the fullness hormone) drops. Your body physically signals hunger even when you've eaten enough. This is measurable biology, not a lack of discipline.",
     source: "British Journal of Psychology, 2025"
   },
   {
-    title: "4. Guilt Is The Accelerator",
-    body: "The shame you feel after eating doesn't stop the cycle—it fuels it. Guilt creates more stress, which triggers more urges to eat. To stop, you have to rewire the trigger itself.",
+    title: "4. The Guilt Loop Reinforces the Pattern",
+    body: "After eating, guilt and shame create a new stress response — which triggers the exact same cycle again. The brain learns: stress → eat → brief relief. Each repetition strengthens the neural pathway. Understanding this is the first step to rewiring it.",
     source: "International Journal of Eating Disorders, 2023"
   }
 ];
@@ -30,17 +30,14 @@ export function Science() {
       <div className="max-w-3xl mx-auto">
         <FadeIn className="mb-16 text-center">
           <span className="inline-block font-sans font-medium text-sm uppercase tracking-widest text-sand mb-6">
-            The Science
+            The Neuroscience
           </span>
           <h2 className="font-serif font-semibold text-4xl md:text-5xl text-deep-sage mb-10 text-balance leading-tight mx-auto">
-            Why It Is Literally Not Your Fault
+            What's Actually Happening in Your Brain
           </h2>
           <div className="space-y-8 font-sans text-xl md:text-2xl leading-relaxed text-soft-black max-w-2xl mx-auto">
             <p>
-              For years, the diet industry has lied to you. They told you that if you just had more discipline, you could stop overeating. 
-            </p>
-            <p>
-              <strong>Science proves them wrong.</strong> Emotional eating isn't a lack of willpower. It is a hardwired, chemical response in your brain.
+              When you eat and you're not hungry, your brain is running a specific neurochemical sequence. Here's what the research shows:
             </p>
           </div>
         </FadeIn>
@@ -62,13 +59,13 @@ export function Science() {
             </FadeIn>
           ))}
         </div>
-        
+
         <FadeIn delay={0.3} className="mt-16 text-center">
           <p className="font-sans text-xl md:text-2xl font-medium text-soft-black mb-8">
-            You can't beat biology with a diet. You have to understand your specific trigger.
+            The quiz identifies which neurochemical pattern is driving your eating — so you can address the actual cause.
           </p>
-          <Link to="/quiz" className="inline-flex bg-terracotta text-white font-sans font-medium text-lg px-8 py-4 rounded-lg hover:bg-terracotta/90 hover:-translate-y-1 transition-all duration-300 shadow-md">
-            Find Your Trigger in the Free Quiz
+          <Link to="/quiz" className="inline-flex bg-terracotta text-white font-sans font-medium text-lg px-8 py-4 rounded-lg hover:bg-terracotta/90 hover:-translate-y-1 transition-all duration-300 shadow-md cursor-pointer">
+            Take the Free Quiz
           </Link>
         </FadeIn>
       </div>
