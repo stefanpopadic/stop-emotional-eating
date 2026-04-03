@@ -35,15 +35,15 @@ export function Recognition() {
         <FadeIn delay={0.4}>
           <div className="space-y-8 text-center">
             <p className="font-sans text-xl md:text-2xl leading-relaxed opacity-90 max-w-2xl mx-auto">
-              This isn't a willpower problem. Your brain has learned to use food to get something it needs. There's a specific reason it does this — and it's different for everyone.
+              If you recognized yourself in any of those, you're not broken — you're running a pattern. A specific, measurable, brain-chemistry pattern that 53 million Americans run every day. Most people just don't know it has a name.
             </p>
             <p className="font-sans text-xl md:text-2xl leading-relaxed font-medium text-oat max-w-2xl mx-auto">
-              The quiz shows you exactly what's driving yours.
+              The quiz identifies yours in 2 minutes.
             </p>
 
             <div className="pt-8 text-center">
               <Link to="/quiz" className="font-sans text-lg font-medium text-sand hover:text-white transition-colors underline underline-offset-8 decoration-sand/50 hover:decoration-white cursor-pointer">
-                Identify your brain's pattern in 2 minutes →
+                Find your pattern →
               </Link>
             </div>
           </div>

@@ -23,7 +23,7 @@ export function StickyMobileBar() {
         to="/quiz"
         className="flex justify-center w-full bg-terracotta text-white font-sans font-medium text-[16px] px-[28px] py-[14px] rounded-lg shadow-sm active:scale-[0.98] transition-transform cursor-pointer"
       >
-        Take the Free Quiz
+        What's Your Pattern? — Free Quiz
       </Link>
     </motion.div>
   );

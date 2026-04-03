@@ -3,20 +3,20 @@ import { FadeIn } from './FadeIn';
 
 const types = [
   {
-    name: "The Stress Reactor",
-    desc: "Your brain takes over when pressure builds. The urge hits hardest in the late afternoon. You grab whatever's fastest and barely taste it."
+    name: "The Stress Soother",
+    desc: "Pressure builds all day. By evening, your cortisol is maxed out and your willpower is gone. You eat fast, barely taste it. The food isn't about flavor — it's your nervous system trying to come down."
   },
   {
     name: "The Comfort Seeker",
-    desc: "Your brain has linked food to safety. When certain feelings spike, it reaches for warm, familiar foods. Usually at night. Usually alone."
+    desc: "When loneliness, sadness, or emotional emptiness hits, food becomes warmth. You reach for sweet, familiar things — not because you're hungry, but because your brain learned that sugar raises serotonin faster than anything else."
   },
   {
-    name: "The Dopamine Chaser",
-    desc: "Your brain is looking for stimulation. You open the fridge knowing you're not hungry. You graze all day. It's not about food — your brain wants something else."
+    name: "The Autopilot Eater",
+    desc: "You eat before you realize you're doing it. The bag is half-gone before you notice. This isn't a willpower problem — it's a habit loop so deeply wired that it skips your conscious mind entirely."
   },
   {
-    name: "The Emotional Avoider",
-    desc: "Your brain uses food to not feel. You eat past full, past comfort — because stopping means sitting with something your brain doesn't want to face."
+    name: "The Perfectionist Restrictor",
+    desc: "You control your eating all day — perfectly. Then something cracks. The restriction itself raises cortisol, and when the dam breaks, your brain overcorrects hard. The discipline IS the trigger."
   }
 ];
 
@@ -26,14 +26,14 @@ export function TypesPreview() {
       <div className="max-w-3xl mx-auto">
         <FadeIn className="text-center">
           <span className="inline-block font-sans font-medium text-sm uppercase tracking-widest text-sand mb-6">
-            4 Brain Patterns
+            4 Patterns
           </span>
           <h2 className="font-serif font-semibold text-4xl md:text-5xl text-deep-sage mb-10 text-balance leading-tight mx-auto">
-            Your Brain Runs One of These 4 Patterns. Which One?
+            There Are 4 Emotional Eating Patterns. Which One Runs Yours?
           </h2>
           <div className="space-y-8 font-sans text-xl md:text-2xl leading-relaxed text-soft-black mb-16 max-w-2xl mx-auto">
             <p>
-              Each one has a different reason your brain takes over. Knowing yours changes everything — because the fix is completely different for each.
+              Each pattern has a different trigger, different brain chemistry, and a different fix. The quiz identifies which one you have.
             </p>
           </div>
         </FadeIn>
@@ -54,11 +54,8 @@ export function TypesPreview() {
         </div>
 
         <FadeIn delay={0.4} className="text-center">
-          <p className="font-sans text-xl md:text-2xl font-medium text-soft-black mb-8">
-            The free quiz takes 2 minutes. You'll find out which pattern your brain is running — and what to do about it.
-          </p>
           <Link to="/quiz" className="inline-flex bg-terracotta text-white font-sans font-medium text-xl px-12 py-5 rounded-lg hover:bg-terracotta/90 hover:-translate-y-1 transition-all duration-300 shadow-lg w-full md:w-auto justify-center cursor-pointer">
-            Take the Free Quiz Now
+            Which One Are You? Take the Free Quiz
           </Link>
         </FadeIn>
       </div>

@@ -4,23 +4,18 @@ import { FadeIn } from './FadeIn';
 const stats = [
   {
     number: "53M",
-    text: "Americans have this brain pattern running on repeat. 1 in 5 adults. Most don't even realize it's happening — they just think they lack discipline.",
+    text: "Americans eat emotionally on a regular basis. That's 1 in 5 adults. Most think they just \"lack discipline.\" They don't — they have an unidentified brain pattern.",
     source: "NIH National Study"
   },
   {
     number: "44.9%",
-    text: "of adults who struggle with weight have this pattern active. Across 18 studies and 21,237 participants. It was never about calories. There's something else going on.",
+    text: "of adults who struggle with weight are emotional eaters. Across 18 studies and 21,237 people. It was never about calories.",
     source: "British Journal of Psychology, 2025"
   },
   {
     number: "70%",
-    text: "of emotional eaters are women. Not because of weakness — because of biology. The brain chemistry works differently, and nobody told them that.",
+    text: "of emotional eaters are women. Not because of weakness — because women carry more emotional labor, more cortisol, and more unprocessed stress. Their biology responds differently.",
     source: "NIH National Study"
-  },
-  {
-    number: "5:30 PM",
-    text: "Peak time your brain takes over. Cortisol builds all day and peaks in late afternoon. Your self-control is at its lowest. The second peak? 11 PM.",
-    source: "Journal of Psychosomatic Research, 2023"
   }
 ];
 
@@ -33,11 +28,8 @@ export function Stats() {
             The Data
           </span>
           <h2 className="font-serif font-semibold text-4xl md:text-5xl mb-10 text-balance leading-tight">
-            The Numbers Behind the Pattern
+            This isn't rare. It's one of the most common things nobody talks about.
           </h2>
-          <p className="font-sans text-xl md:text-2xl leading-relaxed opacity-90 mb-16">
-            This isn't rare. It's one of the most common biological patterns — and it explains why willpower never works.
-          </p>
         </FadeIn>
 
         <div className="space-y-12 mb-16">
@@ -62,7 +54,7 @@ export function Stats() {
 
         <FadeIn delay={0.4} className="text-center mt-20">
           <Link to="/quiz" className="inline-flex bg-sand text-deep-sage font-sans font-medium text-xl px-10 py-5 rounded-lg hover:bg-white hover:-translate-y-1 transition-all duration-300 shadow-lg cursor-pointer">
-            Find Your Brain Pattern — Free Quiz
+            Find Your Pattern — Free Quiz
           </Link>
         </FadeIn>
       </div>

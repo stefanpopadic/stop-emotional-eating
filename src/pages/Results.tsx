@@ -2,7 +2,7 @@ import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { resultsData } from '../lib/resultsData';
 import { Logo } from '../components/Logo';
-import { ShieldCheck, BookOpen, CalendarDays, FileText, ArrowRight, Lightbulb, AlertTriangle, Target, ChevronDown, Check } from 'lucide-react';
+import { ShieldCheck, BookOpen, CalendarDays, FileText, ArrowRight, AlertTriangle } from 'lucide-react';
 
 const GUMROAD_URL = 'https://stopemotionaleating.gumroad.com/l/guide';
 
@@ -42,18 +42,8 @@ export function Results() {
   const trigger = searchParams.get('trigger') || '';
   const food = searchParams.get('food') || '';
   const aftermath = searchParams.get('aftermath') || '';
-  const awareness = searchParams.get('awareness') || '';
-  const duration = searchParams.get('duration') || '';
-  const past = searchParams.get('past') || '';
-  const desire = searchParams.get('desire') || '';
-  const readiness = searchParams.get('readiness') || '';
 
   const cravingData = data.cravings[food] || data.cravings[Object.keys(data.cravings)[0]];
-  const awarenessData = data.awarenessProfile[awareness] || data.awarenessProfile[Object.keys(data.awarenessProfile)[0]];
-  const storyData = data.story[duration] || data.story[Object.keys(data.story)[0]];
-  const pastData = data.whyPastFailed[past] || data.whyPastFailed[Object.keys(data.whyPastFailed)[0]];
-  const desireData = data.whatChanges[desire] || data.whatChanges[Object.keys(data.whatChanges)[0]];
-  const readinessData = data.nextStep[readiness] || data.nextStep[Object.keys(data.nextStep)[0]];
   const patternData = data.pattern[trigger]?.[aftermath] || data.pattern[Object.keys(data.pattern)[0]]?.[Object.keys(data.pattern[Object.keys(data.pattern)[0]])[0]];
 
   return (
@@ -86,12 +76,9 @@ export function Results() {
               <h1 className="font-serif font-semibold text-5xl md:text-6xl lg:text-7xl mb-6 leading-[1.1]">
                 {data.headline}
               </h1>
-              <p className="font-sans text-xl md:text-2xl leading-relaxed opacity-90 max-w-2xl mx-auto mb-10">
+              <p className="font-sans text-xl md:text-2xl leading-relaxed opacity-90 max-w-2xl mx-auto">
                 {data.subhead}
               </p>
-              <div className="flex justify-center">
-                <ChevronDown className="animate-bounce opacity-50" size={28} />
-              </div>
             </motion.div>
           </div>
         </section>
@@ -139,67 +126,7 @@ export function Results() {
           </FadeIn>
         </Section>
 
-        {/* ═══ SECTION 4: YOUR AWARENESS LEVEL ═══ */}
-        <Section bg="bg-oat">
-          <FadeIn>
-            <span className="inline-block font-sans font-medium text-sm uppercase tracking-widest text-sand mb-4">
-              Where You Are Right Now
-            </span>
-            <h2 className="font-serif font-semibold text-3xl md:text-4xl text-deep-sage mb-8">
-              {awarenessData.title}
-            </h2>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <p className="font-sans text-lg md:text-xl text-soft-black leading-relaxed mb-8">
-              {awarenessData.body}
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.2}>
-            <div className="flex items-start gap-4 bg-warm-linen rounded-xl p-6 border border-sand/20">
-              <Lightbulb className="text-terracotta flex-shrink-0 mt-1" size={24} />
-              <div>
-                <p className="font-sans font-medium text-deep-sage mb-1">Your focus:</p>
-                <p className="font-sans text-lg text-soft-black leading-relaxed">{awarenessData.nextStep}</p>
-              </div>
-            </div>
-          </FadeIn>
-        </Section>
-
-        {/* ═══ SECTION 5: YOUR STORY ═══ */}
-        <Section>
-          <FadeIn>
-            <span className="inline-block font-sans font-medium text-sm uppercase tracking-widest text-sand mb-4">
-              Your History
-            </span>
-            <h2 className="font-serif font-semibold text-3xl md:text-4xl text-deep-sage mb-8">
-              What This Means for You
-            </h2>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <p className="font-sans text-lg md:text-xl text-soft-black leading-relaxed">
-              {storyData}
-            </p>
-          </FadeIn>
-        </Section>
-
-        {/* ═══ SECTION 6: WHY PAST APPROACHES FAILED ═══ */}
-        <Section bg="bg-deep-sage" className="text-warm-linen">
-          <FadeIn>
-            <span className="inline-block font-sans font-medium text-sm uppercase tracking-widest text-sand mb-4">
-              Why It Hasn't Worked Before
-            </span>
-            <h2 className="font-serif font-semibold text-3xl md:text-4xl mb-8">
-              It's Not Your Fault
-            </h2>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <p className="font-sans text-lg md:text-xl leading-relaxed opacity-90">
-              {pastData}
-            </p>
-          </FadeIn>
-        </Section>
-
-        {/* ═══ SECTION 7: YOUR #1 STRATEGY ═══ */}
+        {/* ═══ SECTION 4: YOUR #1 STRATEGY ═══ */}
         <Section bg="bg-oat">
           <FadeIn>
             <span className="inline-block font-sans font-medium text-sm uppercase tracking-widest text-sand mb-4">
@@ -231,7 +158,7 @@ export function Results() {
           </FadeIn>
         </Section>
 
-        {/* ═══ SECTION 8: TWO MORE STRATEGIES ═══ */}
+        {/* ═══ SECTION 5: TWO MORE STRATEGIES ═══ */}
         <Section>
           <FadeIn>
             <span className="inline-block font-sans font-medium text-sm uppercase tracking-widest text-sand mb-4">
@@ -253,34 +180,8 @@ export function Results() {
           </div>
         </Section>
 
-        {/* ═══ MID-PAGE CTA ═══ */}
-        <section className="bg-terracotta py-12 px-6">
-          <div className="max-w-3xl mx-auto text-center">
-            <FadeIn>
-              <p className="font-sans text-warm-linen/80 text-lg mb-3">
-                These strategies are just the beginning.
-              </p>
-              <h2 className="font-serif font-semibold text-3xl md:text-4xl text-white mb-4">
-                Want the full 21-day system?
-              </h2>
-              <p className="font-sans text-warm-linen/70 mb-6 max-w-lg mx-auto">
-                The guide walks you through every step — from understanding your triggers to building new patterns that stick.
-              </p>
-              <a
-                href={GUMROAD_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-white text-terracotta font-sans font-semibold text-lg px-8 py-4 rounded-lg hover:bg-warm-linen transition-colors shadow-lg"
-              >
-                Break Your Pattern in 21 Days — $27
-                <ArrowRight size={20} />
-              </a>
-            </FadeIn>
-          </div>
-        </section>
-
-        {/* ═══ SECTION 9: COMMON MISTAKE ═══ */}
-        <Section bg="bg-oat">
+        {/* ═══ SECTION 6: COMMON MISTAKE ═══ */}
+        <Section bg="bg-deep-sage" className="text-warm-linen">
           <FadeIn>
             <div className="flex items-start gap-4 mb-6">
               <AlertTriangle className="text-terracotta flex-shrink-0 mt-1" size={28} />
@@ -288,85 +189,29 @@ export function Results() {
                 Watch Out For This
               </span>
             </div>
-            <h2 className="font-serif font-semibold text-3xl md:text-4xl text-deep-sage mb-8">
+            <h2 className="font-serif font-semibold text-3xl md:text-4xl mb-8">
               {data.commonMistake.title}
             </h2>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <p className="font-sans text-lg md:text-xl text-soft-black leading-relaxed">
+            <p className="font-sans text-lg md:text-xl leading-relaxed opacity-90">
               {data.commonMistake.body}
             </p>
           </FadeIn>
         </Section>
 
-        {/* ═══ SECTION 10: WHAT CHANGES ═══ */}
-        <Section bg="bg-deep-sage" className="text-warm-linen">
-          <FadeIn>
-            <span className="inline-block font-sans font-medium text-sm uppercase tracking-widest text-sand mb-4">
-              What's Possible
-            </span>
-            <h2 className="font-serif font-semibold text-3xl md:text-4xl mb-8">
-              What Changes When You Get This Right
-            </h2>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <p className="font-sans text-lg md:text-xl leading-relaxed opacity-90 mb-8">
-              {desireData}
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.2}>
-            <div className="border-t border-white/15 pt-8">
-              <p className="font-sans text-sm uppercase tracking-widest text-sand mb-6">After 21 days, people like you report:</p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="bg-white/5 rounded-xl p-5 text-center">
-                  <p className="font-serif font-semibold text-3xl mb-1">73%</p>
-                  <p className="font-sans text-sm opacity-70">fewer emotional eating episodes</p>
-                </div>
-                <div className="bg-white/5 rounded-xl p-5 text-center">
-                  <p className="font-serif font-semibold text-3xl mb-1">89%</p>
-                  <p className="font-sans text-sm opacity-70">say they finally understand their triggers</p>
-                </div>
-                <div className="bg-white/5 rounded-xl p-5 text-center">
-                  <p className="font-serif font-semibold text-3xl mb-1">4.8/5</p>
-                  <p className="font-sans text-sm opacity-70">average rating from readers</p>
-                </div>
-              </div>
-            </div>
-          </FadeIn>
-        </Section>
-
-        {/* ═══ SECTION 11: YOUR NEXT STEP ═══ */}
-        <Section>
-          <FadeIn>
-            <div className="flex items-start gap-4 mb-6">
-              <Target className="text-muted-teal flex-shrink-0 mt-1" size={28} />
-              <span className="font-sans font-medium text-sm uppercase tracking-widest text-sand pt-1">
-                Your Next Move
-              </span>
-            </div>
-            <h2 className="font-serif font-semibold text-3xl md:text-4xl text-deep-sage mb-8">
-              {readinessData.title}
-            </h2>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <p className="font-sans text-lg md:text-xl text-soft-black leading-relaxed">
-              {readinessData.body}
-            </p>
-          </FadeIn>
-        </Section>
-
-        {/* ═══ SECTION 12: THE 21-DAY GUIDE ═══ */}
+        {/* ═══ SECTION 7: THE 21-DAY GUIDE ═══ */}
         <Section bg="bg-oat">
           <FadeIn>
             <div className="text-center mb-12">
               <span className="inline-block font-sans font-medium text-sm uppercase tracking-widest text-sand mb-4">
-                The Complete System
+                Go Deeper
               </span>
               <h2 className="font-serif font-semibold text-4xl md:text-5xl text-deep-sage mb-6 leading-tight">
-                Break Your Emotional Eating<br className="hidden md:block" /> in 21 Days
+                This Is the Free Version.<br className="hidden md:block" /> The Full System Goes Further.
               </h2>
               <p className="font-sans text-lg md:text-xl text-soft-black leading-relaxed max-w-2xl mx-auto">
-                Everything you just read is free — and it works. But it's only the first layer. The 21-Day Guide gives you the full system: the complete framework, daily exercises, and proven tools built specifically for your type.
+                What you just read is real, and it works. But it's the first layer. The 21-Day Guide gives you the complete system:
               </p>
             </div>
           </FadeIn>
@@ -374,48 +219,27 @@ export function Results() {
           {/* What you get */}
           <FadeIn delay={0.1}>
             <div className="bg-warm-linen rounded-2xl p-8 md:p-10 border border-sand/20 mb-8">
-              <h3 className="font-sans font-semibold text-2xl text-deep-sage mb-8 text-center">
-                Here's exactly what you get:
-              </h3>
               <div className="space-y-6 mb-8">
                 <div className="flex items-start gap-4">
                   <BookOpen className="text-terracotta flex-shrink-0 mt-1" size={22} />
                   <div>
                     <p className="font-sans font-semibold text-lg text-soft-black">The Stop Emotional Eating Guide</p>
-                    <p className="font-sans text-soft-black/70 leading-relaxed">The full Craving → Emotion → Hormone → Action framework. Deep dives into all 4 emotional eating types, the neuroscience behind each pattern, and step-by-step strategies that work with your biology instead of against it.</p>
+                    <p className="font-sans text-soft-black/70 leading-relaxed">The complete framework — every trigger type, every craving pattern, mapped to specific alternative actions that work with your biology instead of against it.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <CalendarDays className="text-terracotta flex-shrink-0 mt-1" size={22} />
                   <div>
                     <p className="font-sans font-semibold text-lg text-soft-black">The 21-Day Craving Tracker</p>
-                    <p className="font-sans text-soft-black/70 leading-relaxed">Daily prompts designed for your specific type. Map your triggers, track your emotions, and watch the pattern become crystal clear. Most people say by week 2, they can see the craving coming before it arrives.</p>
+                    <p className="font-sans text-soft-black/70 leading-relaxed">Daily prompts that make your pattern visible in real time. Most people say by week 2, they see the craving coming before it arrives.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <FileText className="text-terracotta flex-shrink-0 mt-1" size={22} />
                   <div>
                     <p className="font-sans font-semibold text-lg text-soft-black">The Craving Decoder Cheat Sheet</p>
-                    <p className="font-sans text-soft-black/70 leading-relaxed">A one-page reference you can stick on your fridge. Craving hits → check the sheet → know exactly what your body actually needs and what to do about it. No thinking required in the moment.</p>
+                    <p className="font-sans text-soft-black/70 leading-relaxed">One page, goes on your fridge. Craving hits → check the sheet → know what to do. No thinking required in the moment.</p>
                   </div>
-                </div>
-              </div>
-
-              {/* Who this is for */}
-              <div className="border-t border-sand/30 pt-6 mb-6">
-                <p className="font-sans font-medium text-deep-sage mb-4">This is for you if:</p>
-                <div className="space-y-3">
-                  {[
-                    "You're tired of feeling out of control around food",
-                    "You've tried diets or willpower and they didn't stick",
-                    "You want to understand WHY you eat emotionally, not just be told to stop",
-                    "You want a real system, not another set of rules to break",
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <Check className="text-muted-teal flex-shrink-0 mt-1" size={18} />
-                      <p className="font-sans text-soft-black">{item}</p>
-                    </div>
-                  ))}
                 </div>
               </div>
 

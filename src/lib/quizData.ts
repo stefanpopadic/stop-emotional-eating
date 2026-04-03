@@ -21,10 +21,10 @@ export const quizFlow = [
   {
     id: 'intro',
     type: 'intro',
-    headline: "What's Really Driving Your Eating?",
-    subhead: "Take this 2-minute quiz to discover your emotional eating pattern — and what to do about it.",
+    headline: "Let's find out why you eat when you're not hungry.",
+    subhead: "8 questions. No judgment. You'll get your specific pattern, what's driving it, and one thing you can do this week.",
     cta: "Start the Quiz",
-    belowCta: "Based on behavioral psychology and neuroscience. No judgment, no diet talk.",
+    belowCta: "Based on behavioral psychology and neuroscience. No diet talk.",
     socialProof: "14,000+ people have taken this quiz"
   },
   {
@@ -64,18 +64,18 @@ export const quizFlow = [
     id: 'vd1',
     type: 'value-drop',
     icon: 'brain',
-    text: "Here's something most people don't know:\n\nEmotional eating isn't a willpower problem. When you're stressed, your body releases cortisol — which literally increases your appetite for high-calorie foods. Your brain is trying to calm your nervous system down.\n\nYou're not broken. Your biology is doing exactly what it's designed to do.",
+    text: "Quick science check:\n\nWhen you're stressed, cortisol (your stress hormone) spikes. Cortisol does two things: it suppresses your prefrontal cortex — your decision-making brain — and it increases your appetite for high-calorie food.\n\nSo when you eat after a hard day, that's not weakness. That's cortisol switching off your self-control and turning on your hunger. At the same time.\n\nYou're not broken. Your brain chemistry is doing its job.",
     cta: "Continue"
   },
   {
     id: 'awareness',
     type: 'question',
-    question: "When a craving hits, how aware are you of what triggered it?",
+    question: "When a craving hits, do you know why?",
     options: [
-      { id: 'A', text: "Very aware — I know exactly why, I just can't stop", value: "high" },
-      { id: 'B', text: "Sometimes — I can connect the dots after the fact", value: "moderate" },
-      { id: 'C', text: "Rarely — I usually realize hours later, if at all", value: "low" },
-      { id: 'D', text: "Never thought about it until this quiz", value: "new" }
+      { id: 'A', text: "Yes — I see it happening but I can't stop it", value: "high" },
+      { id: 'B', text: "Sometimes — I connect the dots after the fact", value: "moderate" },
+      { id: 'C', text: "Rarely — I usually don't realize until much later", value: "low" },
+      { id: 'D', text: "I never thought about it until right now", value: "new" }
     ]
   },
   {
@@ -104,37 +104,37 @@ export const quizFlow = [
     id: 'vd2',
     type: 'value-drop',
     icon: 'chart',
-    text: "You're not alone in this:\n\nResearch shows that 75% of overeating is emotionally driven — not hunger-driven. And the #1 predictor of emotional eating isn't stress itself. It's low awareness of the emotion BEFORE the craving hits.\n\nThat's actually great news. Because awareness is a skill — and skills can be learned.",
+    text: "Here's why this quiz matters:\n\nResearch shows the #1 predictor of emotional eating isn't stress itself. It's how aware you are of the emotion BEFORE the craving hits.\n\nPeople who can name what they're feeling — \"I'm stressed,\" \"I'm lonely,\" \"I'm exhausted\" — before they open the fridge are significantly less likely to eat emotionally.\n\nThat's what we're building right now. Your answers are mapping exactly where your awareness gaps are.",
     subtext: "Source: American Psychological Association",
     cta: "Continue"
   },
   {
     id: 'desire',
     type: 'question',
-    question: "What would change in your life if emotional eating wasn't running the show?",
+    question: "If you could change one thing about your relationship with food, what would it be?",
     options: [
-      { id: 'A', text: "I'd finally feel in control around food", value: "control" },
-      { id: 'B', text: "I'd stop the guilt cycle and actually enjoy eating", value: "peace" },
-      { id: 'C', text: "I'd lose weight without it feeling like punishment", value: "weight" },
-      { id: 'D', text: "I'd understand myself better — why I do what I do", value: "understanding" }
+      { id: 'A', text: "Feel in control — eat because I chose to, not because I had to", value: "control" },
+      { id: 'B', text: "Lose the guilt — enjoy food without the shame spiral after", value: "peace" },
+      { id: 'C', text: "Understand myself — know WHY I do this", value: "understanding" },
+      { id: 'D', text: "Lose weight — without it feeling like punishment", value: "weight" }
     ]
   },
   {
     id: 'readiness',
     type: 'question',
-    question: "What feels most true right now?",
+    question: "Where are you right now?",
     options: [
-      { id: 'A', text: "I'm ready to change — I just need the right approach", value: "ready" },
-      { id: 'B', text: "I'm curious but skeptical — I've been burned before", value: "skeptical" },
-      { id: 'C', text: "I'm overwhelmed — I don't know where to start", value: "overwhelmed" },
-      { id: 'D', text: "I'm here for someone I care about", value: "proxy" }
+      { id: 'A', text: "Ready — I just need the right approach", value: "ready" },
+      { id: 'B', text: "Skeptical — I've tried things before and they didn't work", value: "skeptical" },
+      { id: 'C', text: "Overwhelmed — I don't even know where to start", value: "overwhelmed" },
+      { id: 'D', text: "Curious — I'm here for someone I care about", value: "proxy" }
     ]
   },
   {
     id: 'vd3',
     type: 'value-drop',
     icon: 'spiral',
-    text: "One more thing before your results:\n\nThe craving you feel at 9 PM isn't about food. It's a signal — your body asking for something it didn't get during the day. Maybe it's rest. Maybe it's connection. Maybe it's just permission to stop being productive.\n\nYour cravings are data, not character flaws. The guide we built teaches you how to read that data.",
+    text: "Last thing before your results:\n\nThe craving you feel at 9 PM is a message. Not from your stomach — from your nervous system. It's telling you something went unmet today. Rest. Connection. A break. Permission to stop.\n\nYour cravings aren't the problem. They're the clue. The results you're about to see will show you exactly what your cravings have been trying to say.",
     cta: "See My Results"
   },
   {
