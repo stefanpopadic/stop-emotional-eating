@@ -348,10 +348,8 @@ export function Quiz() {
     <div className="min-h-screen bg-warm-linen flex flex-col">
       {/* Header */}
       <header className="py-6 px-6 flex justify-center items-center">
-        <Link to="/" className="flex items-center gap-3">
-          <span className="font-sans font-bold text-sm tracking-widest uppercase text-deep-sage">
-            Stop Emotional Eating
-          </span>
+        <Link to="/" className="text-deep-sage">
+          <Logo height={28} />
         </Link>
       </header>
 
