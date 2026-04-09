@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Quiz } from './pages/Quiz';
 import { Results } from './pages/Results';
+import { Styleguide } from './pages/Styleguide';
 import { Privacy } from './pages/Privacy';
 import { Terms } from './pages/Terms';
 
@@ -10,6 +11,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Quiz />} />
         <Route path="/results/:type" element={<Results />} />
+        <Route path="/styleguide" element={<Styleguide />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
       </Routes>
