@@ -1,10 +1,11 @@
+import type { ReactNode } from 'react';
 import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { resultsData } from '../lib/resultsData';
 import { Logo } from '../components/Logo';
 import { ShieldCheck, BookOpen, CalendarDays, FileText, ArrowRight, AlertTriangle } from 'lucide-react';
 
-function Section({ children, className = '', bg = 'bg-warm-linen' }: { children: React.ReactNode; className?: string; bg?: string }) {
+function Section({ children, className = '', bg = 'bg-warm-linen' }: { children: ReactNode; className?: string; bg?: string }) {
   return (
     <section className={`${bg} py-16 md:py-24 px-6 md:px-12 ${className}`}>
       <div className="max-w-3xl mx-auto">
@@ -14,7 +15,7 @@ function Section({ children, className = '', bg = 'bg-warm-linen' }: { children:
   );
 }
 
-function FadeIn({ children, className = '', delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
+function FadeIn({ children, className = '', delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

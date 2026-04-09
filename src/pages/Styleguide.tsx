@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ShieldCheck, BookOpen, Lock, AlertTriangle, Brain, Check } from 'lucide-react';
 import { Logo } from '../components/Logo';
@@ -20,7 +21,7 @@ const colors = [
   { name: 'Dusty Blush', var: '--color-dusty-blush', hex: '#D6C5B0', usage: 'Soft secondary. Disclaimer boxes, tertiary backgrounds.' },
 ];
 
-function Section({ id, title, eyebrow, children }: { id: string; title: string; eyebrow: string; children: React.ReactNode }) {
+function Section({ id, title, eyebrow, children }: { id: string; title: string; eyebrow: string; children: ReactNode }) {
   return (
     <section id={id} className="py-16 md:py-20 px-6 md:px-12 border-b border-sand/20 scroll-mt-24">
       <div className="max-w-5xl mx-auto">
@@ -56,7 +57,7 @@ function Swatch({ name, hex, varName, usage, text = 'dark' }: { name: string; he
   );
 }
 
-function Card({ title, children }: { title: string; children: React.ReactNode }) {
+function Card({ title, children }: { title: string; children: ReactNode }) {
   return (
     <div className="bg-white rounded-2xl p-6 md:p-8 border border-sand/30">
       <h3 className="font-sans font-semibold text-sm uppercase tracking-widest text-sand mb-5">{title}</h3>
@@ -65,7 +66,7 @@ function Card({ title, children }: { title: string; children: React.ReactNode })
   );
 }
 
-function CodeLabel({ children }: { children: React.ReactNode }) {
+function CodeLabel({ children }: { children: ReactNode }) {
   return (
     <code className="inline-block font-sans text-[11px] text-soft-black/50 bg-oat px-2 py-1 rounded mt-3">
       {children}
