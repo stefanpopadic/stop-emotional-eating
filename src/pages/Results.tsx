@@ -4,8 +4,6 @@ import { resultsData } from '../lib/resultsData';
 import { Logo } from '../components/Logo';
 import { ShieldCheck, BookOpen, CalendarDays, FileText, ArrowRight, AlertTriangle } from 'lucide-react';
 
-const GUMROAD_URL = 'https://stopemotionaleating.gumroad.com/l/guide';
-
 function Section({ children, className = '', bg = 'bg-warm-linen' }: { children: React.ReactNode; className?: string; bg?: string }) {
   return (
     <section className={`${bg} py-16 md:py-24 px-6 md:px-12 ${className}`}>
@@ -255,17 +253,15 @@ export function Results() {
           {/* CTA Button */}
           <FadeIn delay={0.2}>
             <div className="text-center mb-8">
-              <a
-                href={GUMROAD_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/login"
                 className="inline-flex items-center gap-3 bg-terracotta text-white font-sans font-semibold text-xl px-10 py-5 rounded-xl hover:bg-terracotta/90 transition-colors shadow-xl"
               >
                 Get the 21-Day Guide — $27
                 <ArrowRight size={22} />
-              </a>
+              </Link>
               <p className="font-sans text-sm text-soft-black/50 mt-4">
-                Instant PDF download. Start today.
+                Instant access. Start today.
               </p>
             </div>
           </FadeIn>
