@@ -248,10 +248,21 @@ export function Quiz() {
           <p className="font-sans text-sm text-soft-black/70 mb-8">
             {currentStep.belowCta}
           </p>
-          <div className="inline-flex items-center gap-2 bg-oat px-4 py-2 rounded-full">
+          <div className="inline-flex items-center gap-3 bg-oat px-4 py-2 rounded-full">
             <div className="flex -space-x-2">
-              {[1,2,3,4].map(i => (
-                <div key={i} className="w-6 h-6 rounded-full bg-sand border-2 border-warm-linen"></div>
+              {[
+                { src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&h=96&fit=crop&crop=faces&q=80', alt: 'Quiz taker' },
+                { src: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=96&h=96&fit=crop&crop=faces&q=80', alt: 'Quiz taker' },
+                { src: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=96&h=96&fit=crop&crop=faces&q=80', alt: 'Quiz taker' },
+                { src: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=96&h=96&fit=crop&crop=faces&q=80', alt: 'Quiz taker' },
+              ].map((person, i) => (
+                <img
+                  key={i}
+                  src={person.src}
+                  alt={person.alt}
+                  loading="lazy"
+                  className="w-8 h-8 rounded-full object-cover border-2 border-warm-linen"
+                />
               ))}
             </div>
             <span className="font-sans text-sm font-medium text-deep-sage">
