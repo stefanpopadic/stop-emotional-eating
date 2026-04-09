@@ -253,13 +253,13 @@ export function Results() {
           {/* CTA Button */}
           <FadeIn delay={0.2}>
             <div className="text-center mb-8">
-              <Link
-                to="/login"
+              <a
+                href="/course.html"
                 className="inline-flex items-center gap-3 bg-terracotta text-white font-sans font-semibold text-xl px-10 py-5 rounded-xl hover:bg-terracotta/90 transition-colors shadow-xl"
               >
                 Get the 21-Day Guide — $27
                 <ArrowRight size={22} />
-              </Link>
+              </a>
               <p className="font-sans text-sm text-soft-black/50 mt-4">
                 Instant access. Start today.
               </p>
