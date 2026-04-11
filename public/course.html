@@ -604,14 +604,6 @@
             <ul class="nav-list" id="nav-list">
 
                 <li class="nav-item-container">
-                    <div class="nav-item" id="nav-0" onclick="app.goToChapter(0)">Stop Emotional Eating<span class="dropdown-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></div>
-                    <ul class="sub-nav-list" id="subnav-0">
-                        <li class="sub-nav-item" onclick="app.goToSub(0, 'sub-0', event)">Decode What Your Body Really Wants</li>
-                        <li class="sub-nav-item" onclick="app.goToSub(0, 'sub-1', event)">Disclaimer</li>
-                        <li class="sub-nav-item" onclick="app.goToSub(0, 'sub-2', event)">How to Use This Guide</li>
-                    </ul>
-                </li>
-                <li class="nav-item-container">
                     <div class="nav-item" id="nav-1" onclick="app.goToChapter(1)">Chapter 1: What This Guide Is</div>
                 </li>
                 <li class="nav-item-container">
@@ -744,49 +736,6 @@
             <div class="chapter-container" id="chapters-container">
 
 
-                <section class="chapter-slide" id="slide-0">
-                    <h1 class="chapter-title">Stop Emotional Eating</h1>
-<h2 id="sub-0">Decode What Your Body Really Wants</h2>
-<p><em>A science-backed guide to understanding why you crave what you crave -- and what to do instead.</em></p>
-<hr>
-<h2 id="sub-1">Disclaimer</h2>
-<p>This guide is for educational and informational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment, and it is not therapy.</p>
-<p>If you are currently in treatment for an eating disorder, please consult your treatment team before using this guide. If these patterns feel overwhelming or out of control, a therapist who specializes in eating concerns can provide personalized support that a guide never can.</p>
-<p><strong>If you or someone you know is struggling with an eating disorder:</strong></p>
-<ul>
-<li><strong>National Eating Disorders Association (NEDA) Helpline:</strong> 1-800-931-2237</li>
-<li><strong>Crisis Text Line:</strong> Text "NEDA" to 741741</li>
-<li><strong>988 Suicide & Crisis Lifeline:</strong> Call or text 988</li>
-</ul>
-<p>The author of this guide is not a licensed therapist, psychologist, psychiatrist, or registered dietitian. Nothing in this guide creates a professional-client relationship of any kind.</p>
-<p>Individual experiences vary. No specific outcomes are guaranteed. By reading and using this guide, you acknowledge that you are responsible for your own health decisions and that use of this material is at your own risk.</p>
-<hr>
-<h2 id="sub-2">How to Use This Guide</h2>
-<p>You don't have to read this cover to cover. There are three ways in, depending on what you need right now.</p>
-<p><strong>Path 1: "I'm reaching for food right now and I don't want to."</strong> Skip to Chapter 7. It has a rapid-response framework you can use in the moment -- before, during, or after a craving hits. Come back to the earlier chapters when you're ready to understand the bigger picture.</p>
-<p><strong>Path 2: "I want to actually understand what's going on."</strong> Start here at Chapter 1 and read through. The guide builds on itself -- each chapter adds a layer to the framework. By the end, you'll have a clear model for what's happening when you eat emotionally and a set of practical tools to respond differently.</p>
-<p><strong>Path 3: "I just want the quick-reference tools."</strong> Flip to the back. The cheat sheets, tracker templates, and decision trees are designed to work as standalone references. Pin them to your fridge, save them to your phone, or print them out.</p>
-<p><strong>A note on format:</strong> This guide works on screens and on paper. If you're reading digitally, use your annotation tools -- highlight, bookmark, write in the margins. If you prefer paper, print it. The exercises work best when you physically write things down. There's something about pen-on-paper that slows the brain down just enough to notice what's actually happening. That noticing is the whole point.</p>
-<hr>
-                    
-                    <div class="slide-nav">
-                        <button class="nav-btn" disabled onclick="app.goToChapter(-1)">&larr; Previous</button>
-                        <button class="nav-btn nav-btn-next" id="intro-next-btn" onclick="app.goToChapter(1)">Next Chapter &rarr;</button>
-                    </div>
-
-                    <!-- Upgrade wall at end of intro (shown when not unlocked) -->
-                    <div id="intro-upgrade-wall" style="margin-top: 4rem; padding: 3rem 2rem; background: linear-gradient(135deg, var(--oat) 0%, var(--warm-linen) 100%); border-radius: 16px; text-align: center; border: 1px solid var(--sand);">
-                        <p style="font-family: 'Cormorant Garamond', serif; font-size: 28pt; color: var(--deep-sage); margin: 0 0 0.75rem 0; line-height: 1.2;">Ready to keep going?</p>
-                        <p style="font-size: 12pt; color: var(--soft-black); max-width: 480px; margin: 0 auto 2rem auto; line-height: 1.7;">The full guide covers 10 chapters: the emotional eating loop, your triggers, what cravings mean, the choice point toolkit, and a 7-day rewiring practice.</p>
-                        <a href="mailto:hello@stopemotionaleating.guide?subject=I%20want%20the%2021-Day%20Guide" class="buy-btn" style="display: inline-flex; max-width: 360px; justify-content: center;">
-                            Get the full guide for <span class="price-current">$27</span> <span class="price-old">($42)</span>
-                        </a>
-                        <p style="font-size: 9.5pt; color: var(--muted-teal); margin-top: 1rem; margin-bottom: 2rem;">One-time payment. Instant access. 30-day money-back guarantee.</p>
-                        <button onclick="app.showPurchaseWall(1)" style="background: none; border: none; font-family: 'Karla', sans-serif; font-size: 11pt; color: var(--deep-sage); text-decoration: underline; cursor: pointer; opacity: 0.8;">I already bought this — enter my access code</button>
-                    </div>
-                </section>
-        
-
                 <section class="chapter-slide" id="slide-1">
                     <h1 class="chapter-title">Chapter 1: What This Guide Is</h1>
 <p>Here is something that gets said about emotional eating in a hundred different ways, in a hundred different books and Instagram captions and therapy offices, but rarely this plainly:</p>
@@ -887,8 +836,19 @@
 </ul>
                     
                     <div class="slide-nav">
-                        <button class="nav-btn"  onclick="app.goToChapter(0)">&larr; Previous</button>
-                        <button class="nav-btn nav-btn-next"  onclick="app.goToChapter(2)">Next Chapter &rarr;</button>
+                        <button class="nav-btn" disabled>&larr; Previous</button>
+                        <button class="nav-btn nav-btn-next" id="ch1-next-btn" onclick="app.goToChapter(2)">Next Chapter &rarr;</button>
+                    </div>
+
+                    <!-- Upgrade wall at end of ch1 (shown when not unlocked) -->
+                    <div id="ch1-upgrade-wall" style="margin-top: 4rem; padding: 3rem 2rem; background: linear-gradient(135deg, var(--oat) 0%, var(--warm-linen) 100%); border-radius: 16px; text-align: center; border: 1px solid var(--sand);">
+                        <p style="font-family: 'Cormorant Garamond', serif; font-size: 28pt; color: var(--deep-sage); margin: 0 0 0.75rem 0; line-height: 1.2;">Ready to keep going?</p>
+                        <p style="font-size: 12pt; color: var(--soft-black); max-width: 480px; margin: 0 auto 2rem auto; line-height: 1.7;">The full guide covers 10 chapters: the emotional eating loop, your triggers, what cravings mean, the choice point toolkit, and a 7-day rewiring practice.</p>
+                        <a href="mailto:hello@stopemotionaleating.guide?subject=I%20want%20the%2021-Day%20Guide" class="buy-btn" style="display: inline-flex; max-width: 360px; justify-content: center;">
+                            Get the full guide for <span class="price-current">$27</span> <span class="price-old">($42)</span>
+                        </a>
+                        <p style="font-size: 9.5pt; color: var(--muted-teal); margin-top: 1rem; margin-bottom: 2rem;">One-time payment. Instant access. 30-day money-back guarantee.</p>
+                        <button onclick="app.showPurchaseWall(1)" style="background: none; border: none; font-family: 'Karla', sans-serif; font-size: 11pt; color: var(--deep-sage); text-decoration: underline; cursor: pointer; opacity: 0.8;">I already bought this — enter my access code</button>
                     </div>
                 </section>
 
@@ -2376,7 +2336,7 @@
 
     <script>
         const THE_PASSWORD = "decode";
-        const FREE_CHAPTERS = [0]; // Only the intro is free
+        const FREE_CHAPTERS = [1]; // Only Chapter 1 is free
 
         const app = {
             currentChapterIdx: 0,
@@ -2395,8 +2355,8 @@
                 // Mark locked nav items
                 this.updateNavLocks();
 
-                // Start on intro
-                this.goToChapter(0);
+                // Start on Chapter 1
+                this.goToChapter(1);
             },
 
             handleLogin: function() {
@@ -2407,9 +2367,9 @@
                     document.getElementById('purchase-wall').style.display = 'none';
                     // Remove all locked states
                     this.updateNavLocks();
-                    // Hide intro upgrade wall and show next button
-                    document.getElementById('intro-upgrade-wall').style.display = 'none';
-                    document.getElementById('intro-next-btn').style.display = '';
+                    // Hide ch1 upgrade wall and show next button
+                    document.getElementById('ch1-upgrade-wall').style.display = 'none';
+                    document.getElementById('ch1-next-btn').style.display = '';
                     // Go to chapter 2 (the one they were trying to access)
                     if (this._pendingChapter !== undefined) {
                         this.goToChapter(this._pendingChapter);
@@ -2442,9 +2402,9 @@
                         list.querySelectorAll('.sub-nav-item').forEach(el => el.classList.add('locked'));
                     }
                 });
-                // Intro inline upgrade wall
-                const upgradeWall = document.getElementById('intro-upgrade-wall');
-                const nextBtn = document.getElementById('intro-next-btn');
+                // Ch1 inline upgrade wall
+                const upgradeWall = document.getElementById('ch1-upgrade-wall');
+                const nextBtn = document.getElementById('ch1-next-btn');
                 if (upgradeWall && nextBtn) {
                     if (this.unlocked) {
                         upgradeWall.style.display = 'none';
