@@ -7,11 +7,11 @@ import { Link } from 'react-router-dom';
 import { Logo } from '../components/Logo';
 
 const loadingMessages = [
-  "Analyzing your responses...",
-  "Mapping your brain pattern...",
-  "Identifying your triggers...",
-  "Building your personalized profile...",
-  "Your results are almost ready..."
+  'Reading your answers...',
+  'Spotting your pattern...',
+  'Looking at your triggers...',
+  'Building your result...',
+  'Almost there...',
 ];
 
 export function Quiz() {

@@ -21,131 +21,136 @@ export const quizFlow = [
   {
     id: 'intro',
     type: 'intro',
-    headline: "Why do you eat when you're not hungry?",
-    subhead: "8 questions. Two minutes. You'll get your emotional eating type, the science behind it, and one thing you can try this week.",
-    cta: "Start the Quiz",
-    belowCta: "Grounded in peer-reviewed research. Zero diet advice.",
-    socialProof: "14,000+ people have taken this quiz"
+    headline: "Why do you keep eating when you're not actually hungry?",
+    subhead:
+      "This free 2-minute quiz helps you understand what your cravings are trying to do, so you can stop blaming yourself and start using what actually helps.",
+    cta: 'Take the 2-minute quiz',
+    belowCta: 'Built from behavior science. No dieting. No shame.',
+    socialProof: '14,000+ people have taken this quiz',
   },
   {
     id: 'trigger',
     type: 'question',
-    question: "When do you usually eat when you're not physically hungry?",
+    question: "When do you usually end up eating even though your body isn't hungry?",
     options: [
-      { id: 'A', text: "After a hard day — I'm wound up and need to come down", value: "stress" },
-      { id: 'B', text: "When I'm bored or my brain needs input", value: "boredom" },
-      { id: 'C', text: "When I feel lonely, sad, or disconnected", value: "emotional" },
-      { id: 'D', text: "Late at night — once dinner's over, something flips", value: "nighttime" }
-    ]
+      { id: 'A', text: 'After a stressful day, when I need my brain to calm down', value: 'stress' },
+      { id: 'B', text: "When I'm bored, restless, or just wandering the kitchen", value: 'boredom' },
+      { id: 'C', text: 'When I feel lonely, low, or emotionally drained', value: 'emotional' },
+      { id: 'D', text: 'At night, when the day is over and I finally stop holding it together', value: 'nighttime' },
+    ],
   },
   {
     id: 'food',
     type: 'question',
-    question: "What do you usually reach for first?",
+    question: 'What do you usually reach for first?',
     options: [
-      { id: 'A', text: "Salty and crunchy — chips, crackers, pretzels, nuts", value: "salty" },
-      { id: 'B', text: "Sweet — chocolate, ice cream, baked goods", value: "sweet" },
-      { id: 'C', text: "Carby and starchy — bread, pasta, cereal, toast", value: "carbs" },
-      { id: 'D', text: "Whatever's closest — I'm not picky, I just need it now", value: "impulsive" }
-    ]
+      { id: 'A', text: 'Something salty or crunchy, like chips, crackers, or nuts', value: 'salty' },
+      { id: 'B', text: 'Something sweet or comforting, like chocolate or ice cream', value: 'sweet' },
+      { id: 'C', text: 'Bread, pasta, cereal, toast, or something else carb-heavy', value: 'carbs' },
+      { id: 'D', text: "Whatever is fastest. I just want something now", value: 'impulsive' },
+    ],
   },
   {
     id: 'aftermath',
     type: 'question',
-    question: "How do you feel right after you eat?",
+    question: 'How do you usually feel right after?',
     options: [
-      { id: 'A', text: "Guilty — I immediately regret it", value: "guilt" },
-      { id: 'B', text: "Numb — whatever I was avoiding is still there", value: "numb" },
-      { id: 'C', text: "Briefly better, then frustrated it happened again", value: "cycle" },
-      { id: 'D', text: "I barely notice — it's automatic", value: "autopilot" }
-    ]
+      { id: 'A', text: 'Guilty or annoyed with myself', value: 'guilt' },
+      { id: 'B', text: 'Still empty. The feeling I was trying to fix is still there', value: 'numb' },
+      { id: 'C', text: 'Better for a minute, then right back in the same loop', value: 'cycle' },
+      { id: 'D', text: 'I barely register it. It happens almost on autopilot', value: 'autopilot' },
+    ],
   },
   {
     id: 'vd1',
     type: 'value-drop',
     icon: 'brain',
-    text: "Quick science check:\n\nStress spikes cortisol. Cortisol does two things at the same time — it dials down your prefrontal cortex (your decision-making brain) and turns up your appetite for high-calorie food.\n\nSo when you eat after a hard day, that's not weakness. That's biology making the choice harder than it should be.\n\nYou're not broken. Your brain is doing exactly what it was built to do.",
-    cta: "Continue"
+    text:
+      "Fast science, normal English:\n\nWhen stress goes up, cortisol goes up with it. Cortisol makes quick-reward food feel louder and thoughtful decisions feel harder.\n\nSo if you eat after a hard day, that is not just bad discipline. It is often your nervous system looking for the fastest way to feel better.\n\nOnce you understand that, you can stop moralizing it and start working with it.",
+    cta: 'Keep going',
   },
   {
     id: 'awareness',
     type: 'question',
-    question: "Do you see the craving coming, or does it just show up?",
+    question: 'How aware are you before it happens?',
     options: [
-      { id: 'A', text: "I see it coming — I just can't stop it", value: "high" },
-      { id: 'B', text: "Sometimes — I connect the dots mid-bite or after", value: "moderate" },
-      { id: 'C', text: "Rarely — I usually figure it out hours later", value: "low" },
-      { id: 'D', text: "Honestly, I've never really thought about it", value: "new" }
-    ]
+      { id: 'A', text: "I can feel it coming. I just don't know how to stop it", value: 'high' },
+      { id: 'B', text: 'Sometimes I catch it in the moment, sometimes only after', value: 'moderate' },
+      { id: 'C', text: 'I usually realize what happened once it is already done', value: 'low' },
+      { id: 'D', text: "Honestly, I've never really looked at it this way before", value: 'new' },
+    ],
   },
   {
     id: 'duration',
     type: 'question',
-    question: "How long has this been going on?",
+    question: 'How long has this been a thing for you?',
     options: [
-      { id: 'A', text: "Less than a year — it's pretty recent", value: "recent" },
-      { id: 'B', text: "A few years — it comes and goes", value: "recurring" },
-      { id: 'C', text: "For as long as I can remember — since childhood", value: "lifelong" },
-      { id: 'D', text: "It got worse after something specific happened", value: "event" }
-    ]
+      { id: 'A', text: "Less than a year. It's pretty recent", value: 'recent' },
+      { id: 'B', text: 'A few years. It comes and goes', value: 'recurring' },
+      { id: 'C', text: 'As long as I can remember', value: 'lifelong' },
+      { id: 'D', text: 'It got worse after something specific happened', value: 'event' },
+    ],
   },
   {
     id: 'past',
     type: 'question',
-    question: "What have you already tried?",
+    question: 'What have you already tried?',
     options: [
-      { id: 'A', text: "Diets and meal plans — they work until they don't", value: "diets" },
-      { id: 'B', text: "Willpower — white-knuckling it and telling myself to stop", value: "willpower" },
-      { id: 'C', text: "Therapy or journaling — helped me understand, didn't change the eating", value: "therapy" },
-      { id: 'D', text: "Nothing specific — I've mostly just lived with it", value: "nothing" }
-    ]
+      { id: 'A', text: 'Diets or meal plans. They help for a bit, then I end up back here', value: 'diets' },
+      { id: 'B', text: 'Willpower. I tell myself to stop and try to be stricter', value: 'willpower' },
+      { id: 'C', text: "Therapy, journaling, or mindset work. I understand more, but I still do it", value: 'therapy' },
+      { id: 'D', text: "Nothing specific. I've mostly just been dealing with it", value: 'nothing' },
+    ],
   },
   {
     id: 'vd2',
     type: 'value-drop',
     icon: 'chart',
-    text: "Here's why these questions matter:\n\nThe strongest predictor of emotional eating isn't stress itself. It's whether you can name what you're feeling before the craving arrives.\n\nPeople who can say \"I'm stressed,\" \"I'm lonely,\" \"I'm exhausted\" before they open the fridge are significantly less likely to eat on autopilot.\n\nYour answers are mapping exactly where your awareness gaps live — and where the biggest leverage is for you.",
-    subtext: "Source: American Psychological Association",
-    cta: "Continue"
+    text:
+      "Here is what actually changes things:\n\nPeople who can name the feeling before they eat - stressed, lonely, bored, exhausted - are much more likely to interrupt the pattern.\n\nNot because they have more willpower. Because they catch the craving earlier.\n\nThat is what this quiz is mapping for you.",
+    subtext: 'Built from published stress and behavior research',
+    cta: 'Continue',
   },
   {
     id: 'desire',
     type: 'question',
-    question: "If one thing about your eating changed, what would you want it to be?",
+    question: 'If this got easier, what would matter most to you?',
     options: [
-      { id: 'A', text: "To feel in control — eat by choice, not by compulsion", value: "control" },
-      { id: 'B', text: "To eat without the guilt spiral after", value: "peace" },
-      { id: 'C', text: "To actually understand why I do this", value: "understanding" },
-      { id: 'D', text: "To lose weight without it feeling like punishment", value: "weight" }
-    ]
+      { id: 'A', text: 'Feeling more in control around food', value: 'control' },
+      { id: 'B', text: 'Getting out of the guilt spiral afterward', value: 'peace' },
+      { id: 'C', text: 'Finally understanding why this keeps happening', value: 'understanding' },
+      { id: 'D', text: 'Losing weight without feeling punished by the process', value: 'weight' },
+    ],
   },
   {
     id: 'readiness',
     type: 'question',
-    question: "Where are you with this right now?",
+    question: 'Where are you with this right now?',
     options: [
-      { id: 'A', text: "Ready — I just need the right framework", value: "ready" },
-      { id: 'B', text: "Skeptical — I've tried things that didn't stick", value: "skeptical" },
-      { id: 'C', text: "Overwhelmed — I don't know where to start", value: "overwhelmed" },
-      { id: 'D', text: "Curious — I'm here for someone I care about", value: "proxy" }
-    ]
+      { id: 'A', text: 'Ready. I just need a better approach', value: 'ready' },
+      { id: 'B', text: "Skeptical. I've tried enough things already", value: 'skeptical' },
+      { id: 'C', text: "Overwhelmed. I don't know where to start", value: 'overwhelmed' },
+      { id: 'D', text: 'Curious. I want to understand it better first', value: 'proxy' },
+    ],
   },
   {
     id: 'vd3',
     type: 'value-drop',
     icon: 'spiral',
-    text: "One more thing before your results:\n\nThe craving you feel at 9 PM is a message. Not from your stomach — from your nervous system. It's telling you something went unmet today. Rest. Connection. A break. Permission to stop.\n\nYour cravings aren't the problem. They're the clue. Your results will show you exactly what they've been trying to say.",
-    cta: "See My Results"
+    text:
+      "One last thing before your result:\n\nA craving is often your brain's shortcut, not your body asking for fuel.\n\nSometimes it is stress. Sometimes it is loneliness. Sometimes it is exhaustion. Sometimes it is the rebound from trying to be good all day.\n\nYour result shows which pattern is most likely running the show, and what to do next.",
+    cta: 'See my result',
   },
   {
     id: 'email',
     type: 'email',
-    headline: "Your results are ready.",
-    subhead: "Enter your email to see your Emotional Eating Profile — your pattern type, what's driving it, and the #1 move you can make this week.",
-    cta: "Show My Results",
-    belowCta: "You'll also get 3 science-backed strategies matched to your specific pattern. Unsubscribe anytime.",
-    privacy: "No spam. No diet tips. Just science."
-  }
+    headline: 'Your result is ready.',
+    subhead:
+      "Enter your email and I'll show you your emotional eating type, what is driving it, and the best first step to try this week.",
+    cta: 'Show me my result',
+    belowCta: "You'll also get your result by email, plus a few practical tips you can actually use. Unsubscribe anytime.",
+    privacy: 'No spam. No food guilt. Just useful help.',
+  },
 ];
 
 export function calculateQuizResult(answers: Record<string, string>) {
@@ -153,28 +158,24 @@ export function calculateQuizResult(answers: Record<string, string>) {
     'stress-soother': 0,
     'comfort-seeker': 0,
     'autopilot-eater': 0,
-    'perfectionist-restrictor': 0
+    'perfectionist-restrictor': 0,
   };
 
-  // Stress Soother
   if (answers.trigger === 'stress') scores['stress-soother'] += 2;
   if (answers.food === 'sweet' || answers.food === 'carbs') scores['stress-soother'] += 1;
   if (answers.aftermath === 'cycle') scores['stress-soother'] += 1;
   if (answers.past === 'diets') scores['stress-soother'] += 1;
 
-  // Comfort Seeker
   if (answers.trigger === 'emotional') scores['comfort-seeker'] += 2;
   if (answers.aftermath === 'numb' || answers.aftermath === 'guilt') scores['comfort-seeker'] += 1;
   if (answers.duration === 'lifelong' || answers.duration === 'event') scores['comfort-seeker'] += 1;
   if (answers.desire === 'understanding') scores['comfort-seeker'] += 1;
 
-  // Autopilot Eater
   if (answers.aftermath === 'autopilot' || answers.awareness === 'low') scores['autopilot-eater'] += 2;
   if (answers.trigger === 'nighttime' || answers.trigger === 'boredom') scores['autopilot-eater'] += 1;
   if (answers.past === 'nothing') scores['autopilot-eater'] += 1;
   if (answers.awareness === 'new') scores['autopilot-eater'] += 1;
 
-  // Perfectionist Restrictor
   if (answers.past === 'diets' || answers.past === 'willpower') scores['perfectionist-restrictor'] += 2;
   if (answers.aftermath === 'guilt') scores['perfectionist-restrictor'] += 1;
   if (answers.desire === 'control') scores['perfectionist-restrictor'] += 1;
@@ -194,7 +195,6 @@ export function calculateQuizResult(answers: Record<string, string>) {
     }
   }
 
-  // Tiebreaker based on desire
   if (ties.length > 1) {
     if (answers.desire === 'control' && ties.includes('perfectionist-restrictor')) return 'perfectionist-restrictor';
     if (answers.desire === 'understanding' && ties.includes('comfort-seeker')) return 'comfort-seeker';
