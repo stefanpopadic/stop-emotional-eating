@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stop Emotional Eating - Digital Reader</title>
+    <title>Stop Emotional Eating | Member Access</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Karla:wght@400;500;700&display=swap');
 
@@ -187,11 +187,32 @@
             margin-bottom: 0;
         }
 
+        /* --- PURCHASE WALL --- */
+        #purchase-wall {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, var(--warm-linen) 0%, var(--oat) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        #purchase-wall::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at top right, rgba(214, 197, 176, 0.4) 0%, transparent 60%),
+                        radial-gradient(circle at bottom left, rgba(138, 171, 167, 0.2) 0%, transparent 50%);
+            z-index: -1;
+            opacity: 0.8;
+        }
+
         /* --- APP LAYOUT --- */
         #app-container {
-            display: none; /* Shown after login */
+            display: flex; /* Visible by default for free chapters */
             height: 100vh;
-            display: flex;
             flex-direction: row;
         }
 
@@ -529,25 +550,46 @@
             .chapter-container { padding: 2rem; }
         }
 
+        /* --- LOCKED NAV ITEMS (before purchase) --- */
+        .nav-item.locked {
+            opacity: 0.45;
+        }
+
+        .nav-item.locked::after {
+            content: '🔒';
+            font-size: 10px;
+            margin-left: 6px;
+        }
+
+        .sub-nav-item.locked {
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
     </style>
 </head>
 <body>
 
-    <!-- LOGIN SCREEN -->
-    <div id="login-screen">
+    <!-- PURCHASE WALL OVERLAY (shown when user tries to access ch2+) -->
+    <div id="purchase-wall" style="display:none;">
         <div class="login-card">
-            <h1 class="login-title">Stop Emotional Eating<br>in 21 Days</h1>
-            
-            <p style="margin-bottom: 2rem; font-size: 11pt; color: var(--soft-black);">Please enter your access code to unlock the reader.</p>
-            <input type="password" id="password-input" class="password-input" placeholder="Enter Access Code" />
-            <button id="login-submit" class="login-btn">Unlock Ebook</button>
-            <div id="login-error">Incorrect access code.</div>
-            
-            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(196, 168, 130, 0.3);">
-                <p style="font-size: 10.5pt; color: var(--muted-teal); margin-top: 0; margin-bottom: 1.5rem;">If you haven't purchased the guide yet, you can get it here:</p>
-                <a href="#" target="_blank" class="buy-btn">
-                    Buy for <span class="price-current">$27</span> <span class="price-old">($99)</span>
+            <h1 class="login-title">You've read Chapter 1.</h1>
+
+            <p style="margin-bottom: 1.5rem; font-size: 12pt; color: var(--soft-black); line-height: 1.6;">The rest of the guide covers the emotional eating loop, your 6 drivers, what cravings actually mean, the choice point toolkit, and a 7-day practice to rewire the pattern.</p>
+
+            <div class="buy-section" style="margin-bottom: 2.5rem;">
+                <p class="buy-text">Unlock all 10 chapters, cheat sheets, and tools.</p>
+                <a href="mailto:hello@stopemotionaleating.guide?subject=I%20want%20the%2021-Day%20Guide" class="buy-btn">
+                    Get the full guide for <span class="price-current">$27</span> <span class="price-old">($42)</span>
                 </a>
+                <p class="buy-guarantee">One-time payment. Instant access. 30-day money-back guarantee.</p>
+            </div>
+
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(196, 168, 130, 0.3);">
+                <p style="font-size: 10.5pt; color: var(--muted-teal); margin-top: 0; margin-bottom: 1rem;">Already purchased?</p>
+                <input type="password" id="password-input" class="password-input" placeholder="Enter your access code" />
+                <button id="login-submit" class="login-btn">Unlock full guide</button>
+                <div id="login-error">That code did not work. Check your purchase email and try again.</div>
             </div>
         </div>
     </div>
@@ -835,10 +877,20 @@
                     
                     <div class="slide-nav">
                         <button class="nav-btn"  onclick="app.goToChapter(0)">&larr; Previous</button>
-                        <button class="nav-btn nav-btn-next"  onclick="app.goToChapter(2)">Next Chapter &rarr;</button>
+                        <button class="nav-btn nav-btn-next" id="ch1-next-btn" onclick="app.goToChapter(2)">Next Chapter &rarr;</button>
+                    </div>
+
+                    <!-- Purchase wall inline (shown at end of ch1 when not unlocked) -->
+                    <div id="ch1-upgrade-wall" style="margin-top: 4rem; padding: 3rem 2rem; background: linear-gradient(135deg, var(--oat) 0%, var(--warm-linen) 100%); border-radius: 16px; text-align: center; border: 1px solid var(--sand);">
+                        <p style="font-family: 'Cormorant Garamond', serif; font-size: 28pt; color: var(--deep-sage); margin: 0 0 0.75rem 0; line-height: 1.2;">Keep reading?</p>
+                        <p style="font-size: 12pt; color: var(--soft-black); max-width: 480px; margin: 0 auto 2rem auto; line-height: 1.7;">That was Chapter 1. The next 9 chapters cover the emotional eating loop, your triggers, what cravings mean, the choice point toolkit, and a 7-day rewiring practice.</p>
+                        <a href="mailto:hello@stopemotionaleating.guide?subject=I%20want%20the%2021-Day%20Guide" class="buy-btn" style="display: inline-flex; max-width: 360px; justify-content: center;">
+                            Unlock all chapters for <span class="price-current">$27</span> <span class="price-old">($42)</span>
+                        </a>
+                        <p style="font-size: 9.5pt; color: var(--muted-teal); margin-top: 1rem;">One-time payment. Instant access. 30-day money-back guarantee.</p>
                     </div>
                 </section>
-        
+
 
                 <section class="chapter-slide" id="slide-2">
                     <h1 class="chapter-title">Chapter 2: Why Your Body Does This</h1>
@@ -2323,30 +2375,45 @@
 
     <script>
         const THE_PASSWORD = "decode";
+        const FREE_CHAPTERS = [0, 1]; // Intro + Chapter 1 are free
 
         const app = {
             currentChapterIdx: 0,
             totalChapters: 15,
-            
+            unlocked: false,
+
             init: function() {
                 const pwInput = document.getElementById('password-input');
                 const btn = document.getElementById('login-submit');
-                
+
                 btn.addEventListener('click', this.handleLogin.bind(this));
                 pwInput.addEventListener('keypress', (e) => {
                     if(e.key === 'Enter') this.handleLogin();
                 });
-                
-                // Keep cursor focused for ease
-                pwInput.focus();
+
+                // Mark locked nav items
+                this.updateNavLocks();
+
+                // Start on intro
+                this.goToChapter(0);
             },
-            
+
             handleLogin: function() {
                 const val = document.getElementById('password-input').value;
                 if(val === THE_PASSWORD) {
-                    document.getElementById('login-screen').style.display = 'none';
-                    document.getElementById('app-container').style.display = 'flex';
-                    this.goToChapter(0);
+                    this.unlocked = true;
+                    // Hide purchase wall overlay
+                    document.getElementById('purchase-wall').style.display = 'none';
+                    // Remove all locked states
+                    this.updateNavLocks();
+                    // Hide ch1 upgrade wall and show next button
+                    document.getElementById('ch1-upgrade-wall').style.display = 'none';
+                    document.getElementById('ch1-next-btn').style.display = '';
+                    // Go to chapter 2 (the one they were trying to access)
+                    if (this._pendingChapter !== undefined) {
+                        this.goToChapter(this._pendingChapter);
+                        this._pendingChapter = undefined;
+                    }
                 } else {
                     const err = document.getElementById('login-error');
                     err.style.opacity = '1';
@@ -2354,9 +2421,56 @@
                 }
             },
 
+            updateNavLocks: function() {
+                for (let i = 0; i < this.totalChapters; i++) {
+                    const navEl = document.getElementById('nav-' + i);
+                    if (!navEl) continue;
+                    if (this.unlocked || FREE_CHAPTERS.includes(i)) {
+                        navEl.classList.remove('locked');
+                    } else {
+                        navEl.classList.add('locked');
+                    }
+                }
+                // Also lock/unlock sub-nav items
+                document.querySelectorAll('.sub-nav-list').forEach(list => {
+                    const parentId = list.id.replace('subnav-', '');
+                    const idx = parseInt(parentId);
+                    if (this.unlocked || FREE_CHAPTERS.includes(idx)) {
+                        list.querySelectorAll('.sub-nav-item').forEach(el => el.classList.remove('locked'));
+                    } else {
+                        list.querySelectorAll('.sub-nav-item').forEach(el => el.classList.add('locked'));
+                    }
+                });
+                // Ch1 inline upgrade wall
+                const upgradeWall = document.getElementById('ch1-upgrade-wall');
+                const nextBtn = document.getElementById('ch1-next-btn');
+                if (upgradeWall && nextBtn) {
+                    if (this.unlocked) {
+                        upgradeWall.style.display = 'none';
+                        nextBtn.style.display = '';
+                    } else {
+                        upgradeWall.style.display = '';
+                        nextBtn.style.display = 'none';
+                    }
+                }
+            },
+
+            showPurchaseWall: function(requestedChapter) {
+                this._pendingChapter = requestedChapter;
+                document.getElementById('purchase-wall').style.display = 'flex';
+                const pwInput = document.getElementById('password-input');
+                if (pwInput) pwInput.focus();
+            },
+
             goToChapter: function(idx) {
                 if(idx < 0 || idx >= this.totalChapters) return;
-                
+
+                // If locked chapter, show purchase wall
+                if (!this.unlocked && !FREE_CHAPTERS.includes(idx)) {
+                    this.showPurchaseWall(idx);
+                    return;
+                }
+
                 // Hide all slides
                 document.querySelectorAll('.chapter-slide').forEach(el => {
                     el.classList.remove('active');
@@ -2365,31 +2479,37 @@
                 document.querySelectorAll('.nav-item').forEach(el => {
                     el.classList.remove('active');
                 });
-                
+
                 // Show current slide and activate sidebar item
                 document.getElementById('slide-' + idx).classList.add('active');
                 document.getElementById('nav-' + idx).classList.add('active');
-                
+
                 this.currentChapterIdx = idx;
-                
-                // Scroll container to top smoothly
+
+                // Scroll container to top
                 document.getElementById('content-area').scrollTo({top: 0, behavior: 'instant'});
             },
 
             goToSub: function(idx, subId, event) {
                 if (event) event.stopPropagation();
-                
+
+                // If locked, show purchase wall
+                if (!this.unlocked && !FREE_CHAPTERS.includes(idx)) {
+                    this.showPurchaseWall(idx);
+                    return;
+                }
+
                 // Ensure we are on the right chapter slide
                 if (this.currentChapterIdx !== idx) {
                     this.goToChapter(idx);
                 }
-                
+
                 // Scroll smoothly to the H2 element
                 const el = document.getElementById(subId);
                 if (el) {
                     const container = document.getElementById('content-area');
                     container.scrollTo({
-                        top: el.offsetTop - 60, // offset for some natural breathing room
+                        top: el.offsetTop - 60,
                         behavior: 'smooth'
                     });
                 }
