@@ -3,7 +3,7 @@ import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { resultsData } from '../lib/resultsData';
 import { Logo } from '../components/Logo';
-import { ArrowRight, BookOpen } from 'lucide-react';
+import { ArrowRight, BookOpen, Brain, Zap } from 'lucide-react';
 
 function Section({ children, className = '', bg = 'bg-warm-linen' }: { children: ReactNode; className?: string; bg?: string }) {
   return (
@@ -51,6 +51,10 @@ export function Results() {
   const cravingData = data.cravings[safeFood];
   const patternData = data.pattern[safeTrigger][safeAftermath];
 
+  const headline = userName
+    ? data.headline.replace('{name}', userName)
+    : data.headline.replace('{name}, ', '');
+
   return (
     <div className="min-h-screen bg-warm-linen flex flex-col">
       {/* Header */}
@@ -62,7 +66,7 @@ export function Results() {
 
       <main className="flex-grow">
 
-        {/* ═══ SECTION 1: HERO ═══ */}
+        {/* ═══ HERO ═══ */}
         <section className="bg-deep-sage text-warm-linen py-20 md:py-28 px-6">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
@@ -70,65 +74,109 @@ export function Results() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block bg-warm-linen/10 font-sans font-bold text-xs uppercase tracking-widest px-4 py-2 rounded-full mb-6">
-                Your Emotional Eating Type
-              </span>
-              {userName && (
-                <p className="font-sans text-lg opacity-70 mb-4">
-                  {userName}, your results are in.
-                </p>
-              )}
-              <h1 className="font-serif font-semibold text-5xl md:text-6xl lg:text-7xl mb-6 leading-[1.1]">
-                {data.headline}
+              <h1 className="font-serif font-semibold text-4xl md:text-5xl lg:text-6xl mb-6 leading-[1.1]">
+                {headline}
               </h1>
-              <p className="font-sans text-xl md:text-2xl leading-relaxed opacity-90 max-w-2xl mx-auto">
+              <p className="font-sans text-lg md:text-xl leading-relaxed opacity-90 max-w-2xl mx-auto">
                 {data.subhead}
-              </p>
-              <p className="font-sans text-sm uppercase tracking-[0.18em] text-warm-linen/65 mt-6">
-                Not a diagnosis. A pattern you can actually work with.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* ═══ SECTION 2: YOUR PATTERN ═══ */}
+        {/* ═══ THE SCIENCE ═══ */}
         <Section bg="bg-oat">
           <FadeIn>
-            <span className="inline-block font-sans font-medium text-sm uppercase tracking-widest text-sand mb-4">
-              Why This Keeps Happening
-            </span>
+            <div className="flex items-center gap-3 mb-4">
+              <Brain className="text-muted-teal flex-shrink-0" size={22} />
+              <span className="font-sans font-medium text-sm uppercase tracking-widest text-sand">
+                The Neuroscience
+              </span>
+            </div>
             <h2 className="font-serif font-semibold text-3xl md:text-4xl text-deep-sage mb-8">
-              What seems to be driving it
+              {data.science.title}
             </h2>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <div className="font-sans text-lg md:text-xl text-soft-black leading-relaxed space-y-6">
-              <p>{data.patternIntro}</p>
-              <div className="bg-warm-linen p-6 md:p-8 rounded-xl border-l-4 border-muted-teal">
-                <p className="font-medium text-deep-sage">{patternData}</p>
-              </div>
+            <p className="font-sans text-lg md:text-xl text-soft-black leading-relaxed mb-10">
+              {data.science.body}
+            </p>
+          </FadeIn>
+          <div className="space-y-4">
+            {data.science.chemicals.map((chem, i) => (
+              <FadeIn key={i} delay={0.15 + i * 0.08}>
+                <div className="bg-warm-linen rounded-xl p-5 md:p-6 border border-sand/20">
+                  <p className="font-sans font-semibold text-deep-sage mb-1">{chem.name}</p>
+                  <p className="font-sans text-soft-black/80 leading-relaxed">{chem.role}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </Section>
+
+        {/* ═══ YOUR PATTERN ═══ */}
+        <Section>
+          <FadeIn>
+            <span className="inline-block font-sans font-medium text-sm uppercase tracking-widest text-sand mb-4">
+              Your Specific Pattern
+            </span>
+            <h2 className="font-serif font-semibold text-3xl md:text-4xl text-deep-sage mb-8">
+              Here's what's happening in your loop
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <div className="bg-deep-sage text-warm-linen rounded-2xl p-6 md:p-8">
+              <p className="font-sans text-lg md:text-xl leading-relaxed opacity-90">
+                {patternData}
+              </p>
             </div>
           </FadeIn>
         </Section>
 
-        {/* ═══ SECTION 3: WHAT YOUR CRAVINGS MEAN ═══ */}
-        <Section>
+        {/* ═══ WHY YOU CRAVE THIS FOOD ═══ */}
+        <Section bg="bg-oat">
           <FadeIn>
-            <span className="inline-block font-sans font-medium text-sm uppercase tracking-widest text-sand mb-4">
-              What Your Cravings Are Trying To Do
-            </span>
+            <div className="flex items-center gap-3 mb-4">
+              <Zap className="text-terracotta flex-shrink-0" size={22} />
+              <span className="font-sans font-medium text-sm uppercase tracking-widest text-sand">
+                Why You Crave What You Crave
+              </span>
+            </div>
             <h2 className="font-serif font-semibold text-3xl md:text-4xl text-deep-sage mb-8">
               {cravingData.title}
             </h2>
           </FadeIn>
           <FadeIn delay={0.1}>
+            <p className="font-sans text-lg md:text-xl text-soft-black leading-relaxed mb-6">
+              {cravingData.neuroscience}
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <div className="bg-warm-linen p-5 md:p-6 rounded-xl border-l-4 border-terracotta">
+              <p className="font-sans font-medium text-sm uppercase tracking-wider text-sand mb-2">What your body is signaling</p>
+              <p className="font-sans text-lg font-medium text-deep-sage leading-relaxed">{cravingData.signal}</p>
+            </div>
+          </FadeIn>
+        </Section>
+
+        {/* ═══ TRY THIS ═══ */}
+        <Section>
+          <FadeIn>
+            <span className="inline-block font-sans font-medium text-sm uppercase tracking-widest text-sand mb-4">
+              Your Best Move This Week
+            </span>
+            <h2 className="font-serif font-semibold text-3xl md:text-4xl text-deep-sage mb-8">
+              {data.tryThis.title}
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.1}>
             <p className="font-sans text-lg md:text-xl text-soft-black leading-relaxed">
-              {cravingData.meaning}
+              {data.tryThis.body}
             </p>
           </FadeIn>
         </Section>
 
-        {/* ═══ SECTION 4: BRIDGE — READ CHAPTER 1 FREE ═══ */}
+        {/* ═══ BRIDGE — READ CHAPTER 1 FREE ═══ */}
         <Section bg="bg-deep-sage" className="text-warm-linen">
           <FadeIn>
             <div className="text-center">
@@ -136,10 +184,10 @@ export function Results() {
                 Go Deeper
               </span>
               <h2 className="font-serif font-semibold text-4xl md:text-5xl mb-6 leading-tight">
-                Now you see the pattern.<br className="hidden md:block" /> Here's how to break it.
+                This is the surface.<br className="hidden md:block" /> The guide goes all the way down.
               </h2>
               <p className="font-sans text-lg md:text-xl leading-relaxed opacity-90 max-w-2xl mx-auto mb-4">
-                Your result shows what's driving your eating. The full guide shows you why it happens, how the loop works, and what to do in the moment instead of reaching for food.
+                Your result mapped the pattern. The full guide gives you the complete framework — the emotional eating loop, your 6 drivers, the choice point toolkit, and a 7-day practice to rewire the response.
               </p>
               <p className="font-sans text-lg md:text-xl leading-relaxed opacity-70 max-w-2xl mx-auto mb-10">
                 Chapter 1 is free. No card, no signup. Just read it.
