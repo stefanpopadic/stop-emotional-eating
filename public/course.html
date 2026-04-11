@@ -771,7 +771,18 @@
                     
                     <div class="slide-nav">
                         <button class="nav-btn" disabled onclick="app.goToChapter(-1)">&larr; Previous</button>
-                        <button class="nav-btn nav-btn-next"  onclick="app.goToChapter(1)">Next Chapter &rarr;</button>
+                        <button class="nav-btn nav-btn-next" id="intro-next-btn" onclick="app.goToChapter(1)">Next Chapter &rarr;</button>
+                    </div>
+
+                    <!-- Upgrade wall at end of intro (shown when not unlocked) -->
+                    <div id="intro-upgrade-wall" style="margin-top: 4rem; padding: 3rem 2rem; background: linear-gradient(135deg, var(--oat) 0%, var(--warm-linen) 100%); border-radius: 16px; text-align: center; border: 1px solid var(--sand);">
+                        <p style="font-family: 'Cormorant Garamond', serif; font-size: 28pt; color: var(--deep-sage); margin: 0 0 0.75rem 0; line-height: 1.2;">Ready to keep going?</p>
+                        <p style="font-size: 12pt; color: var(--soft-black); max-width: 480px; margin: 0 auto 2rem auto; line-height: 1.7;">The full guide covers 10 chapters: the emotional eating loop, your triggers, what cravings mean, the choice point toolkit, and a 7-day rewiring practice.</p>
+                        <a href="mailto:hello@stopemotionaleating.guide?subject=I%20want%20the%2021-Day%20Guide" class="buy-btn" style="display: inline-flex; max-width: 360px; justify-content: center;">
+                            Get the full guide for <span class="price-current">$27</span> <span class="price-old">($42)</span>
+                        </a>
+                        <p style="font-size: 9.5pt; color: var(--muted-teal); margin-top: 1rem; margin-bottom: 2rem;">One-time payment. Instant access. 30-day money-back guarantee.</p>
+                        <button onclick="app.showPurchaseWall(1)" style="background: none; border: none; font-family: 'Karla', sans-serif; font-size: 11pt; color: var(--deep-sage); text-decoration: underline; cursor: pointer; opacity: 0.8;">I already bought this — enter my access code</button>
                     </div>
                 </section>
         
@@ -877,17 +888,7 @@
                     
                     <div class="slide-nav">
                         <button class="nav-btn"  onclick="app.goToChapter(0)">&larr; Previous</button>
-                        <button class="nav-btn nav-btn-next" id="ch1-next-btn" onclick="app.goToChapter(2)">Next Chapter &rarr;</button>
-                    </div>
-
-                    <!-- Purchase wall inline (shown at end of ch1 when not unlocked) -->
-                    <div id="ch1-upgrade-wall" style="margin-top: 4rem; padding: 3rem 2rem; background: linear-gradient(135deg, var(--oat) 0%, var(--warm-linen) 100%); border-radius: 16px; text-align: center; border: 1px solid var(--sand);">
-                        <p style="font-family: 'Cormorant Garamond', serif; font-size: 28pt; color: var(--deep-sage); margin: 0 0 0.75rem 0; line-height: 1.2;">Keep reading?</p>
-                        <p style="font-size: 12pt; color: var(--soft-black); max-width: 480px; margin: 0 auto 2rem auto; line-height: 1.7;">That was Chapter 1. The next 9 chapters cover the emotional eating loop, your triggers, what cravings mean, the choice point toolkit, and a 7-day rewiring practice.</p>
-                        <a href="mailto:hello@stopemotionaleating.guide?subject=I%20want%20the%2021-Day%20Guide" class="buy-btn" style="display: inline-flex; max-width: 360px; justify-content: center;">
-                            Unlock all chapters for <span class="price-current">$27</span> <span class="price-old">($42)</span>
-                        </a>
-                        <p style="font-size: 9.5pt; color: var(--muted-teal); margin-top: 1rem;">One-time payment. Instant access. 30-day money-back guarantee.</p>
+                        <button class="nav-btn nav-btn-next"  onclick="app.goToChapter(2)">Next Chapter &rarr;</button>
                     </div>
                 </section>
 
@@ -2375,7 +2376,7 @@
 
     <script>
         const THE_PASSWORD = "decode";
-        const FREE_CHAPTERS = [0, 1]; // Intro + Chapter 1 are free
+        const FREE_CHAPTERS = [0]; // Only the intro is free
 
         const app = {
             currentChapterIdx: 0,
@@ -2406,9 +2407,9 @@
                     document.getElementById('purchase-wall').style.display = 'none';
                     // Remove all locked states
                     this.updateNavLocks();
-                    // Hide ch1 upgrade wall and show next button
-                    document.getElementById('ch1-upgrade-wall').style.display = 'none';
-                    document.getElementById('ch1-next-btn').style.display = '';
+                    // Hide intro upgrade wall and show next button
+                    document.getElementById('intro-upgrade-wall').style.display = 'none';
+                    document.getElementById('intro-next-btn').style.display = '';
                     // Go to chapter 2 (the one they were trying to access)
                     if (this._pendingChapter !== undefined) {
                         this.goToChapter(this._pendingChapter);
@@ -2441,9 +2442,9 @@
                         list.querySelectorAll('.sub-nav-item').forEach(el => el.classList.add('locked'));
                     }
                 });
-                // Ch1 inline upgrade wall
-                const upgradeWall = document.getElementById('ch1-upgrade-wall');
-                const nextBtn = document.getElementById('ch1-next-btn');
+                // Intro inline upgrade wall
+                const upgradeWall = document.getElementById('intro-upgrade-wall');
+                const nextBtn = document.getElementById('intro-next-btn');
                 if (upgradeWall && nextBtn) {
                     if (this.unlocked) {
                         upgradeWall.style.display = 'none';

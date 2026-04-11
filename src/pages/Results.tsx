@@ -142,7 +142,7 @@ export function Results() {
                 Your result shows what's driving your eating. The full guide shows you why it happens, how the loop works, and what to do in the moment instead of reaching for food.
               </p>
               <p className="font-sans text-lg md:text-xl leading-relaxed opacity-70 max-w-2xl mx-auto mb-10">
-                Chapter 1 is free. No card, no signup. Just read it.
+                Read the intro free. No card, no signup. See if it clicks.
               </p>
 
               <a
@@ -150,7 +150,7 @@ export function Results() {
                 className="inline-flex items-center gap-3 bg-terracotta text-white font-sans font-semibold text-xl px-10 py-5 rounded-xl hover:bg-terracotta/90 transition-colors shadow-xl"
               >
                 <BookOpen size={22} />
-                Read Chapter 1 Free
+                Start Reading Free
                 <ArrowRight size={22} />
               </a>
 
