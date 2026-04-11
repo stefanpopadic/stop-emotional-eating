@@ -575,14 +575,14 @@
 
         .locked-blur-overlay {
             position: sticky;
-            top: 10vh;
+            top: 15vh;
             display: flex;
             align-items: center;
             justify-content: center;
             background: rgba(255, 255, 255, 0.97);
             border-radius: 16px;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
-            margin: -120px auto 0 auto;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+            margin: 0 auto 2rem auto;
             max-width: 520px;
             z-index: 10;
         }
@@ -786,6 +786,18 @@
 <p><strong>Emotion regulation is at the center of it.</strong> The strongest explanations for emotional eating don't point to specific hormone deficiencies or craving-to-feeling decoder rings. They point to something simpler: when people have fewer tools for handling difficult emotions, food becomes one of the tools that fills the gap. It's not that you're weak. It's that in that specific moment, with those specific resources available, food is the most accessible thing that offers some form of relief -- or at least a pause.</p>
 <!-- ═══ PAYWALL CUT: everything below is locked when not purchased ═══ -->
 <div id="ch1-locked-content" class="locked-blur-wrapper">
+<!-- Purchase overlay — before blurred content so sticky works from top -->
+<div class="locked-blur-overlay" id="ch1-blur-overlay">
+    <div style="padding: 3rem 2rem; text-align: center; max-width: 480px;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-size: 28pt; color: var(--deep-sage); margin: 0 0 0.75rem 0; line-height: 1.2;">Keep reading?</p>
+        <p style="font-size: 12pt; color: var(--soft-black); max-width: 420px; margin: 0 auto 2rem auto; line-height: 1.7;">You just read the free preview. The full guide has 10 chapters, practical tools, cheat sheets, and a 7-day rewiring practice.</p>
+        <a href="mailto:hello@stopemotionaleating.guide?subject=I%20want%20the%2021-Day%20Guide" class="buy-btn" style="display: inline-flex; max-width: 360px; justify-content: center;">
+            Get the full guide for <span class="price-current">$27</span> <span class="price-old">($42)</span>
+        </a>
+        <p style="font-size: 9.5pt; color: var(--muted-teal); margin-top: 1rem; margin-bottom: 2rem;">One-time payment. Instant access. 30-day money-back guarantee.</p>
+        <button onclick="app.showPurchaseWall(1)" style="background: none; border: none; font-family: 'Karla', sans-serif; font-size: 11pt; color: var(--deep-sage); text-decoration: underline; cursor: pointer; opacity: 0.8;">I already bought this — enter my access code</button>
+    </div>
+</div>
 <div class="locked-blur-content">
 <p><strong>Cravings do real work in the chain.</strong> Emotional eating is not just "feel bad, eat food." There's usually a craving in the middle -- an urge that builds, that pulls your attention toward something specific. That craving is shaped by habit, by what's available, by what your brain has learned to associate with comfort, and by your stress biology. Understanding the craving as a separate step -- not the same thing as the emotion that triggered it -- matters. It's where a lot of the practical leverage lives.</p>
 <p><strong>Your environment and your eating history matter.</strong> If you've dieted heavily, skipped meals, or restricted food groups, your body's relationship with food is already primed for reactivity. Restriction often amplifies the very patterns people are trying to control. And if you're surrounded by highly palatable food -- which most of us are, all the time -- the cues are constant. Emotional eating doesn't happen in a vacuum. It happens in a context.</p>
@@ -875,19 +887,6 @@
 <li><em>988 Suicide & Crisis Lifeline: Call or text 988</em></li>
 </ul>
 </div><!-- end .locked-blur-content -->
-
-<!-- Purchase overlay that sits on top of blurred content -->
-<div class="locked-blur-overlay" id="ch1-blur-overlay">
-    <div style="padding: 3rem 2rem; text-align: center; max-width: 480px;">
-        <p style="font-family: 'Cormorant Garamond', serif; font-size: 28pt; color: var(--deep-sage); margin: 0 0 0.75rem 0; line-height: 1.2;">Keep reading?</p>
-        <p style="font-size: 12pt; color: var(--soft-black); max-width: 420px; margin: 0 auto 2rem auto; line-height: 1.7;">You just read the free preview. The full guide has 10 chapters, practical tools, cheat sheets, and a 7-day rewiring practice.</p>
-        <a href="mailto:hello@stopemotionaleating.guide?subject=I%20want%20the%2021-Day%20Guide" class="buy-btn" style="display: inline-flex; max-width: 360px; justify-content: center;">
-            Get the full guide for <span class="price-current">$27</span> <span class="price-old">($42)</span>
-        </a>
-        <p style="font-size: 9.5pt; color: var(--muted-teal); margin-top: 1rem; margin-bottom: 2rem;">One-time payment. Instant access. 30-day money-back guarantee.</p>
-        <button onclick="app.showPurchaseWall(1)" style="background: none; border: none; font-family: 'Karla', sans-serif; font-size: 11pt; color: var(--deep-sage); text-decoration: underline; cursor: pointer; opacity: 0.8;">I already bought this — enter my access code</button>
-    </div>
-</div>
 </div><!-- end .locked-blur-wrapper -->
 
                     <div class="slide-nav">
