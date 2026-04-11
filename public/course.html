@@ -550,6 +550,42 @@
             .chapter-container { padding: 2rem; }
         }
 
+        /* --- BLURRED LOCKED CONTENT (in-page paywall) --- */
+        .locked-blur-wrapper {
+            position: relative;
+        }
+
+        .locked-blur-wrapper.unlocked .locked-blur-content {
+            filter: none;
+            -webkit-filter: none;
+            user-select: auto;
+            pointer-events: auto;
+        }
+
+        .locked-blur-wrapper.unlocked .locked-blur-overlay {
+            display: none;
+        }
+
+        .locked-blur-content {
+            filter: blur(6px);
+            -webkit-filter: blur(6px);
+            user-select: none;
+            pointer-events: none;
+            transition: filter 0.4s ease;
+        }
+
+        .locked-blur-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 3rem;
+            z-index: 10;
+        }
+
         /* --- LOCKED NAV ITEMS (before purchase) --- */
         .nav-item.locked {
             opacity: 0.45;
@@ -747,6 +783,9 @@
 <p>The research on emotional eating points to a few things that are well-supported and a lot of things that are oversimplified by the wellness industry. Here is what holds up.</p>
 <p><strong>Stress and negative emotions are real triggers.</strong> This is the most consistently supported finding in the literature. When you're stressed, sad, anxious, bored, lonely, or ashamed, your likelihood of eating outside of physical hunger goes up. Not always. Not predictably. But reliably enough that the pattern is real.</p>
 <p><strong>Emotion regulation is at the center of it.</strong> The strongest explanations for emotional eating don't point to specific hormone deficiencies or craving-to-feeling decoder rings. They point to something simpler: when people have fewer tools for handling difficult emotions, food becomes one of the tools that fills the gap. It's not that you're weak. It's that in that specific moment, with those specific resources available, food is the most accessible thing that offers some form of relief -- or at least a pause.</p>
+<!-- ═══ PAYWALL CUT: everything below is locked when not purchased ═══ -->
+<div id="ch1-locked-content" class="locked-blur-wrapper">
+<div class="locked-blur-content">
 <p><strong>Cravings do real work in the chain.</strong> Emotional eating is not just "feel bad, eat food." There's usually a craving in the middle -- an urge that builds, that pulls your attention toward something specific. That craving is shaped by habit, by what's available, by what your brain has learned to associate with comfort, and by your stress biology. Understanding the craving as a separate step -- not the same thing as the emotion that triggered it -- matters. It's where a lot of the practical leverage lives.</p>
 <p><strong>Your environment and your eating history matter.</strong> If you've dieted heavily, skipped meals, or restricted food groups, your body's relationship with food is already primed for reactivity. Restriction often amplifies the very patterns people are trying to control. And if you're surrounded by highly palatable food -- which most of us are, all the time -- the cues are constant. Emotional eating doesn't happen in a vacuum. It happens in a context.</p>
 <p><strong>The "relief" part is complicated.</strong> A common assumption is that people eat emotionally because it makes them feel better. Sometimes it does, briefly. But recent research suggests the picture is messier than that. Sometimes people eat out of craving, habit, or automatic response -- and the eating doesn't actually reduce the distress at all. Sometimes it makes it worse. The guilt and shame that follow can loop right back into the next episode. So the idea that emotional eating is a successful coping strategy that just needs to be replaced with a better one -- that's only partially true. Sometimes it's more like a reflex that never quite delivers what it promises.</p>
@@ -834,21 +873,25 @@
 <li><em>Crisis Text Line: Text "NEDA" to 741741</em></li>
 <li><em>988 Suicide & Crisis Lifeline: Call or text 988</em></li>
 </ul>
-                    
+</div><!-- end .locked-blur-content -->
+
+<!-- Purchase overlay that sits on top of blurred content -->
+<div class="locked-blur-overlay" id="ch1-blur-overlay">
+    <div style="padding: 3rem 2rem; text-align: center; max-width: 480px;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-size: 28pt; color: var(--deep-sage); margin: 0 0 0.75rem 0; line-height: 1.2;">Keep reading?</p>
+        <p style="font-size: 12pt; color: var(--soft-black); max-width: 420px; margin: 0 auto 2rem auto; line-height: 1.7;">You just read the free preview. The full guide has 10 chapters, practical tools, cheat sheets, and a 7-day rewiring practice.</p>
+        <a href="mailto:hello@stopemotionaleating.guide?subject=I%20want%20the%2021-Day%20Guide" class="buy-btn" style="display: inline-flex; max-width: 360px; justify-content: center;">
+            Get the full guide for <span class="price-current">$27</span> <span class="price-old">($42)</span>
+        </a>
+        <p style="font-size: 9.5pt; color: var(--muted-teal); margin-top: 1rem; margin-bottom: 2rem;">One-time payment. Instant access. 30-day money-back guarantee.</p>
+        <button onclick="app.showPurchaseWall(1)" style="background: none; border: none; font-family: 'Karla', sans-serif; font-size: 11pt; color: var(--deep-sage); text-decoration: underline; cursor: pointer; opacity: 0.8;">I already bought this — enter my access code</button>
+    </div>
+</div>
+</div><!-- end .locked-blur-wrapper -->
+
                     <div class="slide-nav">
                         <button class="nav-btn" disabled>&larr; Previous</button>
                         <button class="nav-btn nav-btn-next" id="ch1-next-btn" onclick="app.goToChapter(2)">Next Chapter &rarr;</button>
-                    </div>
-
-                    <!-- Upgrade wall at end of ch1 (shown when not unlocked) -->
-                    <div id="ch1-upgrade-wall" style="margin-top: 4rem; padding: 3rem 2rem; background: linear-gradient(135deg, var(--oat) 0%, var(--warm-linen) 100%); border-radius: 16px; text-align: center; border: 1px solid var(--sand);">
-                        <p style="font-family: 'Cormorant Garamond', serif; font-size: 28pt; color: var(--deep-sage); margin: 0 0 0.75rem 0; line-height: 1.2;">Ready to keep going?</p>
-                        <p style="font-size: 12pt; color: var(--soft-black); max-width: 480px; margin: 0 auto 2rem auto; line-height: 1.7;">The full guide covers 10 chapters: the emotional eating loop, your triggers, what cravings mean, the choice point toolkit, and a 7-day rewiring practice.</p>
-                        <a href="mailto:hello@stopemotionaleating.guide?subject=I%20want%20the%2021-Day%20Guide" class="buy-btn" style="display: inline-flex; max-width: 360px; justify-content: center;">
-                            Get the full guide for <span class="price-current">$27</span> <span class="price-old">($42)</span>
-                        </a>
-                        <p style="font-size: 9.5pt; color: var(--muted-teal); margin-top: 1rem; margin-bottom: 2rem;">One-time payment. Instant access. 30-day money-back guarantee.</p>
-                        <button onclick="app.showPurchaseWall(1)" style="background: none; border: none; font-family: 'Karla', sans-serif; font-size: 11pt; color: var(--deep-sage); text-decoration: underline; cursor: pointer; opacity: 0.8;">I already bought this — enter my access code</button>
                     </div>
                 </section>
 
@@ -2367,8 +2410,9 @@
                     document.getElementById('purchase-wall').style.display = 'none';
                     // Remove all locked states
                     this.updateNavLocks();
-                    // Hide ch1 upgrade wall and show next button
-                    document.getElementById('ch1-upgrade-wall').style.display = 'none';
+                    // Unlock ch1 blurred content and show next button
+                    var blurWrapper = document.getElementById('ch1-locked-content');
+                    if (blurWrapper) blurWrapper.classList.add('unlocked');
                     document.getElementById('ch1-next-btn').style.display = '';
                     // Go to chapter 2 (the one they were trying to access)
                     if (this._pendingChapter !== undefined) {
@@ -2402,15 +2446,15 @@
                         list.querySelectorAll('.sub-nav-item').forEach(el => el.classList.add('locked'));
                     }
                 });
-                // Ch1 inline upgrade wall
-                const upgradeWall = document.getElementById('ch1-upgrade-wall');
+                // Ch1 blurred content + next button
+                const blurWrapper = document.getElementById('ch1-locked-content');
                 const nextBtn = document.getElementById('ch1-next-btn');
-                if (upgradeWall && nextBtn) {
+                if (blurWrapper && nextBtn) {
                     if (this.unlocked) {
-                        upgradeWall.style.display = 'none';
+                        blurWrapper.classList.add('unlocked');
                         nextBtn.style.display = '';
                     } else {
-                        upgradeWall.style.display = '';
+                        blurWrapper.classList.remove('unlocked');
                         nextBtn.style.display = 'none';
                     }
                 }
