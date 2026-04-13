@@ -21,12 +21,12 @@ export const quizFlow = [
   {
     id: 'intro',
     type: 'intro',
-    headline: "This is why you keep eating, and why your weight isn't dropping",
+    headline: "That's why you keep eating and that's why your weight hasn't been going down.",
     subhead:
-      "You're not addicted to food. Your hormones and emotions are running a loop you can't see. This free 2-minute quiz uncovers the emotional eating loop driving your cravings and shows you how to break it.",
+      "You are not addicted to eating. You have an invisible hormone and emotion cycle that needs to be addressed. Take this free 2-minute quiz that reveals the emotional eating cycle behind your cravings and how to get out of it.",
     cta: 'Take the 2-minute quiz',
-    belowCta: 'Backed by Science.',
-    socialProof: '14,000+ people have taken this quiz',
+    belowCta: '',
+    socialProof: '',
   },
   {
     id: 'trigger',
