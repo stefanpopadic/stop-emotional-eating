@@ -263,12 +263,12 @@ export function Quiz() {
                 Backed by Science
               </span>
             </div>
-            <p className="font-sans text-sm text-soft-black/60 mb-6">
+            <p className="font-sans text-sm text-soft-black/60 mb-6 max-w-sm mx-auto">
               Based on 250+ peer-reviewed studies in neuroscience, behavioral psychology, and hormonal regulation
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 opacity-40">
+            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 opacity-60">
               {['Harvard Medical', 'NIH', 'APA', 'Nature', 'The Lancet'].map((name) => (
-                <span key={name} className="font-serif text-xs font-semibold tracking-wide text-deep-sage uppercase">
+                <span key={name} className="font-serif text-base font-semibold tracking-wide text-deep-sage uppercase">
                   {name}
                 </span>
               ))}
