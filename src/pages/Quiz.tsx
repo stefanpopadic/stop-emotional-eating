@@ -383,7 +383,7 @@ export function Quiz() {
 
       {/* Quiz Content */}
       <main className="flex-grow flex items-center justify-center px-6 py-12">
-        <div className="w-full max-w-2xl">
+        <div className="w-full max-w-3xl">
           <AnimatePresence mode="wait">
             {renderStep()}
           </AnimatePresence>
