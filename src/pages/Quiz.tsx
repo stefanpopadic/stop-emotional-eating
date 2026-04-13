@@ -267,7 +267,7 @@ export function Quiz() {
               Peer-reviewed studies in neuroscience, behavioral psychology, and hormonal regulation (250+)
             </p>
             <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 opacity-60">
-              {['Harvard Medical', 'NIH', 'APA'].map((name) => (
+              {['Harvard Medical', 'NIH', 'APA', 'Nature', 'The Lancet', 'PubMed'].map((name) => (
                 <span key={name} className="font-serif text-base font-semibold tracking-wide text-deep-sage uppercase">
                   {name}
                 </span>
