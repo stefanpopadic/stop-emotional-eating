@@ -21,7 +21,7 @@ export const quizFlow = [
   {
     id: 'intro',
     type: 'intro',
-    headline: "That's why you keep eating and that's why your weight hasn't been going down.",
+    headline: "This is why you can't stop eating and why your weight won't go down.",
     subhead:
       "You are not addicted to eating. You have an invisible hormone and emotion cycle that needs to be addressed. Take this free 2-minute quiz that reveals the emotional eating cycle behind your cravings and how to get out of it.",
     cta: 'Take the 2-minute quiz',
