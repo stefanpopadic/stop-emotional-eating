@@ -15,6 +15,16 @@ const loadingMessages = [
 ];
 
 export function Quiz() {
+  const resetQuiz = () => {
+    setCurrentStepIndex(0);
+    setAnswers({});
+    setFirstName('');
+    setEmail('');
+    setShowLoading(false);
+    setLoadingStep(0);
+    setLoadingDone(false);
+  };
+
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [firstName, setFirstName] = useState('');
@@ -85,9 +95,9 @@ export function Quiz() {
     return (
       <div className="min-h-screen bg-warm-linen flex flex-col">
         <header className="py-6 px-6 flex justify-center items-center">
-          <Link to="/" className="text-deep-sage">
+          <button onClick={resetQuiz} className="text-deep-sage cursor-pointer">
             <Logo height={39} />
-          </Link>
+          </button>
         </header>
 
         <main className="flex-grow flex items-center justify-center px-6">
@@ -152,9 +162,9 @@ export function Quiz() {
     return (
       <div className="min-h-screen bg-warm-linen flex flex-col">
         <header className="py-6 px-6 flex justify-center items-center">
-          <Link to="/" className="text-deep-sage">
+          <button onClick={resetQuiz} className="text-deep-sage cursor-pointer">
             <Logo height={39} />
-          </Link>
+          </button>
         </header>
 
         <div className="w-full h-1.5 bg-oat">
