@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { quizFlow, calculateQuizResult } from '../lib/quizData';
-import { Brain, LineChart, Shell } from 'lucide-react';
+import { Brain, LineChart, Shell, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Logo } from '../components/Logo';
 
@@ -255,29 +255,24 @@ export function Quiz() {
           >
             {currentStep.cta}
           </button>
-          <p className="font-sans text-sm text-soft-black/70 mb-8">
-            {currentStep.belowCta}
-          </p>
-          <div className="inline-flex items-center gap-3 bg-oat px-4 py-2 rounded-full">
-            <div className="flex -space-x-2">
-              {[
-                { src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&h=96&fit=crop&crop=faces&q=80', alt: 'Quiz taker' },
-                { src: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=96&h=96&fit=crop&crop=faces&q=80', alt: 'Quiz taker' },
-                { src: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=96&h=96&fit=crop&crop=faces&q=80', alt: 'Quiz taker' },
-                { src: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=96&h=96&fit=crop&crop=faces&q=80', alt: 'Quiz taker' },
-              ].map((person, i) => (
-                <img
-                  key={i}
-                  src={person.src}
-                  alt={person.alt}
-                  loading="lazy"
-                  className="w-8 h-8 rounded-full object-cover border-2 border-warm-linen"
-                />
+          {/* Trust block */}
+          <div className="mt-10 pt-8 border-t border-sand/30">
+            <div className="flex items-center justify-center gap-2 mb-5">
+              <BookOpen size={16} className="text-muted-teal" />
+              <span className="font-sans text-sm font-semibold uppercase tracking-widest text-deep-sage">
+                Backed by Science
+              </span>
+            </div>
+            <p className="font-sans text-sm text-soft-black/60 mb-6">
+              Based on 250+ peer-reviewed studies in neuroscience, behavioral psychology, and hormonal regulation
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 opacity-40">
+              {['Harvard Medical', 'NIH', 'APA', 'Nature', 'The Lancet'].map((name) => (
+                <span key={name} className="font-serif text-xs font-semibold tracking-wide text-deep-sage uppercase">
+                  {name}
+                </span>
               ))}
             </div>
-            <span className="font-sans text-sm font-medium text-deep-sage">
-              {currentStep.socialProof}
-            </span>
           </div>
         </motion.div>
       );
