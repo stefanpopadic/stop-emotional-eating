@@ -263,7 +263,7 @@ export function Quiz() {
                 Science-Backed
               </span>
             </div>
-            <p className="font-sans text-sm text-soft-black/60 mb-6 max-w-sm mx-auto">
+            <p className="font-sans text-sm text-soft-black/60 mb-6 max-w-md mx-auto">
               Peer-reviewed studies in neuroscience, behavioral psychology, and hormonal regulation (250+)
             </p>
             <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 opacity-60">
