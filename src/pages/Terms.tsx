@@ -6,7 +6,7 @@ export function Terms() {
     <div className="min-h-screen bg-warm-linen flex flex-col">
       <header className="py-6 px-6 flex justify-center items-center border-b border-sand/20">
         <Link to="/" className="text-deep-sage hover:opacity-80 transition-opacity">
-          <Logo height={56} />
+          <Logo height={39} />
         </Link>
       </header>
 

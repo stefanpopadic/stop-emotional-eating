@@ -80,7 +80,7 @@ export function Styleguide() {
       {/* Header */}
       <header className="py-5 px-6 flex items-center justify-between bg-warm-linen/92 backdrop-blur-md border-b border-sand/20 sticky top-0 z-50">
         <Link to="/" className="text-deep-sage hover:opacity-80 transition-opacity">
-          <Logo height={56} />
+          <Logo height={39} />
         </Link>
         <span className="font-sans text-xs uppercase tracking-widest text-sand">Design System v1</span>
       </header>

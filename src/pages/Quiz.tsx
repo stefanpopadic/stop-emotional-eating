@@ -86,7 +86,7 @@ export function Quiz() {
       <div className="min-h-screen bg-warm-linen flex flex-col">
         <header className="py-6 px-6 flex justify-center items-center">
           <Link to="/" className="text-deep-sage">
-            <Logo height={56} />
+            <Logo height={39} />
           </Link>
         </header>
 
@@ -153,7 +153,7 @@ export function Quiz() {
       <div className="min-h-screen bg-warm-linen flex flex-col">
         <header className="py-6 px-6 flex justify-center items-center">
           <Link to="/" className="text-deep-sage">
-            <Logo height={56} />
+            <Logo height={39} />
           </Link>
         </header>
 
@@ -360,7 +360,7 @@ export function Quiz() {
       {/* Header */}
       <header className="py-6 px-6 flex justify-center items-center">
         <Link to="/" className="text-deep-sage">
-          <Logo height={56} />
+          <Logo height={39} />
         </Link>
       </header>
 

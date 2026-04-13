@@ -60,7 +60,7 @@ export function Results() {
       {/* Header */}
       <header className="py-5 px-6 flex items-center justify-center bg-warm-linen border-b border-sand/20 sticky top-0 z-50 backdrop-blur-md bg-warm-linen/92">
         <Link to="/" className="text-deep-sage hover:opacity-80 transition-opacity">
-          <Logo height={56} />
+          <Logo height={39} />
         </Link>
       </header>
 
