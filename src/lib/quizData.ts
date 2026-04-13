@@ -21,9 +21,9 @@ export const quizFlow = [
   {
     id: 'intro',
     type: 'intro',
-    headline: "This is why you keep eating — and why your weight isn't dropping",
+    headline: "This is why you keep eating, and why your weight isn't dropping",
     subhead:
-      "You diet, you exercise — nothing changes. You're not addicted to food. Something deeper is driving it. This free 2-minute quiz uncovers the emotional triggers behind your eating and shows you how to break the loop.",
+      "You're not addicted to food. Your hormones and emotions are running a loop you can't see. This free 2-minute quiz uncovers the emotional eating loop driving your cravings and shows you how to break it.",
     cta: 'Take the 2-minute quiz',
     belowCta: 'Backed by Science.',
     socialProof: '14,000+ people have taken this quiz',
