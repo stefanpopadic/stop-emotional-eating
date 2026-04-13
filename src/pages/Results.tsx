@@ -7,7 +7,7 @@ import { ArrowRight, BookOpen, Brain, Zap } from 'lucide-react';
 
 function Section({ children, className = '', bg = 'bg-warm-linen' }: { children: ReactNode; className?: string; bg?: string }) {
   return (
-    <section className={`${bg} py-16 md:py-24 px-6 md:px-12 ${className}`}>
+    <section className={`${bg} py-10 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 ${className}`}>
       <div className="max-w-3xl mx-auto">
         {children}
       </div>
@@ -67,17 +67,17 @@ export function Results() {
       <main className="flex-grow">
 
         {/* ═══ HERO ═══ */}
-        <section className="bg-deep-sage text-warm-linen py-20 md:py-28 px-6">
+        <section className="bg-deep-sage text-warm-linen py-12 sm:py-16 md:py-28 px-4 sm:px-6">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="font-serif font-semibold text-4xl md:text-5xl lg:text-6xl mb-6 leading-[1.1]">
+              <h1 className="font-serif font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-6 leading-[1.1]">
                 {headline}
               </h1>
-              <p className="font-sans text-lg md:text-xl leading-relaxed opacity-90 max-w-2xl mx-auto">
+              <p className="font-sans text-base sm:text-lg md:text-xl leading-relaxed opacity-90 max-w-2xl mx-auto">
                 {data.subhead}
               </p>
             </motion.div>
@@ -93,12 +93,12 @@ export function Results() {
                 The Neuroscience
               </span>
             </div>
-            <h2 className="font-serif font-semibold text-3xl md:text-4xl text-deep-sage mb-8">
+            <h2 className="font-serif font-semibold text-2xl sm:text-3xl md:text-4xl text-deep-sage mb-6 sm:mb-8">
               {data.science.title}
             </h2>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <p className="font-sans text-lg md:text-xl text-soft-black leading-relaxed mb-10">
+            <p className="font-sans text-base sm:text-lg md:text-xl text-soft-black leading-relaxed mb-10">
               {data.science.body}
             </p>
           </FadeIn>
@@ -120,13 +120,13 @@ export function Results() {
             <span className="inline-block font-sans font-medium text-sm uppercase tracking-widest text-sand mb-4">
               Your Specific Pattern
             </span>
-            <h2 className="font-serif font-semibold text-3xl md:text-4xl text-deep-sage mb-8">
+            <h2 className="font-serif font-semibold text-2xl sm:text-3xl md:text-4xl text-deep-sage mb-6 sm:mb-8">
               Here's what's happening in your loop
             </h2>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <div className="bg-deep-sage text-warm-linen rounded-2xl p-6 md:p-8">
-              <p className="font-sans text-lg md:text-xl leading-relaxed opacity-90">
+            <div className="bg-deep-sage text-warm-linen rounded-2xl p-4 sm:p-6 md:p-8">
+              <p className="font-sans text-base sm:text-lg md:text-xl leading-relaxed opacity-90">
                 {patternData}
               </p>
             </div>
@@ -142,17 +142,17 @@ export function Results() {
                 Why You Crave What You Crave
               </span>
             </div>
-            <h2 className="font-serif font-semibold text-3xl md:text-4xl text-deep-sage mb-8">
+            <h2 className="font-serif font-semibold text-2xl sm:text-3xl md:text-4xl text-deep-sage mb-6 sm:mb-8">
               {cravingData.title}
             </h2>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <p className="font-sans text-lg md:text-xl text-soft-black leading-relaxed mb-6">
+            <p className="font-sans text-base sm:text-lg md:text-xl text-soft-black leading-relaxed mb-6">
               {cravingData.neuroscience}
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <div className="bg-warm-linen p-5 md:p-6 rounded-xl border-l-4 border-terracotta">
+            <div className="bg-warm-linen p-4 sm:p-5 md:p-6 rounded-xl border-l-4 border-terracotta">
               <p className="font-sans font-medium text-sm uppercase tracking-wider text-sand mb-2">What your body is signaling</p>
               <p className="font-sans text-lg font-medium text-deep-sage leading-relaxed">{cravingData.signal}</p>
             </div>
@@ -165,12 +165,12 @@ export function Results() {
             <span className="inline-block font-sans font-medium text-sm uppercase tracking-widest text-sand mb-4">
               Your Best Move This Week
             </span>
-            <h2 className="font-serif font-semibold text-3xl md:text-4xl text-deep-sage mb-8">
+            <h2 className="font-serif font-semibold text-2xl sm:text-3xl md:text-4xl text-deep-sage mb-6 sm:mb-8">
               {data.tryThis.title}
             </h2>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <p className="font-sans text-lg md:text-xl text-soft-black leading-relaxed">
+            <p className="font-sans text-base sm:text-lg md:text-xl text-soft-black leading-relaxed">
               {data.tryThis.body}
             </p>
           </FadeIn>
@@ -183,16 +183,16 @@ export function Results() {
               <span className="inline-block font-sans font-medium text-sm uppercase tracking-widest text-sand mb-4">
                 Go Deeper
               </span>
-              <h2 className="font-serif font-semibold text-4xl md:text-5xl mb-6 leading-tight">
+              <h2 className="font-serif font-semibold text-3xl sm:text-4xl md:text-5xl mb-6 leading-tight">
                 This is the surface.<br className="hidden md:block" /> The guide goes all the way down.
               </h2>
-              <p className="font-sans text-lg md:text-xl leading-relaxed opacity-90 max-w-2xl mx-auto mb-10">
+              <p className="font-sans text-base sm:text-lg md:text-xl leading-relaxed opacity-90 max-w-2xl mx-auto mb-10">
                 Your result mapped the pattern. The full guide gives you the complete framework — the emotional eating loop, your 6 drivers, the choice point toolkit, and a 7-day practice to rewire the response.
               </p>
 
               <a
                 href="/course.html"
-                className="inline-flex items-center gap-3 bg-terracotta text-white font-sans font-semibold text-xl px-10 py-5 rounded-xl hover:bg-terracotta/90 transition-colors shadow-xl"
+                className="inline-flex items-center gap-3 bg-terracotta text-white font-sans font-semibold text-lg sm:text-xl px-6 sm:px-10 py-4 sm:py-5 rounded-xl hover:bg-terracotta/90 transition-colors shadow-xl"
               >
                 <BookOpen size={22} />
                 Get the Full Guide — $27
@@ -207,7 +207,7 @@ export function Results() {
         </Section>
 
         {/* Footer */}
-        <section className="bg-soft-black text-white/60 py-10 px-6 font-sans text-[13px]">
+        <section className="bg-soft-black text-white/60 py-8 sm:py-10 px-4 sm:px-6 font-sans text-xs sm:text-[13px]">
           <div className="max-w-3xl mx-auto text-center space-y-2">
             <p className="text-white/50">
               Need support? <strong className="text-white/70">NEDA Helpline:</strong> 1-800-931-2237 | <strong className="text-white/70">988 Crisis Lifeline:</strong> Call or text 988

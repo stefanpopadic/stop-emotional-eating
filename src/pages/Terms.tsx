@@ -10,9 +10,9 @@ export function Terms() {
         </Link>
       </header>
 
-      <main className="flex-grow py-16 px-6">
-        <div className="max-w-3xl mx-auto font-sans text-soft-black space-y-8">
-          <h1 className="font-serif font-semibold text-5xl md:text-6xl text-deep-sage leading-[1.05]">Terms of Service</h1>
+      <main className="flex-grow py-10 sm:py-16 px-4 sm:px-6">
+        <div className="max-w-3xl mx-auto font-sans text-soft-black space-y-6 sm:space-y-8">
+          <h1 className="font-serif font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-deep-sage leading-[1.05]">Terms of Service</h1>
           <p className="font-sans font-medium text-xs uppercase tracking-widest text-sand">Last updated: April 2026</p>
 
           <section className="space-y-4">

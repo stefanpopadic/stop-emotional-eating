@@ -108,7 +108,7 @@ export function Quiz() {
               transition={{ duration: 0.4 }}
             >
               {/* Animated brain icon */}
-              <div className="relative w-24 h-24 mx-auto mb-12">
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-8 sm:mb-12">
                 <motion.div
                   className="absolute inset-0 rounded-full bg-muted-teal/20"
                   animate={{ scale: [1, 1.3, 1] }}
@@ -132,7 +132,7 @@ export function Quiz() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
-                  className="font-sans text-xl text-deep-sage font-medium mb-8"
+                  className="font-sans text-lg sm:text-xl text-deep-sage font-medium mb-6 sm:mb-8"
                 >
                   {loadingMessages[loadingStep]}
                 </motion.p>
@@ -190,10 +190,10 @@ export function Quiz() {
                 </svg>
               </motion.div>
 
-              <h2 className="font-serif font-semibold text-4xl md:text-5xl text-deep-sage mb-4 leading-tight">
+              <h2 className="font-serif font-semibold text-3xl sm:text-4xl md:text-5xl text-deep-sage mb-4 leading-tight">
                 {emailStep.headline}
               </h2>
-              <p className="font-sans text-xl text-soft-black mb-10 leading-relaxed max-w-lg mx-auto">
+              <p className="font-sans text-base sm:text-lg md:text-xl text-soft-black mb-8 sm:mb-10 leading-relaxed max-w-lg mx-auto">
                 {emailStep.subhead}
               </p>
 
@@ -203,7 +203,7 @@ export function Quiz() {
                   placeholder="Your first name"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
-                  className="w-full bg-white border-2 border-sand rounded-xl px-6 py-4 text-lg font-sans text-soft-black placeholder:text-soft-black/40 focus:outline-none focus:border-deep-sage focus:ring-1 focus:ring-deep-sage mb-4 transition-colors"
+                  className="w-full bg-white border-2 border-sand rounded-xl px-4 sm:px-6 py-3.5 sm:py-4 text-base sm:text-lg font-sans text-soft-black placeholder:text-soft-black/40 focus:outline-none focus:border-deep-sage focus:ring-1 focus:ring-deep-sage mb-4 transition-colors"
                 />
                 <input
                   type="email"
@@ -211,11 +211,11 @@ export function Quiz() {
                   placeholder="Your email address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-white border-2 border-sand rounded-xl px-6 py-4 text-lg font-sans text-soft-black placeholder:text-soft-black/40 focus:outline-none focus:border-deep-sage focus:ring-1 focus:ring-deep-sage mb-6 transition-colors"
+                  className="w-full bg-white border-2 border-sand rounded-xl px-4 sm:px-6 py-3.5 sm:py-4 text-base sm:text-lg font-sans text-soft-black placeholder:text-soft-black/40 focus:outline-none focus:border-deep-sage focus:ring-1 focus:ring-deep-sage mb-6 transition-colors"
                 />
                 <button
                   type="submit"
-                  className="w-full bg-terracotta text-white font-sans font-medium text-xl px-8 py-5 rounded-xl hover:bg-terracotta/90 transition-colors shadow-lg mb-6 cursor-pointer"
+                  className="w-full bg-terracotta text-white font-sans font-medium text-lg sm:text-xl px-8 py-4 sm:py-5 rounded-xl hover:bg-terracotta/90 transition-colors shadow-lg mb-6 cursor-pointer"
                 >
                   {emailStep.cta}
                 </button>
@@ -243,15 +243,15 @@ export function Quiz() {
           exit={{ opacity: 0, y: -20 }}
           className="text-center"
         >
-          <h1 className="font-serif font-semibold text-4xl md:text-5xl text-deep-sage mb-6 leading-tight">
+          <h1 className="font-serif font-semibold text-3xl sm:text-4xl md:text-5xl text-deep-sage mb-6 leading-tight">
             {currentStep.headline}
           </h1>
-          <p className="font-sans text-xl text-soft-black mb-10 leading-relaxed">
+          <p className="font-sans text-base sm:text-lg md:text-xl text-soft-black mb-8 sm:mb-10 leading-relaxed">
             {currentStep.subhead}
           </p>
           <button
             onClick={handleNext}
-            className="w-full md:w-auto bg-terracotta text-white font-sans font-medium text-xl px-12 py-5 rounded-lg hover:bg-terracotta/90 transition-colors shadow-lg mb-6 cursor-pointer"
+            className="w-full md:w-auto bg-terracotta text-white font-sans font-medium text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-5 rounded-lg hover:bg-terracotta/90 transition-colors shadow-lg mb-6 cursor-pointer"
           >
             {currentStep.cta}
           </button>
@@ -287,7 +287,7 @@ export function Quiz() {
           exit={{ opacity: 0, x: -20 }}
           transition={{ duration: 0.3 }}
         >
-          <h2 className="font-serif font-semibold text-3xl md:text-4xl text-deep-sage mb-8 text-center leading-snug">
+          <h2 className="font-serif font-semibold text-2xl sm:text-3xl md:text-4xl text-deep-sage mb-6 sm:mb-8 text-center leading-snug">
             {currentStep.question}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -297,13 +297,13 @@ export function Quiz() {
                 <button
                   key={option.id}
                   onClick={() => handleAnswer(currentStep.id, option.value)}
-                  className={`text-left p-6 rounded-xl border transition-all duration-200 cursor-pointer ${
+                  className={`text-left p-4 md:p-6 rounded-xl border transition-all duration-200 cursor-pointer ${
                     isSelected
                       ? 'bg-deep-sage/10 border-deep-sage border-2'
                       : 'bg-oat border-sand hover:border-deep-sage hover:shadow-sm'
                   }`}
                 >
-                  <span className="font-sans text-lg text-soft-black leading-relaxed">
+                  <span className="font-sans text-base sm:text-lg text-soft-black leading-relaxed">
                     {option.text}
                   </span>
                 </button>
@@ -325,29 +325,29 @@ export function Quiz() {
           transition={{ duration: 0.4 }}
         >
           {/* Full-width card with centered content */}
-          <div className="bg-deep-sage rounded-2xl p-8 md:p-12 text-warm-linen text-center">
+          <div className="bg-deep-sage rounded-2xl p-5 sm:p-8 md:p-12 text-warm-linen text-center">
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
-              className="w-16 h-16 bg-warm-linen/10 rounded-full flex items-center justify-center mx-auto mb-8"
+              className="w-12 h-12 sm:w-16 sm:h-16 bg-warm-linen/10 rounded-full flex items-center justify-center mx-auto mb-6 sm:mb-8"
             >
-              <Icon size={32} strokeWidth={1.5} />
+              <Icon size={28} strokeWidth={1.5} />
             </motion.div>
 
-            <div className="font-sans text-lg md:text-xl leading-relaxed whitespace-pre-wrap mb-8 max-w-lg mx-auto opacity-90">
+            <div className="font-sans text-base sm:text-lg md:text-xl leading-relaxed whitespace-pre-wrap mb-6 sm:mb-8 max-w-lg mx-auto opacity-90">
               {currentStep.text}
             </div>
 
             {currentStep.subtext && (
-              <p className="font-sans text-xs text-warm-linen/50 uppercase tracking-wider mb-10">
+              <p className="font-sans text-xs text-warm-linen/50 uppercase tracking-wider mb-8 sm:mb-10">
                 {currentStep.subtext}
               </p>
             )}
 
             <button
               onClick={handleNext}
-              className="bg-terracotta text-white font-sans font-medium text-lg px-10 py-4 rounded-lg hover:bg-terracotta/90 transition-colors shadow-md cursor-pointer"
+              className="bg-terracotta text-white font-sans font-medium text-base sm:text-lg px-8 sm:px-10 py-3.5 sm:py-4 rounded-lg hover:bg-terracotta/90 transition-colors shadow-md cursor-pointer"
             >
               {currentStep.cta}
             </button>

@@ -546,8 +546,34 @@
         /* Mobile handling */
         @media (max-width: 900px) {
             #app-container { flex-direction: column; }
-            #sidebar { width: 100%; height: auto; max-height: 250px; border-right: none; border-bottom: 2px solid var(--sand); }
-            .chapter-container { padding: 2rem; }
+            #sidebar { width: 100%; height: auto; max-height: 250px; border-right: none; border-bottom: 2px solid var(--sand); padding: 1.5rem 0; }
+            .sidebar-header { padding: 0 1.25rem 1.25rem 1.25rem; }
+            .sidebar-header svg { width: 100px; height: auto; }
+            .nav-item { padding: 0.6rem 1.25rem; font-size: 10pt; }
+            .sub-nav-item { padding: 0.5rem 1.25rem 0.5rem 2rem; font-size: 9pt; }
+            .chapter-container { padding: 1.5rem 1.25rem 4rem 1.25rem; }
+            h1.chapter-title { font-size: 24pt; margin-bottom: 2rem; padding-bottom: 1rem; }
+            h2 { font-size: 18pt; margin-top: 3rem; }
+            h3 { font-size: 15pt; }
+            p, li, td { font-size: 11.5pt; line-height: 1.7; }
+            blockquote { padding: 1.5rem 1.5rem; margin: 2rem 0; font-size: 15pt; }
+            blockquote::before { font-size: 40pt; top: -5px; left: 10px; }
+            .science-box { padding: 1.5rem; margin: 2rem 0; }
+            .disclaimer-box { padding: 1.25rem; }
+            th { padding: 0.75rem 0.8rem; font-size: 9pt; }
+            td { padding: 0.75rem 0.8rem; font-size: 10pt; }
+            .slide-nav { margin-top: 3rem; padding-top: 2rem; gap: 0.75rem; }
+            .nav-btn { padding: 0.6rem 1rem; font-size: 9pt; }
+            .locked-blur-overlay { max-width: 90%; }
+        }
+
+        @media (max-width: 480px) {
+            .login-card { padding: 2.5rem 1.5rem; }
+            .login-title { font-size: 24pt; }
+            h1.chapter-title { font-size: 20pt; }
+            h2 { font-size: 16pt; }
+            p, li, td { font-size: 11pt; }
+            blockquote { font-size: 14pt; padding: 1.25rem; }
         }
 
         /* --- BLURRED LOCKED CONTENT (in-page paywall) --- */
@@ -610,23 +636,22 @@
     <!-- PURCHASE WALL OVERLAY (shown when user tries to access ch2+) -->
     <div id="purchase-wall" style="display:none;">
         <div class="login-card">
-            <h1 class="login-title">You've read Chapter 1.</h1>
+            <h1 class="login-title">Unlock the Full Guide</h1>
 
-            <p style="margin-bottom: 1.5rem; font-size: 12pt; color: var(--soft-black); line-height: 1.6;">The rest of the guide covers the emotional eating loop, your 6 drivers, what cravings actually mean, the choice point toolkit, and a 7-day practice to rewire the pattern.</p>
+            <p style="margin-bottom: 2rem; font-size: 12pt; color: var(--soft-black); line-height: 1.6;">10 chapters covering the emotional eating loop, your 6 drivers, what cravings actually mean, the choice point toolkit, and a 7-day practice to rewire the pattern.</p>
 
-            <div class="buy-section" style="margin-bottom: 2.5rem;">
-                <p class="buy-text">Unlock all 10 chapters, cheat sheets, and tools.</p>
+            <div style="margin-bottom: 2.5rem;">
+                <input type="password" id="password-input" class="password-input" placeholder="Enter your access code" />
+                <button id="login-submit" class="login-btn">Unlock full guide</button>
+                <div id="login-error">That code did not work. Check your purchase email and try again.</div>
+            </div>
+
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(196, 168, 130, 0.3);">
+                <p style="font-size: 10.5pt; color: var(--muted-teal); margin-top: 0; margin-bottom: 1rem;">Don't have an access code?</p>
                 <a href="mailto:hello@stopemotionaleating.guide?subject=I%20want%20the%2021-Day%20Guide" class="buy-btn">
                     Get the full guide for <span class="price-current">$27</span> <span class="price-old">($42)</span>
                 </a>
                 <p class="buy-guarantee">One-time payment. Instant access. 30-day money-back guarantee.</p>
-            </div>
-
-            <div style="padding-top: 2rem; border-top: 1px solid rgba(196, 168, 130, 0.3);">
-                <p style="font-size: 10.5pt; color: var(--muted-teal); margin-top: 0; margin-bottom: 1rem;">Already purchased?</p>
-                <input type="password" id="password-input" class="password-input" placeholder="Enter your access code" />
-                <button id="login-submit" class="login-btn">Unlock full guide</button>
-                <div id="login-error">That code did not work. Check your purchase email and try again.</div>
             </div>
         </div>
     </div>
