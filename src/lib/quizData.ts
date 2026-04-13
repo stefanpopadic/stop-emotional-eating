@@ -21,11 +21,11 @@ export const quizFlow = [
   {
     id: 'intro',
     type: 'intro',
-    headline: "Why do you keep eating when you're not actually hungry?",
+    headline: "This is why you keep eating — and why your weight isn't dropping",
     subhead:
-      "This free 2-minute quiz helps you understand what your cravings are trying to do, so you can stop blaming yourself and start using what actually helps.",
+      "You keep dieting, you keep exercising but nothing changes. So what is it — are you addicted to food? Not exactly. There's something deeper driving it. Take this free 2-minute quiz to uncover the emotional triggers behind your eating, see how your hormones are involved, and finally break the loop.",
     cta: 'Take the 2-minute quiz',
-    belowCta: 'Built from behavior science. No dieting. No shame.',
+    belowCta: 'Backed by Science.',
     socialProof: '14,000+ people have taken this quiz',
   },
   {
