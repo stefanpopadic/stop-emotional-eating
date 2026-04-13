@@ -176,7 +176,7 @@ export function Results() {
           </FadeIn>
         </Section>
 
-        {/* ═══ BRIDGE — READ CHAPTER 1 FREE ═══ */}
+        {/* ═══ BRIDGE — GET THE FULL GUIDE ═══ */}
         <Section bg="bg-deep-sage" className="text-warm-linen">
           <FadeIn>
             <div className="text-center">
@@ -186,11 +186,8 @@ export function Results() {
               <h2 className="font-serif font-semibold text-4xl md:text-5xl mb-6 leading-tight">
                 This is the surface.<br className="hidden md:block" /> The guide goes all the way down.
               </h2>
-              <p className="font-sans text-lg md:text-xl leading-relaxed opacity-90 max-w-2xl mx-auto mb-4">
+              <p className="font-sans text-lg md:text-xl leading-relaxed opacity-90 max-w-2xl mx-auto mb-10">
                 Your result mapped the pattern. The full guide gives you the complete framework — the emotional eating loop, your 6 drivers, the choice point toolkit, and a 7-day practice to rewire the response.
-              </p>
-              <p className="font-sans text-lg md:text-xl leading-relaxed opacity-70 max-w-2xl mx-auto mb-10">
-                Chapter 1 is free. No card, no signup. Just read it.
               </p>
 
               <a
@@ -198,12 +195,12 @@ export function Results() {
                 className="inline-flex items-center gap-3 bg-terracotta text-white font-sans font-semibold text-xl px-10 py-5 rounded-xl hover:bg-terracotta/90 transition-colors shadow-xl"
               >
                 <BookOpen size={22} />
-                Read Chapter 1 Free
+                Get the Full Guide — $27
                 <ArrowRight size={22} />
               </a>
 
               <p className="font-sans text-sm text-warm-linen/50 mt-6">
-                10 chapters. Science-backed. No dieting. No shame.
+                10 chapters. Science-backed. One-time payment. 30-day money-back guarantee.
               </p>
             </div>
           </FadeIn>
