@@ -191,7 +191,7 @@ export function Results() {
               </p>
 
               <a
-                href="https://shop.stopemotionaleating.guide/"
+                href="https://mindfullstef.gumroad.com/l/stop-emotional-eating"
                 className="inline-flex items-center gap-3 bg-terracotta text-white font-sans font-semibold text-lg sm:text-xl px-6 sm:px-10 py-4 sm:py-5 rounded-xl hover:bg-terracotta/90 transition-colors shadow-xl"
               >
                 <BookOpen size={22} />
