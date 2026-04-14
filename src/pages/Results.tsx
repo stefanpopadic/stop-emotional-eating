@@ -191,16 +191,16 @@ export function Results() {
               </p>
 
               <a
-                href="/course.html"
+                href="https://shop.stopemotionaleating.guide/"
                 className="inline-flex items-center gap-3 bg-terracotta text-white font-sans font-semibold text-lg sm:text-xl px-6 sm:px-10 py-4 sm:py-5 rounded-xl hover:bg-terracotta/90 transition-colors shadow-xl"
               >
                 <BookOpen size={22} />
-                Get the Full Guide — $27
+                Get the 14-Day Plan — $27
                 <ArrowRight size={22} />
               </a>
 
               <p className="font-sans text-sm text-warm-linen/50 mt-6">
-                10 chapters. Science-backed. One-time payment. 30-day money-back guarantee.
+                14 days. 10 chapters. Science-backed. 30-day money-back guarantee.
               </p>
             </div>
           </FadeIn>
