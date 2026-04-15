@@ -202,39 +202,47 @@ export function Quiz() {
   if (currentStep.type === 'intro') {
     return (
       <Shell>
-        <main className="flex-grow flex items-center justify-center px-4 sm:px-6 py-16 md:py-24">
+        <main className="flex-grow flex items-center px-4 sm:px-8 py-16 md:py-24">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="w-full max-w-3xl"
+            className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"
           >
-            <div className="mb-10">
-              <span className="eyebrow text-terracotta">A Quiz · 2 minutes</span>
-            </div>
+            {/* Left — headline + CTA */}
+            <div className="lg:col-span-7">
+              <div className="mb-10">
+                <span className="eyebrow text-terracotta">A Quiz · 2 minutes</span>
+              </div>
 
-            <h1 className="font-serif font-medium text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-deep-sage leading-[0.98] tracking-tight mb-10 text-balance">
-              {currentStep.headline}
-            </h1>
-            <p className="font-serif italic text-xl sm:text-2xl md:text-3xl text-soft-black/80 leading-[1.35] mb-14 max-w-2xl">
-              {currentStep.subhead}
-            </p>
-
-            <button
-              onClick={handleNext}
-              className="inline-flex items-center gap-3 bg-terracotta text-warm-linen font-sans text-base sm:text-lg px-8 sm:px-10 py-4 sm:py-5 rounded-md hover:bg-terracotta/90 transition-colors mb-16"
-            >
-              {currentStep.cta}
-              <span aria-hidden>→</span>
-            </button>
-
-            {/* Trust */}
-            <div className="pt-10 border-t border-soft-black/15 max-w-xl">
-              <p className="eyebrow mb-4">Built on the science</p>
-              <p className="font-serif italic text-lg md:text-xl text-soft-black/75 leading-[1.55]">
-                Drawn from 250+ peer-reviewed studies in neuroscience, behavioral psychology, and hormonal regulation — sources include Harvard Medical, the NIH, the APA, Nature, The Lancet, and PubMed.
+              <h1 className="font-serif font-medium text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-deep-sage leading-[0.98] tracking-tight mb-10 text-balance">
+                {currentStep.headline}
+              </h1>
+              <p className="font-serif italic text-xl sm:text-2xl md:text-3xl text-soft-black/80 leading-[1.35] mb-14 max-w-2xl">
+                {currentStep.subhead}
               </p>
+
+              <button
+                onClick={handleNext}
+                className="inline-flex items-center gap-3 bg-terracotta text-warm-linen font-sans text-base sm:text-lg px-8 sm:px-10 py-4 sm:py-5 rounded-md hover:bg-terracotta/90 transition-colors"
+              >
+                {currentStep.cta}
+                <span aria-hidden>→</span>
+              </button>
             </div>
+
+            {/* Right — science card */}
+            <aside className="lg:col-span-5 lg:pl-8 lg:border-l lg:border-soft-black/15">
+              <p className="eyebrow mb-6">Built on the science</p>
+              <p className="font-serif italic text-lg md:text-xl text-soft-black/80 leading-[1.55] mb-8">
+                Drawn from 250+ peer-reviewed studies in neuroscience, behavioral psychology, and hormonal regulation.
+              </p>
+              <div className="grid grid-cols-2 gap-x-6 gap-y-3 pt-6 border-t border-soft-black/15">
+                {['Harvard Medical', 'NIH', 'APA', 'Nature', 'The Lancet', 'PubMed'].map((src) => (
+                  <span key={src} className="eyebrow text-soft-black/60">{src}</span>
+                ))}
+              </div>
+            </aside>
           </motion.div>
         </main>
       </Shell>
@@ -347,7 +355,7 @@ export function Quiz() {
 function Shell({ children, onLogoClick }: { children: React.ReactNode; onLogoClick?: () => void }) {
   return (
     <div className="min-h-screen bg-warm-linen flex flex-col">
-      <header className="px-6 py-5 flex justify-center items-center border-b border-soft-black/10">
+      <header className="px-4 sm:px-8 py-5 flex justify-between items-center border-b border-soft-black/10">
         {onLogoClick ? (
           <button onClick={onLogoClick} className="text-deep-sage hover:opacity-70 transition-opacity">
             <Logo height={34} />
@@ -357,6 +365,9 @@ function Shell({ children, onLogoClick }: { children: React.ReactNode; onLogoCli
             <Logo height={34} />
           </Link>
         )}
+        <span className="font-serif italic text-sm sm:text-base text-soft-black/70 hidden sm:inline">
+          Science. Not shame.
+        </span>
       </header>
       {children}
     </div>
