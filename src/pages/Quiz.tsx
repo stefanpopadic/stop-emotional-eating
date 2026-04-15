@@ -34,7 +34,6 @@ export function Quiz() {
 
   const currentStep = quizFlow[currentStepIndex];
   const totalSteps = quizFlow.length;
-  const progress = ((currentStepIndex + 1) / totalSteps) * 100;
 
   useEffect(() => {
     if (!showLoading) return;
@@ -141,7 +140,6 @@ export function Quiz() {
     const emailStep = quizFlow[quizFlow.length - 1];
     return (
       <Shell onLogoClick={resetQuiz}>
-        <ProgressBar progress={100} />
         <main className="flex-grow flex items-center justify-center px-6 py-16">
           <div className="w-full max-w-xl">
             <motion.div
@@ -192,7 +190,6 @@ export function Quiz() {
                 <p className="font-sans text-sm text-soft-black/60 leading-relaxed">
                   {emailStep.belowCta}
                 </p>
-                <p className="eyebrow">{emailStep.privacy}</p>
               </form>
             </motion.div>
           </div>
@@ -212,8 +209,7 @@ export function Quiz() {
             transition={{ duration: 0.6 }}
             className="w-full max-w-3xl"
           >
-            <div className="flex items-center gap-3 mb-10">
-              <span className="h-px w-10 bg-terracotta" />
+            <div className="mb-10">
               <span className="eyebrow text-terracotta">A Quiz · 2 minutes</span>
             </div>
 
@@ -249,7 +245,6 @@ export function Quiz() {
   if (currentStep.type === 'question') {
     return (
       <Shell>
-        <ProgressBar progress={progress} />
         <main className="flex-grow flex items-center justify-center px-4 sm:px-6 py-12 md:py-16">
           <div className="w-full max-w-2xl">
             <AnimatePresence mode="wait">
@@ -310,7 +305,6 @@ export function Quiz() {
   if (currentStep.type === 'value-drop') {
     return (
       <Shell>
-        <ProgressBar progress={progress} />
         <main className="flex-grow flex items-center justify-center px-4 sm:px-6 py-16 md:py-24">
           <motion.div
             key={currentStep.id}
@@ -320,8 +314,7 @@ export function Quiz() {
             transition={{ duration: 0.4 }}
             className="w-full max-w-2xl"
           >
-            <div className="flex items-center gap-3 mb-8">
-              <span className="h-px w-10 bg-terracotta" />
+            <div className="mb-8">
               <span className="eyebrow text-terracotta">An interlude</span>
             </div>
 
@@ -370,15 +363,3 @@ function Shell({ children, onLogoClick }: { children: React.ReactNode; onLogoCli
   );
 }
 
-function ProgressBar({ progress }: { progress: number }) {
-  return (
-    <div className="w-full h-px bg-soft-black/10">
-      <motion.div
-        className="h-full bg-deep-sage"
-        initial={{ width: 0 }}
-        animate={{ width: `${progress}%` }}
-        transition={{ duration: 0.4 }}
-      />
-    </div>
-  );
-}

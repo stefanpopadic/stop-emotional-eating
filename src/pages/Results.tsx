@@ -352,7 +352,7 @@ export function Results() {
                       Stop<br />Emotional<br />Eating
                     </h3>
                     <span className="rule-accent mt-4 mb-3" style={{ color: cfg.accentHex }} />
-                    <p className="font-serif italic text-sm text-soft-black/70">A 14-day plan</p>
+                    <p className="font-serif italic text-sm text-soft-black/70">A 21-day plan</p>
                   </div>
                 </div>
               </div>
@@ -364,11 +364,11 @@ export function Results() {
                   href="https://mindfullstef.gumroad.com/l/stop-emotional-eating"
                   className="group inline-flex items-center justify-between gap-4 w-full bg-terracotta text-warm-linen font-sans text-base px-6 py-4 rounded-md hover:bg-terracotta/90 transition-colors"
                 >
-                  <span className="font-medium">Get the 14-Day Plan</span>
+                  <span className="font-medium">Get the 21-Day Plan</span>
                   <ArrowRight size={18} className="group-hover:translate-x-0.5 transition-transform" />
                 </a>
                 <p className="font-sans text-xs text-warm-linen/50 mt-4 leading-relaxed">
-                  14 days. 10 chapters. Science-backed.<br />30-day money-back guarantee.
+                  21 days. 10 chapters. Science-backed.<br />30-day money-back guarantee.
                 </p>
               </div>
             </FadeIn>
