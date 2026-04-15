@@ -1,20 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { quizFlow, calculateQuizResult } from '../lib/quizData';
-import { Brain, LineChart, Shell, BookOpen } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { Logo } from '../components/Logo';
 
 const loadingMessages = [
-  'Reading your answers...',
-  'Spotting your pattern...',
-  'Looking at your triggers...',
-  'Building your result...',
-  'Almost there...',
+  'Reading your answers',
+  'Spotting your pattern',
+  'Mapping your triggers',
+  'Building your result',
+  'Almost there',
 ];
 
 export function Quiz() {
+  const [currentStepIndex, setCurrentStepIndex] = useState(0);
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [firstName, setFirstName] = useState('');
+  const [email, setEmail] = useState('');
+  const [showLoading, setShowLoading] = useState(false);
+  const [loadingStep, setLoadingStep] = useState(0);
+  const [loadingDone, setLoadingDone] = useState(false);
+  const navigate = useNavigate();
+
   const resetQuiz = () => {
     setCurrentStepIndex(0);
     setAnswers({});
@@ -25,27 +32,17 @@ export function Quiz() {
     setLoadingDone(false);
   };
 
-  const [currentStepIndex, setCurrentStepIndex] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [firstName, setFirstName] = useState('');
-  const [email, setEmail] = useState('');
-  const [showLoading, setShowLoading] = useState(false);
-  const [loadingStep, setLoadingStep] = useState(0);
-  const [loadingDone, setLoadingDone] = useState(false);
-  const navigate = useNavigate();
-
   const currentStep = quizFlow[currentStepIndex];
   const totalSteps = quizFlow.length;
   const progress = ((currentStepIndex + 1) / totalSteps) * 100;
 
-  // Loading animation sequence
   useEffect(() => {
     if (!showLoading) return;
     if (loadingStep < loadingMessages.length - 1) {
-      const timer = setTimeout(() => setLoadingStep(prev => prev + 1), 1200);
+      const timer = setTimeout(() => setLoadingStep((p) => p + 1), 1100);
       return () => clearTimeout(timer);
     } else {
-      const timer = setTimeout(() => setLoadingDone(true), 1200);
+      const timer = setTimeout(() => setLoadingDone(true), 1100);
       return () => clearTimeout(timer);
     }
   }, [showLoading, loadingStep]);
@@ -53,28 +50,23 @@ export function Quiz() {
   const handleNext = () => {
     if (currentStepIndex < totalSteps - 1) {
       const nextStep = quizFlow[currentStepIndex + 1];
-      // If next step is email, show loading first
       if (nextStep.type === 'email') {
         setShowLoading(true);
       } else {
-        setCurrentStepIndex(prev => prev + 1);
+        setCurrentStepIndex((p) => p + 1);
       }
     }
   };
 
   const handleAnswer = (questionId: string, value: string) => {
-    setAnswers(prev => ({ ...prev, [questionId]: value }));
-    setTimeout(() => {
-      handleNext();
-    }, 300);
+    setAnswers((prev) => ({ ...prev, [questionId]: value }));
+    setTimeout(() => handleNext(), 280);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
     const resultType = calculateQuizResult(answers);
-
-    // Send email to Emailit in the background — don't block navigation
     try {
       fetch('/api/subscribe', {
         method: 'POST',
@@ -82,313 +74,311 @@ export function Quiz() {
         body: JSON.stringify({ email, firstName, quizType: resultType, answers }),
       });
     } catch {
-      // Silently fail — don't block the user
+      /* silent */
     }
-
     const params = new URLSearchParams(answers);
     if (firstName) params.append('name', firstName);
     navigate(`/results/${resultType}?${params.toString()}`);
   };
 
-  // Loading screen
+  // ══ LOADING ══
   if (showLoading && !loadingDone) {
     return (
-      <div className="min-h-screen bg-warm-linen flex flex-col">
-        <header className="py-6 px-6 flex justify-center items-center">
-          <button onClick={resetQuiz} className="text-deep-sage cursor-pointer">
-            <Logo height={39} />
-          </button>
-        </header>
-
+      <Shell>
         <main className="flex-grow flex items-center justify-center px-6">
           <div className="max-w-md w-full text-center">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.4 }}
             >
-              {/* Animated brain icon */}
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-8 sm:mb-12">
+              <div className="relative w-24 h-24 mx-auto mb-12">
                 <motion.div
-                  className="absolute inset-0 rounded-full bg-muted-teal/20"
-                  animate={{ scale: [1, 1.3, 1] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute inset-0 rounded-full border border-deep-sage/30"
+                  animate={{ scale: [1, 1.4, 1], opacity: [0.6, 0, 0.6] }}
+                  transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
                 />
                 <motion.div
-                  className="absolute inset-2 rounded-full bg-muted-teal/30"
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+                  className="absolute inset-2 rounded-full border border-deep-sage/40"
+                  animate={{ scale: [1, 1.25, 1], opacity: [0.5, 0.1, 0.5] }}
+                  transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
                 />
-                <div className="absolute inset-4 rounded-full bg-deep-sage flex items-center justify-center">
-                  <Brain className="text-warm-linen" size={32} strokeWidth={1.5} />
-                </div>
+                <div className="absolute inset-6 rounded-full bg-deep-sage" />
               </div>
 
-              {/* Loading messages */}
               <AnimatePresence mode="wait">
                 <motion.p
                   key={loadingStep}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
+                  exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.3 }}
-                  className="font-sans text-lg sm:text-xl text-deep-sage font-medium mb-6 sm:mb-8"
+                  className="font-serif italic text-2xl md:text-3xl text-deep-sage"
                 >
                   {loadingMessages[loadingStep]}
                 </motion.p>
               </AnimatePresence>
 
-              {/* Progress dots */}
-              <div className="flex justify-center gap-2">
+              <div className="flex justify-center gap-3 mt-10">
                 {loadingMessages.map((_, i) => (
-                  <motion.div
+                  <span
                     key={i}
-                    className={`w-2 h-2 rounded-full ${i <= loadingStep ? 'bg-muted-teal' : 'bg-sand/40'}`}
-                    animate={i === loadingStep ? { scale: [1, 1.4, 1] } : {}}
-                    transition={{ duration: 0.6, repeat: Infinity }}
+                    className={`h-px w-6 transition-colors duration-500 ${
+                      i <= loadingStep ? 'bg-deep-sage' : 'bg-soft-black/15'
+                    }`}
                   />
                 ))}
               </div>
             </motion.div>
           </div>
         </main>
-      </div>
+      </Shell>
     );
   }
 
-  // After loading, show email step
+  // ══ EMAIL STEP ══
   if (showLoading && loadingDone) {
     const emailStep = quizFlow[quizFlow.length - 1];
     return (
-      <div className="min-h-screen bg-warm-linen flex flex-col">
-        <header className="py-6 px-6 flex justify-center items-center">
-          <button onClick={resetQuiz} className="text-deep-sage cursor-pointer">
-            <Logo height={39} />
-          </button>
-        </header>
-
-        <div className="w-full h-1.5 bg-oat">
-          <div className="h-full bg-muted-teal w-full" />
-        </div>
-
-        <main className="flex-grow flex items-center justify-center px-6 py-12">
-          <div className="w-full max-w-2xl">
+      <Shell onLogoClick={resetQuiz}>
+        <ProgressBar progress={100} />
+        <main className="flex-grow flex items-center justify-center px-6 py-16">
+          <div className="w-full max-w-xl">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-center"
+              transition={{ duration: 0.5 }}
             >
-              {/* Success checkmark */}
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
-                className="w-16 h-16 bg-muted-teal rounded-full flex items-center justify-center mx-auto mb-8"
-              >
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-              </motion.div>
+              <div className="flex items-center gap-3 mb-10">
+                <span className="h-px w-10 bg-muted-teal" />
+                <span className="eyebrow text-muted-teal">Your result is ready</span>
+              </div>
 
-              <h2 className="font-serif font-semibold text-3xl sm:text-4xl md:text-5xl text-deep-sage mb-4 leading-tight">
+              <h2 className="font-serif font-medium text-4xl sm:text-5xl md:text-6xl text-deep-sage leading-[1.0] tracking-tight mb-8 text-balance">
                 {emailStep.headline}
               </h2>
-              <p className="font-sans text-base sm:text-lg md:text-xl text-soft-black mb-8 sm:mb-10 leading-relaxed max-w-lg mx-auto">
+              <p className="font-serif italic text-xl md:text-2xl text-soft-black/80 leading-relaxed mb-12 max-w-lg">
                 {emailStep.subhead}
               </p>
 
-              <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-                <input
-                  type="text"
-                  placeholder="Your first name"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  className="w-full bg-white border-2 border-sand rounded-xl px-4 sm:px-6 py-3.5 sm:py-4 text-base sm:text-lg font-sans text-soft-black placeholder:text-soft-black/40 focus:outline-none focus:border-deep-sage focus:ring-1 focus:ring-deep-sage mb-4 transition-colors"
-                />
-                <input
-                  type="email"
-                  required
-                  placeholder="Your email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-white border-2 border-sand rounded-xl px-4 sm:px-6 py-3.5 sm:py-4 text-base sm:text-lg font-sans text-soft-black placeholder:text-soft-black/40 focus:outline-none focus:border-deep-sage focus:ring-1 focus:ring-deep-sage mb-6 transition-colors"
-                />
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div>
+                  <label className="eyebrow block mb-2">First name</label>
+                  <input
+                    type="text"
+                    placeholder="Stefan"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    className="w-full bg-transparent border-b border-soft-black/25 py-3 text-lg font-sans text-soft-black placeholder:text-soft-black/30 focus:outline-none focus:border-deep-sage transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="eyebrow block mb-2">Email</label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="you@example.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full bg-transparent border-b border-soft-black/25 py-3 text-lg font-sans text-soft-black placeholder:text-soft-black/30 focus:outline-none focus:border-deep-sage transition-colors"
+                  />
+                </div>
                 <button
                   type="submit"
-                  className="w-full bg-terracotta text-white font-sans font-medium text-lg sm:text-xl px-8 py-4 sm:py-5 rounded-xl hover:bg-terracotta/90 transition-colors shadow-lg mb-6 cursor-pointer"
+                  className="w-full mt-8 bg-terracotta text-warm-linen font-sans text-lg px-8 py-4 rounded-md hover:bg-terracotta/90 transition-colors"
                 >
                   {emailStep.cta}
                 </button>
-                <p className="font-sans text-sm text-soft-black/60 mb-4">
+                <p className="font-sans text-sm text-soft-black/60 leading-relaxed">
                   {emailStep.belowCta}
                 </p>
-                <p className="font-sans text-xs text-soft-black/40 uppercase tracking-wider">
-                  {emailStep.privacy}
-                </p>
+                <p className="eyebrow">{emailStep.privacy}</p>
               </form>
             </motion.div>
           </div>
         </main>
-      </div>
+      </Shell>
     );
   }
 
-  const renderStep = () => {
-    if (currentStep.type === 'intro') {
-      return (
-        <motion.div
-          key="intro"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="text-center"
-        >
-          <h1 className="font-serif font-semibold text-3xl sm:text-4xl md:text-5xl text-deep-sage mb-6 leading-tight">
-            {currentStep.headline}
-          </h1>
-          <p className="font-sans text-base sm:text-lg md:text-xl text-soft-black mb-8 sm:mb-10 leading-relaxed">
-            {currentStep.subhead}
-          </p>
-          <button
-            onClick={handleNext}
-            className="w-full md:w-auto bg-terracotta text-white font-sans font-medium text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-5 rounded-lg hover:bg-terracotta/90 transition-colors shadow-lg mb-6 cursor-pointer"
+  // ══ INTRO ══
+  if (currentStep.type === 'intro') {
+    return (
+      <Shell>
+        <main className="flex-grow flex items-center justify-center px-4 sm:px-6 py-16 md:py-24">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="w-full max-w-3xl"
           >
-            {currentStep.cta}
-          </button>
-          {/* Trust block */}
-          <div className="mt-10 pt-8 border-t border-sand/30">
-            <div className="flex items-center justify-center gap-2 mb-5">
-              <BookOpen size={16} className="text-muted-teal" />
-              <span className="font-sans text-sm font-semibold uppercase tracking-widest text-deep-sage">
-                Science-Backed
-              </span>
+            <div className="flex items-center gap-3 mb-10">
+              <span className="h-px w-10 bg-terracotta" />
+              <span className="eyebrow text-terracotta">A Quiz · 2 minutes</span>
             </div>
-            <p className="font-sans text-sm text-soft-black/60 mb-6 max-w-md mx-auto">
-              Peer-reviewed studies in neuroscience, behavioral psychology, and hormonal regulation (250+)
+
+            <h1 className="font-serif font-medium text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-deep-sage leading-[0.98] tracking-tight mb-10 text-balance">
+              {currentStep.headline}
+            </h1>
+            <p className="font-serif italic text-xl sm:text-2xl md:text-3xl text-soft-black/80 leading-[1.35] mb-14 max-w-2xl">
+              {currentStep.subhead}
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 opacity-60">
-              {['Harvard Medical', 'NIH', 'APA', 'Nature', 'The Lancet', 'PubMed'].map((name) => (
-                <span key={name} className="font-serif text-base font-semibold tracking-wide text-deep-sage uppercase">
-                  {name}
-                </span>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-      );
-    }
 
-    if (currentStep.type === 'question') {
-      return (
-        <motion.div
-          key={currentStep.id}
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -20 }}
-          transition={{ duration: 0.3 }}
-        >
-          <h2 className="font-serif font-semibold text-2xl sm:text-3xl md:text-4xl text-deep-sage mb-6 sm:mb-8 text-center leading-snug">
-            {currentStep.question}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {currentStep.options?.map((option) => {
-              const isSelected = answers[currentStep.id] === option.value;
-              return (
-                <button
-                  key={option.id}
-                  onClick={() => handleAnswer(currentStep.id, option.value)}
-                  className={`text-left p-4 md:p-6 rounded-xl border transition-all duration-200 cursor-pointer ${
-                    isSelected
-                      ? 'bg-deep-sage/10 border-deep-sage border-2'
-                      : 'bg-oat border-sand hover:border-deep-sage hover:shadow-sm'
-                  }`}
-                >
-                  <span className="font-sans text-base sm:text-lg text-soft-black leading-relaxed">
-                    {option.text}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </motion.div>
-      );
-    }
-
-    if (currentStep.type === 'value-drop') {
-      const Icon = currentStep.icon === 'brain' ? Brain : currentStep.icon === 'chart' ? LineChart : Shell;
-      return (
-        <motion.div
-          key={currentStep.id}
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.05 }}
-          transition={{ duration: 0.4 }}
-        >
-          {/* Full-width card with centered content */}
-          <div className="bg-deep-sage rounded-2xl p-5 sm:p-8 md:p-12 text-warm-linen text-center">
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
-              className="w-12 h-12 sm:w-16 sm:h-16 bg-warm-linen/10 rounded-full flex items-center justify-center mx-auto mb-6 sm:mb-8"
+            <button
+              onClick={handleNext}
+              className="inline-flex items-center gap-3 bg-terracotta text-warm-linen font-sans text-base sm:text-lg px-8 sm:px-10 py-4 sm:py-5 rounded-md hover:bg-terracotta/90 transition-colors mb-16"
             >
-              <Icon size={28} strokeWidth={1.5} />
-            </motion.div>
+              {currentStep.cta}
+              <span aria-hidden>→</span>
+            </button>
 
-            <div className="font-sans text-base sm:text-lg md:text-xl leading-relaxed whitespace-pre-wrap mb-6 sm:mb-8 max-w-lg mx-auto opacity-90">
-              {currentStep.text}
+            {/* Trust */}
+            <div className="pt-10 border-t border-soft-black/15 max-w-xl">
+              <p className="eyebrow mb-4">Built on the science</p>
+              <p className="font-serif italic text-lg md:text-xl text-soft-black/75 leading-[1.55]">
+                Drawn from 250+ peer-reviewed studies in neuroscience, behavioral psychology, and hormonal regulation — sources include Harvard Medical, the NIH, the APA, Nature, The Lancet, and PubMed.
+              </p>
             </div>
+          </motion.div>
+        </main>
+      </Shell>
+    );
+  }
+
+  // ══ QUESTION ══
+  if (currentStep.type === 'question') {
+    return (
+      <Shell>
+        <ProgressBar progress={progress} />
+        <main className="flex-grow flex items-center justify-center px-4 sm:px-6 py-12 md:py-16">
+          <div className="w-full max-w-2xl">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentStep.id}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="flex items-center gap-3 mb-8">
+                  <span className="numeral text-lg">0{currentStepIndex}</span>
+                  <span className="h-px flex-grow bg-soft-black/15" />
+                  <span className="eyebrow">{currentStepIndex} of {totalSteps - 1}</span>
+                </div>
+
+                <h2 className="font-serif font-medium text-3xl sm:text-4xl md:text-5xl text-deep-sage leading-[1.05] tracking-tight mb-12 text-balance">
+                  {currentStep.question}
+                </h2>
+
+                <div className="divide-y divide-soft-black/15 border-t border-b border-soft-black/15">
+                  {currentStep.options?.map((option, i) => {
+                    const isSelected = answers[currentStep.id] === option.value;
+                    const letter = String.fromCharCode(65 + i);
+                    return (
+                      <button
+                        key={option.id}
+                        onClick={() => handleAnswer(currentStep.id, option.value)}
+                        className={`w-full text-left py-6 flex gap-6 items-baseline transition-colors group ${
+                          isSelected
+                            ? 'bg-deep-sage/5'
+                            : 'hover:bg-deep-sage/[0.03]'
+                        }`}
+                      >
+                        <span
+                          className={`font-serif text-2xl md:text-3xl w-8 shrink-0 pl-2 transition-colors ${
+                            isSelected ? 'text-deep-sage' : 'text-sand'
+                          }`}
+                        >
+                          {letter}
+                        </span>
+                        <span className="font-sans text-base sm:text-lg text-soft-black leading-[1.55] pr-4">
+                          {option.text}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </main>
+      </Shell>
+    );
+  }
+
+  // ══ VALUE-DROP ══
+  if (currentStep.type === 'value-drop') {
+    return (
+      <Shell>
+        <ProgressBar progress={progress} />
+        <main className="flex-grow flex items-center justify-center px-4 sm:px-6 py-16 md:py-24">
+          <motion.div
+            key={currentStep.id}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.4 }}
+            className="w-full max-w-2xl"
+          >
+            <div className="flex items-center gap-3 mb-8">
+              <span className="h-px w-10 bg-terracotta" />
+              <span className="eyebrow text-terracotta">An interlude</span>
+            </div>
+
+            <blockquote className="font-serif text-2xl sm:text-3xl md:text-4xl text-deep-sage leading-[1.25] tracking-tight mb-10 whitespace-pre-line">
+              {currentStep.text}
+            </blockquote>
 
             {currentStep.subtext && (
-              <p className="font-sans text-xs text-warm-linen/50 uppercase tracking-wider mb-8 sm:mb-10">
-                {currentStep.subtext}
-              </p>
+              <p className="eyebrow mb-12">{currentStep.subtext}</p>
             )}
 
             <button
               onClick={handleNext}
-              className="bg-terracotta text-white font-sans font-medium text-base sm:text-lg px-8 sm:px-10 py-3.5 sm:py-4 rounded-lg hover:bg-terracotta/90 transition-colors shadow-md cursor-pointer"
+              className="inline-flex items-center gap-3 text-deep-sage font-sans text-base border-b border-deep-sage pb-1 hover:gap-5 transition-all"
             >
               {currentStep.cta}
+              <span aria-hidden>→</span>
             </button>
-          </div>
-        </motion.div>
-      );
-    }
+          </motion.div>
+        </main>
+      </Shell>
+    );
+  }
 
-    // Email step is now handled by the loading flow above
-    return null;
-  };
+  return null;
+}
 
+// ── Shell & progress ─────────────────────────────────────────────────
+
+function Shell({ children, onLogoClick }: { children: React.ReactNode; onLogoClick?: () => void }) {
   return (
     <div className="min-h-screen bg-warm-linen flex flex-col">
-      {/* Header */}
-      <header className="py-6 px-6 flex justify-center items-center">
-        <Link to="/" className="text-deep-sage">
-          <Logo height={39} />
-        </Link>
+      <header className="px-6 py-5 flex justify-center items-center border-b border-soft-black/10">
+        {onLogoClick ? (
+          <button onClick={onLogoClick} className="text-deep-sage hover:opacity-70 transition-opacity">
+            <Logo height={34} />
+          </button>
+        ) : (
+          <Link to="/" className="text-deep-sage hover:opacity-70 transition-opacity">
+            <Logo height={34} />
+          </Link>
+        )}
       </header>
+      {children}
+    </div>
+  );
+}
 
-      {/* Progress Bar */}
-      {currentStepIndex > 0 && (
-        <div className="w-full h-1.5 bg-oat">
-          <motion.div
-            className="h-full bg-muted-teal"
-            initial={{ width: 0 }}
-            animate={{ width: `${progress}%` }}
-            transition={{ duration: 0.3 }}
-          />
-        </div>
-      )}
-
-      {/* Quiz Content */}
-      <main className="flex-grow flex items-center justify-center px-6 py-12">
-        <div className="w-full max-w-3xl">
-          <AnimatePresence mode="wait">
-            {renderStep()}
-          </AnimatePresence>
-        </div>
-      </main>
+function ProgressBar({ progress }: { progress: number }) {
+  return (
+    <div className="w-full h-px bg-soft-black/10">
+      <motion.div
+        className="h-full bg-deep-sage"
+        initial={{ width: 0 }}
+        animate={{ width: `${progress}%` }}
+        transition={{ duration: 0.4 }}
+      />
     </div>
   );
 }
