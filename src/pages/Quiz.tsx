@@ -198,57 +198,6 @@ export function Quiz() {
     );
   }
 
-  // ══ INTRO ══
-  if (currentStep.type === 'intro') {
-    return (
-      <Shell>
-        <main className="flex-grow flex items-center px-4 sm:px-8 py-16 md:py-24">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"
-          >
-            {/* Left — headline + CTA */}
-            <div className="lg:col-span-7">
-              <div className="mb-10">
-                <span className="eyebrow text-terracotta">A Quiz · 2 minutes</span>
-              </div>
-
-              <h1 className="font-serif font-medium text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-deep-sage leading-[0.98] tracking-tight mb-10 text-balance">
-                {currentStep.headline}
-              </h1>
-              <p className="font-serif italic text-xl sm:text-2xl md:text-3xl text-soft-black/80 leading-[1.35] mb-14 max-w-2xl">
-                {currentStep.subhead}
-              </p>
-
-              <button
-                onClick={handleNext}
-                className="inline-flex items-center gap-3 bg-terracotta text-warm-linen font-sans text-base sm:text-lg px-8 sm:px-10 py-4 sm:py-5 rounded-md hover:bg-terracotta/90 transition-colors"
-              >
-                {currentStep.cta}
-                <span aria-hidden>→</span>
-              </button>
-            </div>
-
-            {/* Right — science card */}
-            <aside className="lg:col-span-5 lg:pl-8 lg:border-l lg:border-soft-black/15">
-              <p className="eyebrow mb-6">Built on the science</p>
-              <p className="font-serif italic text-lg md:text-xl text-soft-black/80 leading-[1.55] mb-8">
-                Drawn from 250+ peer-reviewed studies in neuroscience, behavioral psychology, and hormonal regulation.
-              </p>
-              <div className="grid grid-cols-2 gap-x-6 gap-y-3 pt-6 border-t border-soft-black/15">
-                {['Harvard Medical', 'NIH', 'APA', 'Nature', 'The Lancet', 'PubMed'].map((src) => (
-                  <span key={src} className="eyebrow text-soft-black/60">{src}</span>
-                ))}
-              </div>
-            </aside>
-          </motion.div>
-        </main>
-      </Shell>
-    );
-  }
-
   // ══ QUESTION ══
   if (currentStep.type === 'question') {
     return (
@@ -264,9 +213,9 @@ export function Quiz() {
                 transition={{ duration: 0.3 }}
               >
                 <div className="flex items-center gap-3 mb-8">
-                  <span className="numeral text-lg">0{currentStepIndex}</span>
+                  <span className="numeral text-lg">{String(currentStepIndex + 1).padStart(2, '0')}</span>
                   <span className="h-px flex-grow bg-soft-black/15" />
-                  <span className="eyebrow">{currentStepIndex} of {totalSteps - 1}</span>
+                  <span className="eyebrow">{currentStepIndex + 1} of {totalSteps}</span>
                 </div>
 
                 <h2 className="font-serif font-medium text-3xl sm:text-4xl md:text-5xl text-deep-sage leading-[1.05] tracking-tight mb-12 text-balance">
