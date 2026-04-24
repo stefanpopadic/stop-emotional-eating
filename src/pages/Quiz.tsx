@@ -346,8 +346,6 @@ export function Quiz() {
   if (currentStep.type === 'value-drop') {
     const illustration = valueDropIllustrations[currentStep.icon as keyof typeof valueDropIllustrations];
     const paragraphs = currentStep.text.split('\n\n').filter(Boolean);
-    const lead = paragraphs[0] ?? currentStep.text;
-    const trailing = paragraphs.slice(1).join('\n\n');
 
     return (
       <Shell
@@ -374,21 +372,22 @@ export function Quiz() {
             transition={{ duration: 0.35 }}
             className="w-full max-w-md mx-auto"
           >
-            <p className="font-sans text-lg sm:text-xl text-soft-black leading-[1.5] mb-8 whitespace-pre-line">
-              {lead}
-            </p>
-
             <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-sage-mist/25 to-deep-sage/10 aspect-square flex items-center justify-center text-deep-sage p-8 sm:p-10 mb-8 max-h-[300px] sm:max-h-none">
               <div className="w-full h-full max-w-[220px] sm:max-w-[280px]">
                 {illustration}
               </div>
             </div>
 
-            {trailing && (
-              <p className="font-sans text-lg sm:text-xl text-soft-black leading-[1.5] mb-6 whitespace-pre-line">
-                {trailing}
-              </p>
-            )}
+            <div className="space-y-5">
+              {paragraphs.map((p, i) => (
+                <p
+                  key={i}
+                  className="font-sans text-lg sm:text-xl text-soft-black leading-[1.5] whitespace-pre-line"
+                >
+                  {p}
+                </p>
+              ))}
+            </div>
           </motion.div>
         </main>
       </Shell>
