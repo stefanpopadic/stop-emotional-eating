@@ -9,7 +9,7 @@ type ArchetypeKey = 'stress-regainer' | 'emotional-refueler' | 'unconscious-sabo
 
 const archetypeConfig: Record<ArchetypeKey, { label: string; display: string; accent: string; accentHex: string; mark: ReactNode }> = {
   'stress-regainer': {
-    label: 'Blocker I',
+    label: 'Pattern I',
     display: 'The Stress Regainer',
     accent: 'text-muted-teal',
     accentHex: '#8AABA7',
@@ -23,7 +23,7 @@ const archetypeConfig: Record<ArchetypeKey, { label: string; display: string; ac
     ),
   },
   'emotional-refueler': {
-    label: 'Blocker II',
+    label: 'Pattern II',
     display: 'The Emotional Refueler',
     accent: 'text-terracotta',
     accentHex: '#D4856A',
@@ -36,7 +36,7 @@ const archetypeConfig: Record<ArchetypeKey, { label: string; display: string; ac
     ),
   },
   'unconscious-saboteur': {
-    label: 'Blocker III',
+    label: 'Pattern III',
     display: 'The Unconscious Saboteur',
     accent: 'text-sand',
     accentHex: '#C4A882',
@@ -49,7 +49,7 @@ const archetypeConfig: Record<ArchetypeKey, { label: string; display: string; ac
     ),
   },
   'diet-rebounder': {
-    label: 'Blocker IV',
+    label: 'Pattern IV',
     display: 'The Diet Rebounder',
     accent: 'text-dusty-blush',
     accentHex: '#D6C5B0',
@@ -62,31 +62,6 @@ const archetypeConfig: Record<ArchetypeKey, { label: string; display: string; ac
       </svg>
     ),
   },
-};
-
-const triggerLabels: Record<string, string> = {
-  stress: 'Stress',
-  boredom: 'Boredom',
-  emotional: 'Emotional low',
-  nighttime: 'Nighttime release',
-};
-const foodLabels: Record<string, string> = {
-  salty: 'Salty / crunchy',
-  sweet: 'Sweet',
-  carbs: 'Carbs',
-  impulsive: 'Whatever is closest',
-};
-const aftermathLabels: Record<string, string> = {
-  guilt: 'Guilt',
-  numb: 'Numbness',
-  cycle: 'More wanting',
-  autopilot: 'Barely noticed',
-};
-const feelingLabels: Record<string, string> = {
-  stress: 'Overdrive',
-  boredom: 'Understimulation',
-  emotional: 'Depletion',
-  nighttime: 'Release',
 };
 
 function FadeIn({ children, className = '', delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
@@ -105,9 +80,20 @@ function FadeIn({ children, className = '', delay = 0 }: { children: ReactNode; 
 
 function Section({ children, className = '' }: { children: ReactNode; className?: string }) {
   return (
-    <section className={`px-4 sm:px-6 md:px-12 py-16 sm:py-20 md:py-28 ${className}`}>
+    <section className={`px-4 sm:px-6 md:px-12 py-16 sm:py-20 md:py-24 ${className}`}>
       <div className="max-w-3xl mx-auto">{children}</div>
     </section>
+  );
+}
+
+function Paragraphs({ text, className = '' }: { text: string; className?: string }) {
+  const paragraphs = text.split('\n\n').filter(Boolean);
+  return (
+    <div className={`space-y-5 font-sans text-lg md:text-xl text-soft-black/85 leading-[1.7] ${className}`}>
+      {paragraphs.map((p, i) => (
+        <p key={i}>{p}</p>
+      ))}
+    </div>
   );
 }
 
@@ -121,21 +107,7 @@ export function Results() {
   const cfg = archetypeConfig[resultType];
 
   const userName = searchParams.get('name') || '';
-  const trigger = searchParams.get('trigger') || 'stress';
-  const food = searchParams.get('food') || 'sweet';
-  const aftermath = searchParams.get('aftermath') || 'guilt';
-
-  const safeTrigger = trigger in data.pattern ? (trigger as keyof typeof data.pattern) : 'stress';
-  const safeAftermath =
-    aftermath in data.pattern[safeTrigger] ? (aftermath as keyof typeof data.pattern.stress) : 'guilt';
-  const safeFood = food in data.cravings ? (food as keyof typeof data.cravings) : 'sweet';
-
-  const cravingData = data.cravings[safeFood];
-  const patternData = data.pattern[safeTrigger][safeAftermath];
-
-  const headline = userName
-    ? data.headline.replace('{name}', userName)
-    : data.headline.replace('{name}, ', '');
+  const greeting = userName ? `${userName} — ` : '';
 
   return (
     <div className="min-h-screen bg-warm-linen flex flex-col">
@@ -152,30 +124,31 @@ export function Results() {
 
       <main className="flex-grow">
         {/* HERO */}
-        <section className="px-4 sm:px-6 md:px-12 pt-16 sm:pt-24 md:pt-32 pb-16 md:pb-24">
+        <section className="px-4 sm:px-6 md:px-12 pt-16 sm:pt-24 md:pt-32 pb-16 md:pb-20">
           <div className="max-w-5xl mx-auto grid md:grid-cols-[1fr_auto] gap-12 md:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="flex items-center gap-3 mb-8">
-                <span className={`eyebrow ${cfg.accent}`}>{cfg.label} · Your Weight-Loss Blocker</span>
+              <div className="flex items-center gap-3 mb-6">
+                <span className={`eyebrow ${cfg.accent}`}>{cfg.label} · Your diet-breaking pattern</span>
               </div>
-              <h1 className="font-serif font-medium text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-deep-sage leading-[0.95] tracking-tight mb-8">
-                {cfg.display}
+              <p className="font-sans text-sm uppercase tracking-[0.18em] text-soft-black/60 mb-4">{cfg.display}</p>
+              <h1 className="font-serif font-medium text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-deep-sage leading-[1.0] tracking-tight mb-8 text-balance">
+                {data.headline}
               </h1>
               <span className="rule-accent mb-8" style={{ color: cfg.accentHex }} />
-              <p className="font-serif italic text-xl sm:text-2xl md:text-3xl text-soft-black/80 leading-relaxed max-w-2xl">
-                {userName ? `${userName} — ${data.subhead}` : data.subhead}
+              <p className="font-serif italic text-xl sm:text-2xl md:text-[1.65rem] text-soft-black/80 leading-relaxed max-w-2xl">
+                {greeting}{data.subhead}
               </p>
-              <p className="eyebrow mt-10">Your analysis continues below</p>
+              <p className="eyebrow mt-10">Your full pattern below</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="hidden md:block w-48 h-48 lg:w-56 lg:h-56"
+              className="hidden md:block w-44 h-44 lg:w-52 lg:h-52"
               style={{ color: cfg.accentHex }}
             >
               {cfg.mark}
@@ -187,121 +160,120 @@ export function Results() {
           <span className="rule" />
         </div>
 
-        {/* NEUROSCIENCE — glossary */}
+        {/* 01 — YOUR PATTERN */}
         <Section>
           <FadeIn>
             <div className="flex items-baseline gap-4 mb-6">
               <span className="numeral text-3xl md:text-4xl">01</span>
-              <span className="eyebrow">The Neuroscience</span>
+              <span className="eyebrow">Your Pattern</span>
             </div>
-            <h2 className="font-serif font-medium text-3xl sm:text-4xl md:text-5xl text-deep-sage leading-[1.05] tracking-tight mb-10 text-balance">
-              {data.science.title}
+            <h2 className="font-serif font-medium text-3xl sm:text-4xl md:text-5xl text-deep-sage leading-[1.05] tracking-tight mb-12 text-balance">
+              How the loop runs.
             </h2>
           </FadeIn>
-          <FadeIn delay={0.05}>
-            <p className="drop-cap font-sans text-lg md:text-xl text-soft-black/85 leading-[1.7] mb-16">
-              {data.science.body}
-            </p>
-          </FadeIn>
 
-          <FadeIn delay={0.1}>
-            <p className="eyebrow mb-6">Glossary — the chemicals at play</p>
-            <div className="border-t border-soft-black/15">
-              {data.science.chemicals.map((chem) => (
+          <FadeIn delay={0.05}>
+            <div className="border-t border-soft-black/15 mb-10">
+              {data.pattern.steps.map((step, i) => (
                 <div
-                  key={chem.name}
-                  className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-2 md:gap-10 py-6 border-b border-soft-black/15"
+                  key={i}
+                  className="grid grid-cols-[44px_1fr] sm:grid-cols-[60px_1fr] gap-4 items-baseline py-5 border-b border-soft-black/15"
                 >
-                  <p className="font-serif italic text-xl md:text-2xl text-deep-sage">{chem.name}</p>
-                  <p className="font-sans text-base md:text-[17px] text-soft-black/80 leading-[1.65]">{chem.role}</p>
+                  <span className="numeral text-lg sm:text-xl text-soft-black/50">0{i + 1}</span>
+                  <span className="font-serif text-xl sm:text-2xl text-deep-sage leading-snug">{step}</span>
                 </div>
               ))}
             </div>
           </FadeIn>
+
+          <FadeIn delay={0.1}>
+            <div className="pl-6 md:pl-10" style={{ borderLeft: `1px solid ${cfg.accentHex}` }}>
+              <p className="font-serif italic text-xl sm:text-2xl md:text-[1.65rem] text-soft-black/85 leading-relaxed">
+                {data.pattern.summary}
+              </p>
+            </div>
+          </FadeIn>
         </Section>
 
-        {/* YOUR PATTERN — numbered loop */}
+        {/* 02 — WHY THIS KEEPS HAPPENING */}
         <Section className="bg-oat/40">
           <FadeIn>
             <div className="flex items-baseline gap-4 mb-6">
               <span className="numeral text-3xl md:text-4xl">02</span>
-              <span className="eyebrow">Your Specific Loop</span>
+              <span className="eyebrow">Why this keeps happening</span>
             </div>
-            <h2 className="font-serif font-medium text-3xl sm:text-4xl md:text-5xl text-deep-sage leading-[1.05] tracking-tight mb-12 text-balance">
-              Four moments, repeating.
+            <h2 className="font-serif font-medium text-3xl sm:text-4xl md:text-5xl text-deep-sage leading-[1.05] tracking-tight mb-10 text-balance">
+              The reason underneath.
             </h2>
           </FadeIn>
-
-          <FadeIn delay={0.1}>
-            <div className="space-y-4 mb-12">
-              {[
-                { step: 'Trigger', value: triggerLabels[safeTrigger] || safeTrigger },
-                { step: 'Inner State', value: feelingLabels[safeTrigger] || '—' },
-                { step: 'Craving', value: foodLabels[safeFood] || safeFood },
-                { step: 'Aftermath', value: aftermathLabels[safeAftermath] || safeAftermath },
-              ].map((item, i) => (
-                <div
-                  key={item.step}
-                  className="grid grid-cols-[48px_120px_1fr] sm:grid-cols-[60px_180px_1fr] gap-4 items-baseline py-5 border-b border-soft-black/15"
-                >
-                  <span className="numeral text-xl sm:text-2xl">0{i + 1}</span>
-                  <span className="eyebrow">{item.step}</span>
-                  <span className="font-serif italic text-xl sm:text-2xl md:text-3xl text-deep-sage">{item.value}</span>
-                </div>
-              ))}
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.15}>
-            <p className="font-sans text-lg md:text-xl text-soft-black/85 leading-[1.7]">
-              {patternData}
-            </p>
+          <FadeIn delay={0.05}>
+            <Paragraphs text={data.why} />
           </FadeIn>
         </Section>
 
-        {/* CRAVING — pull-quote */}
+        {/* 03 — HOW YOU BREAK THE DIET */}
         <Section>
           <FadeIn>
             <div className="flex items-baseline gap-4 mb-6">
               <span className="numeral text-3xl md:text-4xl">03</span>
-              <span className="eyebrow">Why you crave what you crave</span>
+              <span className="eyebrow">How you break the diet</span>
             </div>
             <h2 className="font-serif font-medium text-3xl sm:text-4xl md:text-5xl text-deep-sage leading-[1.05] tracking-tight mb-10 text-balance">
-              {cravingData.title}
+              The exact behavior.
             </h2>
           </FadeIn>
           <FadeIn delay={0.05}>
-            <p className="font-sans text-lg md:text-xl text-soft-black/85 leading-[1.7] mb-12">
-              {cravingData.neuroscience}
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <div className="pl-6 md:pl-10" style={{ borderLeft: `1px solid ${cfg.accentHex}` }}>
-              <p className="eyebrow mb-4" style={{ color: cfg.accentHex }}>
-                What your body is signaling
-              </p>
-              <blockquote className="font-serif italic text-2xl sm:text-3xl md:text-4xl text-deep-sage leading-[1.2] tracking-tight">
-                "{cravingData.signal}"
-              </blockquote>
-            </div>
+            <Paragraphs text={data.howYouBreak} />
           </FadeIn>
         </Section>
 
-        {/* TRY THIS */}
+        {/* 04 — WHAT TO WATCH FOR */}
         <Section className="bg-oat/40">
           <FadeIn>
             <div className="flex items-baseline gap-4 mb-6">
               <span className="numeral text-3xl md:text-4xl">04</span>
-              <span className="eyebrow">Your best move this week</span>
+              <span className="eyebrow">What to watch for this week</span>
             </div>
             <h2 className="font-serif font-medium text-3xl sm:text-4xl md:text-5xl text-deep-sage leading-[1.05] tracking-tight mb-10 text-balance">
-              {data.tryThis.title}
+              Spot the pattern, before it runs.
             </h2>
           </FadeIn>
           <FadeIn delay={0.05}>
-            <p className="font-sans text-lg md:text-xl text-soft-black/85 leading-[1.7]">
-              {data.tryThis.body}
-            </p>
+            <Paragraphs text={data.watchFor.intro} className="mb-8" />
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <ul className="space-y-3 mb-8">
+              {data.watchFor.items.map((item, i) => (
+                <li
+                  key={i}
+                  className="pl-5 font-serif text-xl sm:text-2xl text-deep-sage leading-snug"
+                  style={{ borderLeft: `2px solid ${cfg.accentHex}` }}
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </FadeIn>
+          {data.watchFor.close && (
+            <FadeIn delay={0.15}>
+              <Paragraphs text={data.watchFor.close} />
+            </FadeIn>
+          )}
+        </Section>
+
+        {/* 05 — FIRST STEP */}
+        <Section>
+          <FadeIn>
+            <div className="flex items-baseline gap-4 mb-6">
+              <span className="numeral text-3xl md:text-4xl">05</span>
+              <span className="eyebrow">Your first step</span>
+            </div>
+            <h2 className="font-serif font-medium text-3xl sm:text-4xl md:text-5xl text-deep-sage leading-[1.05] tracking-tight mb-10 text-balance">
+              One move. Start here.
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <Paragraphs text={data.firstStep} />
           </FadeIn>
         </Section>
 
@@ -309,20 +281,20 @@ export function Results() {
         <section className="bg-deep-sage text-warm-linen px-4 sm:px-6 md:px-12 py-20 md:py-28">
           <div className="max-w-5xl mx-auto grid md:grid-cols-[1.2fr_1fr] gap-12 md:gap-20 items-center">
             <FadeIn>
-              <span className="eyebrow text-warm-linen/70 block mb-6">This was the surface</span>
+              <span className="eyebrow text-warm-linen/70 block mb-6">Your result showed where your diet breaks</span>
               <h2 className="font-serif font-medium text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-tight mb-8">
-                The full 21-day plan to break this loop and lose the weight.
+                Get the 21-day plan to break this loop.
               </h2>
               <p className="font-serif italic text-xl md:text-2xl text-warm-linen/80 leading-relaxed mb-10 max-w-xl">
-                Same loop you just identified — broken in 21 days. Written for women who are done dieting.
+                The 21-day plan shows what to do next — day by day — so you can interrupt the pattern before it turns into another restart.
               </p>
 
               <div className="border-t border-warm-linen/20">
                 {[
-                  { n: '01', title: 'The 4 weight-loss blockers, fully mapped', sub: 'Why every diet you tried failed' },
-                  { n: '02', title: 'The 21-day cycle-breaker schedule', sub: 'Daily replacements that retrain the loop' },
+                  { n: '01', title: 'Your specific pattern, fully mapped', sub: 'Where the diet breaks for you and why' },
+                  { n: '02', title: 'The 21-day cycle-breaker schedule', sub: 'Daily steps that interrupt the loop' },
                   { n: '03', title: 'The 90-second pattern interrupt', sub: 'Works on any craving, in real time' },
-                  { n: '04', title: 'Post-binge recovery protocol', sub: "So one slip doesn't blow the week" },
+                  { n: '04', title: 'Post-overeating recovery protocol', sub: "So one slip doesn't blow the week" },
                 ].map((c) => (
                   <div key={c.n} className="grid grid-cols-[48px_1fr] gap-4 py-4 border-b border-warm-linen/20">
                     <span className="numeral text-warm-linen/60 text-lg">{c.n}</span>
@@ -352,7 +324,7 @@ export function Results() {
                       Stop<br />Emotional<br />Eating
                     </h3>
                     <span className="rule-accent mt-4 mb-3" style={{ color: cfg.accentHex }} />
-                    <p className="font-serif italic text-sm text-soft-black/70">Lose the weight by breaking the cycle</p>
+                    <p className="font-serif italic text-sm text-soft-black/70">Break the loop. Lose the weight.</p>
                   </div>
                 </div>
               </div>
@@ -364,7 +336,7 @@ export function Results() {
                   href="https://mindfullstef.gumroad.com/l/stop-emotional-eating"
                   className="group inline-flex items-center justify-between gap-4 w-full bg-terracotta text-warm-linen font-sans text-base px-6 py-4 rounded-md hover:bg-terracotta/90 transition-colors"
                 >
-                  <span className="font-medium">Get the ebook · $27</span>
+                  <span className="font-medium">Start the 21-day plan</span>
                   <ArrowRight size={18} className="group-hover:translate-x-0.5 transition-transform" />
                 </a>
                 <p className="font-sans text-xs text-warm-linen/50 mt-4 leading-relaxed">

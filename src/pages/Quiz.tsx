@@ -85,9 +85,8 @@ export function Quiz() {
     } catch {
       /* silent */
     }
-    const params = new URLSearchParams(answers);
-    if (firstName) params.append('name', firstName);
-    navigate(`/results/${resultType}?${params.toString()}`);
+    const query = firstName ? `?name=${encodeURIComponent(firstName)}` : '';
+    navigate(`/results/${resultType}${query}`);
   };
 
   // ══ LOADING ══
@@ -250,7 +249,7 @@ export function Quiz() {
                       <path d="M12 12 m -4 0 a 4 4 0 1 0 8 0 a 4 4 0 1 0 -8 0" opacity="0.6" />
                       <circle cx="12" cy="12" r="1.5" fill="currentColor" />
                     </svg>
-                    <span className="font-sans font-semibold text-xs tracking-wide uppercase">Your Blocker</span>
+                    <span className="font-sans font-semibold text-xs tracking-wide uppercase">Your Pattern</span>
                   </div>
                   <span className="text-[11px] font-medium px-2 py-0.5 rounded-full border border-deep-sage/40 text-deep-sage">
                     2026
@@ -258,17 +257,17 @@ export function Quiz() {
                 </div>
 
                 <h3 className="font-sans font-bold text-xl sm:text-[22px] text-soft-black leading-[1.2] mb-2">
-                  Your weight-loss<br />blocker
+                  Your diet-breaking<br />pattern
                 </h3>
                 <p className="font-sans text-[13px] text-soft-black/60 leading-relaxed mb-5">
-                  Which loop is keeping the weight on — and the first step to break it this week.
+                  Why your diet keeps breaking — and the first step to interrupt the loop this week.
                 </p>
 
                 <div className="space-y-2.5 mb-6">
                   {[
-                    'Your specific blocker & loop',
-                    'Why the weight keeps coming back',
-                    'The first step to break the cycle',
+                    'Where your diet breaks (the exact pattern)',
+                    'Why it keeps happening to you',
+                    'Your first step to break the loop this week',
                   ].map((line) => (
                     <div key={line} className="flex items-start gap-2.5">
                       <span className="mt-[6px] w-1.5 h-1.5 rounded-full bg-terracotta shrink-0" />
@@ -390,12 +389,6 @@ export function Quiz() {
             {trailing && (
               <p className="font-sans text-lg sm:text-xl text-soft-black leading-[1.5] mb-6 whitespace-pre-line">
                 {trailing}
-              </p>
-            )}
-
-            {currentStep.subtext && (
-              <p className="text-xs font-medium uppercase tracking-wider text-soft-black/55">
-                {currentStep.subtext}
               </p>
             )}
           </motion.div>
