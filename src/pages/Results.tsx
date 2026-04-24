@@ -85,14 +85,12 @@ function Paragraphs({ text, className = '' }: { text: string; className?: string
   );
 }
 
-function SectionCard({
-  number,
+function SectionBlock({
   eyebrow,
   title,
   children,
   accentHex,
 }: {
-  number: string;
   eyebrow: string;
   title: string;
   children: ReactNode;
@@ -100,19 +98,14 @@ function SectionCard({
 }) {
   return (
     <FadeIn>
-      <div className="bg-white rounded-3xl p-7 sm:p-10 shadow-[0_8px_32px_-12px_rgba(58,58,58,0.10)]">
-        <div className="flex items-center gap-3 mb-5">
-          <span
-            className="inline-flex items-center justify-center w-9 h-9 rounded-full font-sans font-bold text-sm tabular-nums"
-            style={{ backgroundColor: `${accentHex}22`, color: accentHex }}
-          >
-            {number}
-          </span>
+      <div className="py-2">
+        <div className="flex items-center gap-2.5 mb-4">
+          <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: accentHex }} />
           <span className="font-sans font-medium text-[11px] uppercase tracking-[0.18em] text-soft-black/55">
             {eyebrow}
           </span>
         </div>
-        <h2 className="font-sans font-bold text-2xl sm:text-3xl text-soft-black leading-[1.15] tracking-tight mb-6 text-balance">
+        <h2 className="font-sans font-bold text-3xl sm:text-4xl text-soft-black leading-[1.1] tracking-tight mb-6 text-balance">
           {title}
         </h2>
         {children}
@@ -131,6 +124,10 @@ export function Results() {
   const cfg = archetypeConfig[resultType];
 
   const userName = searchParams.get('name') || '';
+
+  const personalizedHeadline = userName
+    ? `${userName}, ${data.headline.charAt(0).toLowerCase()}${data.headline.slice(1)}`
+    : data.headline;
 
   const checkoutUrl = 'https://mindfullstef.gumroad.com/l/stop-emotional-eating';
 
@@ -169,17 +166,8 @@ export function Results() {
               className="grid lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-center"
             >
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-soft-black/10 mb-5">
-                  <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: cfg.accentHex }} />
-                  <span className="font-sans font-medium text-[11px] uppercase tracking-[0.18em] text-soft-black/70">
-                    Your result · {cfg.label}
-                  </span>
-                </div>
-                <p className="font-sans font-medium text-sm text-soft-black/60 mb-3">
-                  {userName ? `${userName}, you are` : 'You are'} <span className="text-soft-black/90">{cfg.display}</span>
-                </p>
                 <h1 className="font-sans font-bold text-[34px] sm:text-5xl lg:text-[58px] text-soft-black leading-[1.05] tracking-tight mb-6 text-balance max-w-3xl">
-                  {data.headline}
+                  {personalizedHeadline}
                 </h1>
                 <p className="font-sans text-lg sm:text-xl text-soft-black/75 leading-[1.6] max-w-2xl">
                   {data.subhead}
@@ -199,68 +187,78 @@ export function Results() {
         <section className="px-4 sm:px-6 lg:px-10 pb-16 sm:pb-20">
           <div className="max-w-6xl mx-auto grid lg:grid-cols-[1fr_360px] gap-8 lg:gap-10 items-start">
             {/* LEFT — content */}
-            <div className="space-y-6">
-              {/* 01 — Pattern */}
-              <SectionCard number="01" eyebrow="Your pattern" title="How the loop runs." accentHex={cfg.accentHex}>
-                <ol className="space-y-0">
-                  {data.pattern.steps.map((step, i) => (
-                    <li
-                      key={i}
-                      className="grid grid-cols-[36px_1fr] gap-4 items-baseline py-3.5 border-b border-soft-black/10 last:border-0"
-                    >
-                      <span
-                        className="font-sans font-bold text-sm tabular-nums"
-                        style={{ color: cfg.accentHex }}
+            <div className="divide-y divide-soft-black/10">
+              {/* Pattern */}
+              <div className="pb-12">
+                <SectionBlock eyebrow="Your pattern" title="How the loop runs." accentHex={cfg.accentHex}>
+                  <ol className="space-y-0">
+                    {data.pattern.steps.map((step, i) => (
+                      <li
+                        key={i}
+                        className="grid grid-cols-[36px_1fr] gap-4 items-baseline py-3.5 border-b border-soft-black/10 last:border-0"
                       >
-                        0{i + 1}
-                      </span>
-                      <span className="font-sans text-[17px] sm:text-lg text-soft-black leading-snug">{step}</span>
-                    </li>
-                  ))}
-                </ol>
-                <div
-                  className="mt-6 p-5 rounded-2xl"
-                  style={{ backgroundColor: `${cfg.accentHex}12`, borderLeft: `3px solid ${cfg.accentHex}` }}
-                >
-                  <p className="font-sans font-medium text-[15px] sm:text-base text-soft-black/85 leading-relaxed">
-                    {data.pattern.summary}
-                  </p>
-                </div>
-              </SectionCard>
+                        <span
+                          className="font-sans font-bold text-sm tabular-nums"
+                          style={{ color: cfg.accentHex }}
+                        >
+                          0{i + 1}
+                        </span>
+                        <span className="font-sans text-[17px] sm:text-lg text-soft-black leading-snug">{step}</span>
+                      </li>
+                    ))}
+                  </ol>
+                  <div
+                    className="mt-6 p-5 rounded-2xl"
+                    style={{ backgroundColor: `${cfg.accentHex}14`, borderLeft: `3px solid ${cfg.accentHex}` }}
+                  >
+                    <p className="font-sans font-medium text-[15px] sm:text-base text-soft-black/85 leading-relaxed">
+                      {data.pattern.summary}
+                    </p>
+                  </div>
+                </SectionBlock>
+              </div>
 
-              {/* 02 — Why */}
-              <SectionCard number="02" eyebrow="Why this keeps happening" title="The reason underneath." accentHex={cfg.accentHex}>
-                <Paragraphs text={data.why} />
-              </SectionCard>
+              {/* Why */}
+              <div className="py-12">
+                <SectionBlock eyebrow="Why this keeps happening" title="The reason underneath." accentHex={cfg.accentHex}>
+                  <Paragraphs text={data.why} />
+                </SectionBlock>
+              </div>
 
-              {/* 03 — How */}
-              <SectionCard number="03" eyebrow="How you break the diet" title="The exact behavior." accentHex={cfg.accentHex}>
-                <Paragraphs text={data.howYouBreak} />
-              </SectionCard>
+              {/* How */}
+              <div className="py-12">
+                <SectionBlock eyebrow="How you break the diet" title="The exact behavior." accentHex={cfg.accentHex}>
+                  <Paragraphs text={data.howYouBreak} />
+                </SectionBlock>
+              </div>
 
-              {/* 04 — Watch For */}
-              <SectionCard number="04" eyebrow="What to watch for this week" title="Spot the pattern, before it runs." accentHex={cfg.accentHex}>
-                <Paragraphs text={data.watchFor.intro} className="mb-5" />
-                <ul className="space-y-2.5 mb-5">
-                  {data.watchFor.items.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <span
-                        className="mt-1.5 inline-flex items-center justify-center w-4 h-4 rounded-full shrink-0"
-                        style={{ backgroundColor: `${cfg.accentHex}22` }}
-                      >
-                        <Check size={10} style={{ color: cfg.accentHex }} strokeWidth={3} />
-                      </span>
-                      <span className="font-sans text-[17px] sm:text-lg text-soft-black leading-snug">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                {data.watchFor.close && <Paragraphs text={data.watchFor.close} />}
-              </SectionCard>
+              {/* Watch For */}
+              <div className="py-12">
+                <SectionBlock eyebrow="What to watch for this week" title="Spot the pattern, before it runs." accentHex={cfg.accentHex}>
+                  <Paragraphs text={data.watchFor.intro} className="mb-5" />
+                  <ul className="space-y-2.5 mb-5">
+                    {data.watchFor.items.map((item, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span
+                          className="mt-1.5 inline-flex items-center justify-center w-4 h-4 rounded-full shrink-0"
+                          style={{ backgroundColor: `${cfg.accentHex}22` }}
+                        >
+                          <Check size={10} style={{ color: cfg.accentHex }} strokeWidth={3} />
+                        </span>
+                        <span className="font-sans text-[17px] sm:text-lg text-soft-black leading-snug">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {data.watchFor.close && <Paragraphs text={data.watchFor.close} />}
+                </SectionBlock>
+              </div>
 
-              {/* 05 — First step */}
-              <SectionCard number="05" eyebrow="Your first step" title="One move. Start here." accentHex={cfg.accentHex}>
-                <Paragraphs text={data.firstStep} />
-              </SectionCard>
+              {/* First step */}
+              <div className="pt-12">
+                <SectionBlock eyebrow="Your first step" title="One move. Start here." accentHex={cfg.accentHex}>
+                  <Paragraphs text={data.firstStep} />
+                </SectionBlock>
+              </div>
             </div>
 
             {/* RIGHT — sticky purchase card */}
