@@ -141,62 +141,151 @@ export function Quiz() {
     const emailStep = quizFlow[quizFlow.length - 1];
     return (
       <Shell progress={100} onLogoClick={resetQuiz}>
-        <main className="flex-grow flex items-center justify-center px-4 sm:px-6 py-10 sm:py-16">
+        {/* Calm botanical background */}
+        <div aria-hidden className="fixed inset-0 -z-0 pointer-events-none overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-sage-mist/30 via-warm-linen to-sage-mist/20" />
+          <svg
+            className="absolute -top-16 -left-20 w-[420px] h-[420px] text-deep-sage/15"
+            viewBox="0 0 400 400"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+          >
+            <path d="M120 320 C 120 220, 60 180, 30 80" />
+            <path d="M120 320 C 80 280, 50 260, 20 250" />
+            <path d="M120 320 C 80 280, 60 240, 25 220" />
+            <path d="M120 320 C 90 260, 70 220, 35 180" />
+            <path d="M120 320 C 100 240, 80 180, 55 130" />
+            <path d="M120 320 C 110 220, 100 160, 90 100" />
+          </svg>
+          <svg
+            className="absolute -bottom-24 -right-24 w-[480px] h-[480px] text-deep-sage/10"
+            viewBox="0 0 400 400"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+          >
+            <path d="M280 80 C 280 180, 340 220, 370 320" />
+            <path d="M280 80 C 320 120, 350 140, 380 150" />
+            <path d="M280 80 C 320 120, 340 160, 375 180" />
+            <path d="M280 80 C 310 140, 330 180, 365 220" />
+            <path d="M280 80 C 300 160, 320 220, 345 270" />
+          </svg>
+        </div>
+
+        <main className="relative flex-grow flex items-center justify-center px-4 sm:px-6 py-10 sm:py-16 z-10">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="w-full max-w-md bg-white rounded-3xl shadow-[0_8px_40px_-12px_rgba(58,58,58,0.12)] p-7 sm:p-10"
+            className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sage-mist/20 text-deep-sage text-xs font-medium mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-deep-sage" />
-              Result ready
+            {/* LEFT — form card */}
+            <div className="order-2 md:order-1 bg-white rounded-3xl shadow-[0_12px_48px_-16px_rgba(58,58,58,0.18)] p-7 sm:p-10 flex flex-col">
+              <div className="inline-flex self-start items-center gap-2 px-3 py-1 rounded-full bg-sage-mist/25 text-deep-sage text-xs font-medium mb-6">
+                <span className="w-1.5 h-1.5 rounded-full bg-deep-sage animate-pulse" />
+                Result ready
+              </div>
+
+              <h2 className="font-sans font-bold text-2xl sm:text-[28px] text-soft-black leading-[1.15] tracking-tight mb-3">
+                {emailStep.headline}
+              </h2>
+              <p className="font-sans text-[15px] text-soft-black/70 leading-relaxed mb-7">
+                {emailStep.subhead}
+              </p>
+
+              <form onSubmit={handleSubmit} className="space-y-4 mt-auto">
+                <div>
+                  <label className="block text-xs font-medium text-soft-black/70 mb-1.5">
+                    First name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Your first name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    className="w-full bg-warm-linen/60 border border-soft-black/10 rounded-xl px-4 py-3 text-base text-soft-black placeholder:text-soft-black/35 focus:outline-none focus:border-deep-sage focus:bg-white transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-soft-black/70 mb-1.5">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="you@example.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full bg-warm-linen/60 border border-soft-black/10 rounded-xl px-4 py-3 text-base text-soft-black placeholder:text-soft-black/35 focus:outline-none focus:border-deep-sage focus:bg-white transition-colors"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="group w-full mt-2 inline-flex items-center justify-center gap-2 bg-terracotta text-warm-linen font-sans font-medium text-base px-6 py-4 rounded-full hover:bg-terracotta/90 active:scale-[0.98] transition-all"
+                >
+                  {emailStep.cta}
+                  <ArrowRight size={18} className="group-hover:translate-x-0.5 transition-transform" />
+                </button>
+                <p className="text-xs text-soft-black/55 leading-relaxed text-center pt-1">
+                  {emailStep.belowCta}
+                </p>
+              </form>
             </div>
 
-            <h2 className="font-sans font-semibold text-2xl sm:text-3xl text-soft-black leading-[1.15] tracking-tight mb-3">
-              {emailStep.headline}
-            </h2>
-            <p className="font-sans text-base text-soft-black/70 leading-relaxed mb-8">
-              {emailStep.subhead}
-            </p>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-xs font-medium text-soft-black/70 mb-1.5">
-                  First name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your first name"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  className="w-full bg-warm-linen/60 border border-soft-black/10 rounded-xl px-4 py-3 text-base text-soft-black placeholder:text-soft-black/35 focus:outline-none focus:border-deep-sage focus:bg-white transition-colors"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-soft-black/70 mb-1.5">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  required
-                  placeholder="you@example.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-warm-linen/60 border border-soft-black/10 rounded-xl px-4 py-3 text-base text-soft-black placeholder:text-soft-black/35 focus:outline-none focus:border-deep-sage focus:bg-white transition-colors"
-                />
-              </div>
-              <button
-                type="submit"
-                className="group w-full mt-2 inline-flex items-center justify-center gap-2 bg-terracotta text-warm-linen font-sans font-medium text-base px-6 py-4 rounded-full hover:bg-terracotta/90 active:scale-[0.98] transition-all"
+            {/* RIGHT — preview of the result they'll get */}
+            <div className="order-1 md:order-2 relative rounded-3xl overflow-hidden bg-gradient-to-br from-deep-sage/15 via-sage-mist/30 to-warm-linen min-h-[320px] md:min-h-0 flex items-center justify-center p-6 sm:p-10">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.96, y: 8 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.15 }}
+                className="w-full max-w-sm bg-white rounded-2xl shadow-[0_20px_60px_-20px_rgba(58,58,58,0.25)] p-6 sm:p-7"
               >
-                {emailStep.cta}
-                <ArrowRight size={18} className="group-hover:translate-x-0.5 transition-transform" />
-              </button>
-              <p className="text-xs text-soft-black/55 leading-relaxed text-center">
-                {emailStep.belowCta}
-              </p>
-            </form>
+                <div className="flex items-center justify-between mb-5">
+                  <div className="inline-flex items-center gap-2 text-deep-sage">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 12 m -8 0 a 8 8 0 1 0 16 0 a 8 8 0 1 0 -16 0" />
+                      <path d="M12 12 m -4 0 a 4 4 0 1 0 8 0 a 4 4 0 1 0 -8 0" opacity="0.6" />
+                      <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+                    </svg>
+                    <span className="font-sans font-semibold text-xs tracking-wide uppercase">Your Result</span>
+                  </div>
+                  <span className="text-[11px] font-medium px-2 py-0.5 rounded-full border border-deep-sage/40 text-deep-sage">
+                    2026
+                  </span>
+                </div>
+
+                <h3 className="font-sans font-bold text-xl sm:text-[22px] text-soft-black leading-[1.2] mb-2">
+                  Your Emotional<br />Eating Type
+                </h3>
+                <p className="font-sans text-[13px] text-soft-black/60 leading-relaxed mb-5">
+                  A personalized breakdown of what's driving your cravings — and the first step to break the cycle.
+                </p>
+
+                <div className="space-y-2.5 mb-6">
+                  {[
+                    'Your specific type & pattern',
+                    'What triggers your cravings',
+                    'The first step to try this week',
+                  ].map((line) => (
+                    <div key={line} className="flex items-start gap-2.5">
+                      <span className="mt-[6px] w-1.5 h-1.5 rounded-full bg-terracotta shrink-0" />
+                      <span className="font-sans text-[13px] text-soft-black/80 leading-snug">{line}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-1.5">
+                  <span className="h-1 flex-1 rounded-full bg-deep-sage" />
+                  <span className="h-1 flex-1 rounded-full bg-deep-sage/70" />
+                  <span className="h-1 flex-1 rounded-full bg-deep-sage/40" />
+                  <span className="h-1 flex-1 rounded-full bg-deep-sage/20" />
+                  <span className="h-1 flex-1 rounded-full bg-deep-sage/20" />
+                </div>
+              </motion.div>
+            </div>
           </motion.div>
         </main>
       </Shell>
