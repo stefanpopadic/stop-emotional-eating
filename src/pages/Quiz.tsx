@@ -326,20 +326,17 @@ function Shell({
 }) {
   return (
     <div className="min-h-screen bg-warm-linen flex flex-col pb-24">
-      <header className="px-5 sm:px-8 pt-5 pb-2 flex items-center justify-between gap-3">
-        <div className="flex items-center gap-1">
-          <button
-            onClick={onBack}
-            disabled={!onBack}
-            aria-label="Back"
-            className={`w-9 h-9 -ml-2 rounded-full flex items-center justify-center transition-all ${
-              onBack
-                ? 'text-soft-black/70 hover:bg-soft-black/5 hover:text-soft-black'
-                : 'text-transparent pointer-events-none'
-            }`}
-          >
-            <ChevronLeft size={20} />
-          </button>
+      <header className="px-4 sm:px-6 pt-5 pb-2 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2">
+          {onBack && (
+            <button
+              onClick={onBack}
+              aria-label="Back"
+              className="w-9 h-9 -ml-2 rounded-full flex items-center justify-center text-soft-black/70 hover:bg-soft-black/5 hover:text-soft-black transition-all"
+            >
+              <ChevronLeft size={20} />
+            </button>
+          )}
 
           {onLogoClick ? (
             <button
