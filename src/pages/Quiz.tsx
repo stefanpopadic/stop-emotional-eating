@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
+import { ChevronLeft, Check, ArrowRight } from 'lucide-react';
 import { quizFlow, calculateQuizResult } from '../lib/quizData';
 import { Logo } from '../components/Logo';
 
@@ -34,6 +35,9 @@ export function Quiz() {
 
   const currentStep = quizFlow[currentStepIndex];
   const totalSteps = quizFlow.length;
+  const progress = showLoading
+    ? 100
+    : Math.round(((currentStepIndex + 1) / totalSteps) * 100);
 
   useEffect(() => {
     if (!showLoading) return;
@@ -57,9 +61,15 @@ export function Quiz() {
     }
   };
 
+  const handleBack = () => {
+    if (currentStepIndex > 0) {
+      setCurrentStepIndex((p) => p - 1);
+    }
+  };
+
   const handleAnswer = (questionId: string, value: string) => {
     setAnswers((prev) => ({ ...prev, [questionId]: value }));
-    setTimeout(() => handleNext(), 280);
+    setTimeout(() => handleNext(), 420);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -83,7 +93,7 @@ export function Quiz() {
   // ══ LOADING ══
   if (showLoading && !loadingDone) {
     return (
-      <Shell>
+      <Shell progress={100}>
         <main className="flex-grow flex items-center justify-center px-6">
           <div className="max-w-md w-full text-center">
             <motion.div
@@ -91,18 +101,20 @@ export function Quiz() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4 }}
             >
-              <div className="relative w-24 h-24 mx-auto mb-12">
-                <motion.div
-                  className="absolute inset-0 rounded-full border border-deep-sage/30"
-                  animate={{ scale: [1, 1.4, 1], opacity: [0.6, 0, 0.6] }}
-                  transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-                />
-                <motion.div
-                  className="absolute inset-2 rounded-full border border-deep-sage/40"
-                  animate={{ scale: [1, 1.25, 1], opacity: [0.5, 0.1, 0.5] }}
-                  transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
-                />
-                <div className="absolute inset-6 rounded-full bg-deep-sage" />
+              <div className="flex justify-center gap-2 mb-10">
+                {[0, 1, 2].map((i) => (
+                  <motion.span
+                    key={i}
+                    className="block w-3 h-3 rounded-full bg-deep-sage"
+                    animate={{ opacity: [0.3, 1, 0.3], y: [0, -6, 0] }}
+                    transition={{
+                      duration: 1.2,
+                      repeat: Infinity,
+                      delay: i * 0.18,
+                      ease: 'easeInOut',
+                    }}
+                  />
+                ))}
               </div>
 
               <AnimatePresence mode="wait">
@@ -112,22 +124,11 @@ export function Quiz() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.3 }}
-                  className="font-serif italic text-2xl md:text-3xl text-deep-sage"
+                  className="font-sans font-medium text-xl md:text-2xl text-deep-sage"
                 >
-                  {loadingMessages[loadingStep]}
+                  {loadingMessages[loadingStep]}…
                 </motion.p>
               </AnimatePresence>
-
-              <div className="flex justify-center gap-3 mt-10">
-                {loadingMessages.map((_, i) => (
-                  <span
-                    key={i}
-                    className={`h-px w-6 transition-colors duration-500 ${
-                      i <= loadingStep ? 'bg-deep-sage' : 'bg-soft-black/15'
-                    }`}
-                  />
-                ))}
-              </div>
             </motion.div>
           </div>
         </main>
@@ -139,60 +140,64 @@ export function Quiz() {
   if (showLoading && loadingDone) {
     const emailStep = quizFlow[quizFlow.length - 1];
     return (
-      <Shell onLogoClick={resetQuiz}>
-        <main className="flex-grow flex items-center justify-center px-6 py-16">
-          <div className="w-full max-w-xl">
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="flex items-center gap-3 mb-10">
-                <span className="h-px w-10 bg-muted-teal" />
-                <span className="eyebrow text-muted-teal">Your result is ready</span>
+      <Shell progress={100} onLogoClick={resetQuiz}>
+        <main className="flex-grow flex items-center justify-center px-4 sm:px-6 py-10 sm:py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="w-full max-w-md bg-white rounded-3xl shadow-[0_8px_40px_-12px_rgba(58,58,58,0.12)] p-7 sm:p-10"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sage-mist/20 text-deep-sage text-xs font-medium mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-deep-sage" />
+              Result ready
+            </div>
+
+            <h2 className="font-sans font-semibold text-2xl sm:text-3xl text-soft-black leading-[1.15] tracking-tight mb-3">
+              {emailStep.headline}
+            </h2>
+            <p className="font-sans text-base text-soft-black/70 leading-relaxed mb-8">
+              {emailStep.subhead}
+            </p>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-xs font-medium text-soft-black/70 mb-1.5">
+                  First name
+                </label>
+                <input
+                  type="text"
+                  placeholder="Your first name"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  className="w-full bg-warm-linen/60 border border-soft-black/10 rounded-xl px-4 py-3 text-base text-soft-black placeholder:text-soft-black/35 focus:outline-none focus:border-deep-sage focus:bg-white transition-colors"
+                />
               </div>
-
-              <h2 className="font-serif font-medium text-4xl sm:text-5xl md:text-6xl text-deep-sage leading-[1.0] tracking-tight mb-8 text-balance">
-                {emailStep.headline}
-              </h2>
-              <p className="font-serif italic text-xl md:text-2xl text-soft-black/80 leading-relaxed mb-12 max-w-lg">
-                {emailStep.subhead}
+              <div>
+                <label className="block text-xs font-medium text-soft-black/70 mb-1.5">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  required
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full bg-warm-linen/60 border border-soft-black/10 rounded-xl px-4 py-3 text-base text-soft-black placeholder:text-soft-black/35 focus:outline-none focus:border-deep-sage focus:bg-white transition-colors"
+                />
+              </div>
+              <button
+                type="submit"
+                className="group w-full mt-2 inline-flex items-center justify-center gap-2 bg-terracotta text-warm-linen font-sans font-medium text-base px-6 py-4 rounded-full hover:bg-terracotta/90 active:scale-[0.98] transition-all"
+              >
+                {emailStep.cta}
+                <ArrowRight size={18} className="group-hover:translate-x-0.5 transition-transform" />
+              </button>
+              <p className="text-xs text-soft-black/55 leading-relaxed text-center">
+                {emailStep.belowCta}
               </p>
-
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div>
-                  <label className="eyebrow block mb-2">First name</label>
-                  <input
-                    type="text"
-                    placeholder="Stefan"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    className="w-full bg-transparent border-b border-soft-black/25 py-3 text-lg font-sans text-soft-black placeholder:text-soft-black/30 focus:outline-none focus:border-deep-sage transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="eyebrow block mb-2">Email</label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="you@example.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-transparent border-b border-soft-black/25 py-3 text-lg font-sans text-soft-black placeholder:text-soft-black/30 focus:outline-none focus:border-deep-sage transition-colors"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full mt-8 bg-terracotta text-warm-linen font-sans text-lg px-8 py-4 rounded-md hover:bg-terracotta/90 transition-colors"
-                >
-                  {emailStep.cta}
-                </button>
-                <p className="font-sans text-sm text-soft-black/60 leading-relaxed">
-                  {emailStep.belowCta}
-                </p>
-              </form>
-            </motion.div>
-          </div>
+            </form>
+          </motion.div>
         </main>
       </Shell>
     );
@@ -201,50 +206,49 @@ export function Quiz() {
   // ══ QUESTION ══
   if (currentStep.type === 'question') {
     return (
-      <Shell>
-        <main className="flex-grow flex items-center justify-center px-4 sm:px-6 py-12 md:py-16">
-          <div className="w-full max-w-2xl">
+      <Shell
+        progress={progress}
+        onBack={currentStepIndex > 0 ? handleBack : undefined}
+        stepLabel={`${currentStepIndex + 1} / ${totalSteps}`}
+      >
+        <main className="flex-grow flex items-start sm:items-center justify-center px-4 sm:px-6 pt-6 sm:pt-10 pb-10">
+          <div className="w-full max-w-xl">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentStep.id}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.3 }}
+                initial={{ opacity: 0, x: 16 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -16 }}
+                transition={{ duration: 0.25 }}
               >
-                <div className="flex items-center gap-3 mb-8">
-                  <span className="numeral text-lg">{String(currentStepIndex + 1).padStart(2, '0')}</span>
-                  <span className="h-px flex-grow bg-soft-black/15" />
-                  <span className="eyebrow">{currentStepIndex + 1} of {totalSteps}</span>
-                </div>
-
-                <h2 className="font-serif font-medium text-3xl sm:text-4xl md:text-5xl text-deep-sage leading-[1.05] tracking-tight mb-12 text-balance">
+                <h2 className="font-sans font-semibold text-2xl sm:text-3xl md:text-4xl text-soft-black leading-[1.2] tracking-tight mb-8 sm:mb-10 text-balance">
                   {currentStep.question}
                 </h2>
 
-                <div className="divide-y divide-soft-black/15 border-t border-b border-soft-black/15">
-                  {currentStep.options?.map((option, i) => {
+                <div className="flex flex-col gap-3">
+                  {currentStep.options?.map((option) => {
                     const isSelected = answers[currentStep.id] === option.value;
-                    const letter = String.fromCharCode(65 + i);
                     return (
                       <button
                         key={option.id}
                         onClick={() => handleAnswer(currentStep.id, option.value)}
-                        className={`w-full text-left py-6 flex gap-6 items-baseline transition-colors group ${
+                        className={`group relative w-full text-left rounded-2xl border-2 px-5 py-4 sm:px-6 sm:py-5 transition-all active:scale-[0.99] flex items-center gap-4 ${
                           isSelected
-                            ? 'bg-deep-sage/5'
-                            : 'hover:bg-deep-sage/[0.03]'
+                            ? 'border-deep-sage bg-deep-sage/5 shadow-[0_4px_20px_-8px_rgba(114,140,123,0.4)]'
+                            : 'border-soft-black/10 bg-white hover:border-deep-sage/40 hover:shadow-[0_4px_20px_-12px_rgba(58,58,58,0.15)]'
                         }`}
                       >
+                        <span className="font-sans text-base sm:text-[17px] text-soft-black leading-[1.45] flex-grow">
+                          {option.text}
+                        </span>
                         <span
-                          className={`font-serif text-2xl md:text-3xl w-8 shrink-0 pl-2 transition-colors ${
-                            isSelected ? 'text-deep-sage' : 'text-sand'
+                          className={`shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
+                            isSelected
+                              ? 'border-deep-sage bg-deep-sage text-warm-linen'
+                              : 'border-soft-black/20 bg-transparent text-transparent group-hover:border-deep-sage/40'
                           }`}
                         >
-                          {letter}
-                        </span>
-                        <span className="font-sans text-base sm:text-lg text-soft-black leading-[1.55] pr-4">
-                          {option.text}
+                          <Check size={14} strokeWidth={3} />
                         </span>
                       </button>
                     );
@@ -261,34 +265,40 @@ export function Quiz() {
   // ══ VALUE-DROP ══
   if (currentStep.type === 'value-drop') {
     return (
-      <Shell>
-        <main className="flex-grow flex items-center justify-center px-4 sm:px-6 py-16 md:py-24">
+      <Shell
+        progress={progress}
+        onBack={currentStepIndex > 0 ? handleBack : undefined}
+        stepLabel={`${currentStepIndex + 1} / ${totalSteps}`}
+      >
+        <main className="flex-grow flex items-center justify-center px-4 sm:px-6 py-10 sm:py-16">
           <motion.div
             key={currentStep.id}
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.4 }}
-            className="w-full max-w-2xl"
+            transition={{ duration: 0.35 }}
+            className="w-full max-w-xl bg-white rounded-3xl shadow-[0_8px_40px_-12px_rgba(58,58,58,0.12)] p-7 sm:p-10"
           >
-            <div className="mb-8">
-              <span className="eyebrow text-terracotta">An interlude</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-terracotta/10 text-terracotta text-xs font-medium mb-6">
+              Did you know
             </div>
 
-            <blockquote className="font-serif text-2xl sm:text-3xl md:text-4xl text-deep-sage leading-[1.25] tracking-tight mb-10 whitespace-pre-line">
+            <p className="font-sans text-lg sm:text-xl text-soft-black leading-[1.55] mb-8 whitespace-pre-line">
               {currentStep.text}
-            </blockquote>
+            </p>
 
             {currentStep.subtext && (
-              <p className="eyebrow mb-12">{currentStep.subtext}</p>
+              <p className="text-xs font-medium uppercase tracking-wider text-soft-black/55 mb-8">
+                {currentStep.subtext}
+              </p>
             )}
 
             <button
               onClick={handleNext}
-              className="inline-flex items-center gap-3 text-deep-sage font-sans text-base border-b border-deep-sage pb-1 hover:gap-5 transition-all"
+              className="group w-full inline-flex items-center justify-center gap-2 bg-deep-sage text-warm-linen font-sans font-medium text-base px-6 py-4 rounded-full hover:bg-deep-sage/90 active:scale-[0.98] transition-all"
             >
               {currentStep.cta}
-              <span aria-hidden>→</span>
+              <ArrowRight size={18} className="group-hover:translate-x-0.5 transition-transform" />
             </button>
           </motion.div>
         </main>
@@ -301,25 +311,73 @@ export function Quiz() {
 
 // ── Shell & progress ─────────────────────────────────────────────────
 
-function Shell({ children, onLogoClick }: { children: React.ReactNode; onLogoClick?: () => void }) {
+function Shell({
+  children,
+  onLogoClick,
+  onBack,
+  progress = 0,
+  stepLabel,
+}: {
+  children: React.ReactNode;
+  onLogoClick?: () => void;
+  onBack?: () => void;
+  progress?: number;
+  stepLabel?: string;
+}) {
   return (
     <div className="min-h-screen bg-warm-linen flex flex-col">
-      <header className="px-4 sm:px-8 py-5 flex justify-between items-center border-b border-soft-black/10">
-        {onLogoClick ? (
-          <button onClick={onLogoClick} className="text-deep-sage hover:opacity-70 transition-opacity">
-            <Logo height={34} />
+      <header className="px-4 sm:px-6 pt-4 pb-3">
+        <div className="max-w-xl mx-auto flex items-center justify-between gap-3 mb-3">
+          <button
+            onClick={onBack}
+            disabled={!onBack}
+            aria-label="Back"
+            className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${
+              onBack
+                ? 'text-soft-black/70 hover:bg-soft-black/5 hover:text-soft-black'
+                : 'text-transparent pointer-events-none'
+            }`}
+          >
+            <ChevronLeft size={20} />
           </button>
-        ) : (
-          <Link to="/" className="text-deep-sage hover:opacity-70 transition-opacity">
-            <Logo height={34} />
-          </Link>
-        )}
-        <span className="font-serif italic text-sm sm:text-base text-soft-black/70 hidden sm:inline">
-          Science. Not shame.
-        </span>
+
+          {onLogoClick ? (
+            <button
+              onClick={onLogoClick}
+              className="text-deep-sage hover:opacity-70 transition-opacity"
+              aria-label="Restart quiz"
+            >
+              <Logo height={26} />
+            </button>
+          ) : (
+            <Link
+              to="/"
+              className="text-deep-sage hover:opacity-70 transition-opacity"
+              aria-label="Home"
+            >
+              <Logo height={26} />
+            </Link>
+          )}
+
+          <span
+            className={`text-xs font-medium tabular-nums w-9 text-right ${
+              stepLabel ? 'text-soft-black/55' : 'text-transparent'
+            }`}
+          >
+            {stepLabel ?? '0'}
+          </span>
+        </div>
+
+        <div className="max-w-xl mx-auto h-1.5 rounded-full bg-soft-black/8 overflow-hidden">
+          <motion.div
+            className="h-full bg-deep-sage rounded-full"
+            initial={false}
+            animate={{ width: `${progress}%` }}
+            transition={{ duration: 0.45, ease: 'easeOut' }}
+          />
+        </div>
       </header>
       {children}
     </div>
   );
 }
-
