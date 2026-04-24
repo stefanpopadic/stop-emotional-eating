@@ -182,7 +182,7 @@ export function Quiz() {
             className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch"
           >
             {/* LEFT — form card */}
-            <div className="order-2 md:order-1 bg-white rounded-3xl shadow-[0_12px_48px_-16px_rgba(58,58,58,0.18)] p-7 sm:p-10 flex flex-col">
+            <div className="order-1 bg-white rounded-3xl shadow-[0_12px_48px_-16px_rgba(58,58,58,0.18)] p-6 sm:p-10 flex flex-col">
               <div className="inline-flex self-start items-center gap-2 px-3 py-1 rounded-full bg-sage-mist/25 text-deep-sage text-xs font-medium mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-deep-sage animate-pulse" />
                 Result ready
@@ -235,7 +235,7 @@ export function Quiz() {
             </div>
 
             {/* RIGHT — preview of the result they'll get */}
-            <div className="order-1 md:order-2 relative rounded-3xl overflow-hidden bg-gradient-to-br from-deep-sage/15 via-sage-mist/30 to-warm-linen min-h-[320px] md:min-h-0 flex items-center justify-center p-6 sm:p-10">
+            <div className="order-2 relative rounded-3xl overflow-hidden bg-gradient-to-br from-deep-sage/15 via-sage-mist/30 to-warm-linen min-h-[280px] md:min-h-0 flex items-center justify-center p-6 sm:p-10">
               <motion.div
                 initial={{ opacity: 0, scale: 0.96, y: 8 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -356,15 +356,13 @@ export function Quiz() {
         currentStep={currentStepIndex + 1}
         totalSteps={totalSteps}
         bottomAction={
-          <div className="flex justify-center">
-            <button
-              onClick={handleNext}
-              className="group inline-flex items-center justify-center gap-2 bg-deep-sage text-warm-linen font-sans font-semibold text-sm sm:text-base px-6 py-2.5 rounded-full hover:bg-deep-sage/90 active:scale-[0.99] transition-all"
-            >
-              {currentStep.cta}
-              <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
-            </button>
-          </div>
+          <button
+            onClick={handleNext}
+            className="group w-full sm:w-auto sm:mx-auto sm:flex inline-flex items-center justify-center gap-2 bg-deep-sage text-warm-linen font-sans font-semibold text-base px-6 py-3.5 rounded-full hover:bg-deep-sage/90 active:scale-[0.99] transition-all"
+          >
+            {currentStep.cta}
+            <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+          </button>
         }
       >
         <main className="flex-grow px-5 sm:px-6 pt-6 pb-12">
@@ -380,8 +378,8 @@ export function Quiz() {
               {lead}
             </p>
 
-            <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-sage-mist/25 to-deep-sage/10 aspect-[4/5] sm:aspect-square flex items-center justify-center text-deep-sage p-10 mb-8">
-              <div className="w-full h-full max-w-[280px]">
+            <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-sage-mist/25 to-deep-sage/10 aspect-square flex items-center justify-center text-deep-sage p-8 sm:p-10 mb-8 max-h-[300px] sm:max-h-none">
+              <div className="w-full h-full max-w-[220px] sm:max-w-[280px]">
                 {illustration}
               </div>
             </div>

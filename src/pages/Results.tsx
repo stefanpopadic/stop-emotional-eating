@@ -104,7 +104,7 @@ function SectionBlock({
             {eyebrow}
           </span>
         </div>
-        <h2 className="font-sans font-bold text-3xl sm:text-4xl text-soft-black leading-[1.1] tracking-tight mb-6 text-balance">
+        <h2 className="font-sans font-bold text-[26px] sm:text-4xl text-soft-black leading-[1.15] tracking-tight mb-5 sm:mb-6 text-balance">
           {title}
         </h2>
         {children}
@@ -133,9 +133,9 @@ export function Results() {
   return (
     <div className="min-h-screen bg-warm-linen flex flex-col font-sans">
       {/* Header */}
-      <header className="px-4 sm:px-6 lg:px-10 py-5 flex items-center justify-between border-b border-soft-black/10 bg-warm-linen/95 backdrop-blur-sm sticky top-0 z-30">
-        <Link to="/" className="text-deep-sage hover:opacity-70 transition-opacity">
-          <Logo height={34} />
+      <header className="px-4 sm:px-6 lg:px-10 py-3 sm:py-5 flex items-center justify-between border-b border-soft-black/10 bg-warm-linen/95 backdrop-blur-sm sticky top-0 z-30">
+        <Link to="/" className="text-deep-sage hover:opacity-70 transition-opacity inline-flex">
+          <Logo height={30} />
         </Link>
         <a
           href={checkoutUrl}
@@ -148,7 +148,7 @@ export function Results() {
 
       <main className="flex-grow">
         {/* HERO */}
-        <section className="px-4 sm:px-6 lg:px-10 pt-12 sm:pt-16 lg:pt-20 pb-10">
+        <section className="px-5 sm:px-6 lg:px-10 pt-8 sm:pt-14 lg:pt-20 pb-8 sm:pb-10">
           <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -157,10 +157,10 @@ export function Results() {
               className="grid lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-center"
             >
               <div>
-                <h1 className="font-sans font-bold text-[34px] sm:text-5xl lg:text-[58px] text-soft-black leading-[1.05] tracking-tight mb-6 text-balance max-w-3xl">
+                <h1 className="font-sans font-bold text-[30px] sm:text-5xl lg:text-[58px] text-soft-black leading-[1.08] tracking-tight mb-5 sm:mb-6 text-balance max-w-3xl">
                   {personalizedHeadline}
                 </h1>
-                <p className="font-sans text-lg sm:text-xl text-soft-black/75 leading-[1.6] max-w-2xl">
+                <p className="font-sans text-[17px] sm:text-xl text-soft-black/75 leading-[1.55] max-w-2xl">
                   {data.subhead}
                 </p>
               </div>
@@ -175,12 +175,12 @@ export function Results() {
         </section>
 
         {/* BODY — left content, right sticky CTA */}
-        <section className="px-4 sm:px-6 lg:px-10 pb-16 sm:pb-20">
+        <section className="px-5 sm:px-6 lg:px-10 pb-12 sm:pb-20">
           <div className="max-w-6xl mx-auto grid lg:grid-cols-[1fr_360px] gap-8 lg:gap-10 items-start">
             {/* LEFT — content */}
             <div className="divide-y divide-soft-black/10">
               {/* Pattern */}
-              <div className="pb-12">
+              <div className="pb-10 sm:pb-12">
                 <SectionBlock eyebrow="Your pattern" title="How the loop runs." accentHex={cfg.accentHex}>
                   <ol className="space-y-0">
                     {data.pattern.steps.map((step, i) => (
@@ -210,21 +210,21 @@ export function Results() {
               </div>
 
               {/* Why */}
-              <div className="py-12">
+              <div className="py-10 sm:py-12">
                 <SectionBlock eyebrow="Why this keeps happening" title="The reason underneath." accentHex={cfg.accentHex}>
                   <Paragraphs text={data.why} />
                 </SectionBlock>
               </div>
 
               {/* How */}
-              <div className="py-12">
+              <div className="py-10 sm:py-12">
                 <SectionBlock eyebrow="How you break the diet" title="The exact behavior." accentHex={cfg.accentHex}>
                   <Paragraphs text={data.howYouBreak} />
                 </SectionBlock>
               </div>
 
               {/* Watch For */}
-              <div className="py-12">
+              <div className="py-10 sm:py-12">
                 <SectionBlock eyebrow="What to watch for this week" title="Spot the pattern, before it runs." accentHex={cfg.accentHex}>
                   <Paragraphs text={data.watchFor.intro} className="mb-5" />
                   <ul className="space-y-2.5 mb-5">
@@ -245,7 +245,7 @@ export function Results() {
               </div>
 
               {/* First step */}
-              <div className="pt-12">
+              <div className="pt-10 sm:pt-12">
                 <SectionBlock eyebrow="Your first step" title="One move. Start here." accentHex={cfg.accentHex}>
                   <Paragraphs text={data.firstStep} />
                 </SectionBlock>
@@ -321,18 +321,18 @@ export function Results() {
         </section>
 
         {/* Mobile sticky CTA */}
-        <div className="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-warm-linen/95 backdrop-blur-sm border-t border-soft-black/10 px-4 py-3">
+        <div className="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-warm-linen/95 backdrop-blur-sm border-t border-soft-black/10 px-4 pt-3 safe-bottom">
           <a
             href={checkoutUrl}
-            className="group w-full inline-flex items-center justify-between gap-2 bg-terracotta text-warm-linen font-sans font-medium text-base px-5 py-3.5 rounded-full hover:bg-terracotta/90 active:scale-[0.99] transition-all"
+            className="group w-full inline-flex items-center justify-between gap-2 bg-terracotta text-warm-linen font-sans font-semibold text-[15px] px-5 py-4 rounded-full active:scale-[0.99] transition-transform"
           >
-            <span>Start the 21-day plan · $27</span>
-            <ArrowRight size={18} className="group-hover:translate-x-0.5 transition-transform" />
+            <span>Get full ebook · $27</span>
+            <ArrowRight size={18} className="shrink-0" />
           </a>
         </div>
 
         {/* Footer */}
-        <footer className="bg-soft-black text-warm-linen/60 py-10 px-4 sm:px-6 font-sans text-xs sm:text-[13px] pb-24 lg:pb-10">
+        <footer className="bg-soft-black text-warm-linen/60 py-10 px-4 sm:px-6 font-sans text-xs sm:text-[13px] pb-28 lg:pb-10">
           <div className="max-w-3xl mx-auto text-center">
             <p>
               &copy; {new Date().getFullYear()} Stop Emotional Eating ·{' '}
