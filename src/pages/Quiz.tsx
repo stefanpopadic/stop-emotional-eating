@@ -212,7 +212,7 @@ export function Quiz() {
         currentStep={currentStepIndex + 1}
         totalSteps={totalSteps}
       >
-        <main className="flex-grow flex items-start justify-center px-5 sm:px-6 pt-8 sm:pt-12 pb-16">
+        <main className="flex-grow flex items-center justify-center px-5 sm:px-6 py-10">
           <div className="w-full max-w-xl">
             <AnimatePresence mode="wait">
               <motion.div
