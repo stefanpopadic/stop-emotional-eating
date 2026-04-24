@@ -41,6 +41,17 @@ export const quizFlow = [
     ],
   },
   {
+    id: 'cost',
+    type: 'question',
+    question: 'Before we go further — what has this cycle actually cost you?',
+    options: [
+      { id: 'A', text: "Years of my life. I've been fighting the same 15 lbs forever", value: 'years' },
+      { id: 'B', text: 'Confidence. I avoid mirrors, photos, certain clothes', value: 'confidence' },
+      { id: 'C', text: 'Energy. The food coma after a binge wrecks my whole week', value: 'energy' },
+      { id: 'D', text: "All of the above — and I'm done", value: 'all' },
+    ],
+  },
+  {
     id: 'aftermath',
     type: 'question',
     question: 'What happened after the binge — and the next morning on the scale?',
@@ -56,8 +67,8 @@ export const quizFlow = [
     type: 'value-drop',
     icon: 'brain',
     text:
-      "Here's why every diet you've tried failed:\n\nWhen you restrict food, your cortisol spikes and your leptin drops. Your brain reads this as starvation and demands sugar, salt and carbs to refuel. The harder you diet, the louder the cravings get — and the more weight you regain when you finally break.\n\nThis is not a willpower problem. Your hormones are literally working against the diet. That is why the weight always comes back.",
-    cta: 'Keep going',
+      "Here's why every diet you've tried failed:\n\nWhen you cut calories, two hormones move in opposite directions. Cortisol spikes — your body reads restriction as a threat. Leptin crashes — the hormone that tells your brain \"we have fuel\" goes silent. Within 72 hours, your brain is convinced you're starving and floods you with cravings for the fastest fuel it knows: sugar, salt, refined carbs.\n\nThis is not weakness. This is your hypothalamus doing exactly what it evolved to do.\n\nThe harder you restrict, the louder the signal gets. The binge isn't a failure of the diet. The binge IS the diet — built into the chemistry.",
+    cta: 'Show me more',
   },
   {
     id: 'awareness',
@@ -69,6 +80,25 @@ export const quizFlow = [
       { id: 'C', text: "I don't notice until it's over. The week is already blown", value: 'low' },
       { id: 'D', text: "I never thought about it this way. I just assumed I was weak", value: 'new' },
     ],
+  },
+  {
+    id: 'food-belief',
+    type: 'question',
+    question: 'Which of these have you secretly believed about yourself?',
+    options: [
+      { id: 'A', text: 'I have no willpower', value: 'willpower' },
+      { id: 'B', text: "I'm addicted to sugar or carbs", value: 'addicted' },
+      { id: 'C', text: 'My metabolism is broken', value: 'metabolism' },
+      { id: 'D', text: "I'm just emotional or weak around food", value: 'weak' },
+    ],
+  },
+  {
+    id: 'vd2',
+    type: 'value-drop',
+    icon: 'brain',
+    text:
+      "You are not addicted. You are not weak. You are not broken.\n\nCravings are not a character flaw. They are a chemical signal — your nucleus accumbens (the brain's reward center) firing dopamine at 200% of baseline because it learned that food fixes the unpleasant feeling fast. Stress, loneliness, exhaustion, restriction-rebound — your brain logs all of them and food becomes the answer.\n\nEvery diet you tried treated the food. None of them treated the signal.\n\nThat's why the weight came back. You can't out-diet a brain pattern. You can only interrupt it.",
+    cta: 'Continue',
   },
   {
     id: 'duration',
@@ -93,13 +123,32 @@ export const quizFlow = [
     ],
   },
   {
-    id: 'vd2',
+    id: 'vd3',
     type: 'value-drop',
     icon: 'chart',
     text:
-      "Here's what separates women who lose the weight from women who don't:\n\nIt's not willpower. It's not metabolism. It's not the diet plan.\n\nIt's the ability to identify the emotional trigger before the binge — stress, loneliness, boredom, exhaustion, restriction-rebound. Women who catch the trigger first are 3-4× more likely to keep the weight off long-term.\n\nThat is exactly what this quiz is mapping for you.",
-    subtext: 'Based on peer-reviewed behavioral psychology research',
+      "Here's what separates women who lose the weight from women who don't:\n\nIt's not willpower. It's not metabolism. It's not the diet plan they picked.\n\nIt's a 90-second window between the trigger and the first bite. Women who learn to catch that window — to name what they're actually feeling before reaching for food — are 3-4× more likely to keep the weight off long-term.\n\nThe trigger fires. The window opens. Most women never see it. The ones who do — lose the weight and keep it off.\n\nThis quiz is mapping which trigger fires for you.",
+    subtext: 'Based on peer-reviewed behavioral psychology research (2019-2023)',
     cta: 'Continue',
+  },
+  {
+    id: 'false-belief',
+    type: 'question',
+    question: 'What did every diet you tried promise you?',
+    options: [
+      { id: 'A', text: 'Eat less, move more, the weight comes off', value: 'eatless' },
+      { id: 'B', text: 'Cut carbs, sugar or fat and the cravings stop', value: 'cutout' },
+      { id: 'C', text: 'If I just stick to it longer, my body will adjust', value: 'stickwithit' },
+      { id: 'D', text: 'Once I lose the weight, the cravings disappear', value: 'lateron' },
+    ],
+  },
+  {
+    id: 'vd4',
+    type: 'value-drop',
+    icon: 'spiral',
+    text:
+      "The one thing every failed diet has in common: restriction.\n\nKeto, calorie counting, intermittent fasting, \"just eat less\" — they all work on the same principle: eat less than your body wants. And every one of them triggers the same biological response. Leptin (the satiety hormone) crashes within 72 hours. Ghrelin (the hunger hormone) climbs. Your brain releases neuropeptide Y — a peptide that specifically drives carb and fat seeking.\n\nYour body doesn't know the difference between a diet and a famine. It runs the same emergency protocol either way.\n\nThat protocol is why the weight came back every single time — not because you failed the diet, but because the diet failed your biology.",
+    cta: 'One more thing',
   },
   {
     id: 'desire',
@@ -124,11 +173,11 @@ export const quizFlow = [
     ],
   },
   {
-    id: 'vd3',
+    id: 'vd5',
     type: 'value-drop',
     icon: 'spiral',
     text:
-      "One last thing before your result:\n\nEvery diet treats the food. None of them treat the cycle.\n\nThe binge that breaks your diet is not about hunger. It is your brain using food to solve a problem — stress, loneliness, exhaustion, or the rebound from restricting all day. Until that loop breaks, the weight will keep coming back no matter what you eat.\n\nYour result reveals which loop is keeping the weight on, and the first move to break it.",
+      "This is the one thing you need to fix to lose the weight and never break a diet again:\n\nStop treating the food. Start breaking the loop.\n\nEvery binge runs the same 4-step pattern — trigger → craving → eat → guilt → start again. The weight comes off, and stays off, only when you interrupt that loop at step one. Not at step three (you can't out-willpower a craving in flight). Not at step four (guilt makes the next loop fire faster).\n\nThe result on the next screen tells you which trigger fires for you, why your specific loop has been keeping the weight on, and the first move to break it this week.",
     cta: 'See my result',
   },
   {
