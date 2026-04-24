@@ -2471,7 +2471,7 @@
 
     <script>
         const THE_PASSWORD = "reset2026";
-        const FREE_CHAPTERS = [1]; // Chapter 1 free preview (top intro visible, rest blurred with paywall overlay)
+        const FREE_CHAPTERS = []; // No free preview — entire ebook is gated behind the access code
 
         const app = {
             currentChapterIdx: 0,
@@ -2490,8 +2490,8 @@
                 // Mark locked nav items
                 this.updateNavLocks();
 
-                // Start on Chapter 1
-                this.goToChapter(1);
+                // Show password gate immediately — nothing is visible until unlocked
+                this.showPurchaseWall(1);
             },
 
             handleLogin: function() {
