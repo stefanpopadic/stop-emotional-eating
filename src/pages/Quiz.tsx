@@ -390,38 +390,36 @@ function Shell({
 
   return (
     <div className={`min-h-screen bg-warm-linen flex flex-col ${bottomAction ? 'pb-32 sm:pb-28' : ''}`}>
-      {/* Header — logo left, counter right; back rendered above when present */}
-      {onBack && (
-        <div className="px-4 sm:px-6 pt-4">
-          <button
-            onClick={onBack}
-            aria-label="Back"
-            className="-ml-2 inline-flex items-center gap-1 px-2 py-1.5 rounded-lg text-soft-black/70 hover:bg-soft-black/5 hover:text-soft-black transition-all"
-          >
-            <ChevronLeft size={20} />
-            <span className="font-sans text-sm font-medium">Back</span>
-          </button>
-        </div>
-      )}
+      <header className="px-4 sm:px-6 pt-5 pb-3 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-1">
+          {onBack && (
+            <button
+              onClick={onBack}
+              aria-label="Back"
+              className="-ml-2 w-9 h-9 inline-flex items-center justify-center rounded-full text-soft-black/70 hover:bg-soft-black/5 hover:text-soft-black transition-all"
+            >
+              <ChevronLeft size={22} />
+            </button>
+          )}
 
-      <header className="px-4 sm:px-6 pt-3 pb-3 flex items-center justify-between gap-3">
-        {onLogoClick ? (
-          <button
-            onClick={onLogoClick}
-            className="text-deep-sage hover:opacity-70 transition-opacity"
-            aria-label="Restart quiz"
-          >
-            <Logo height={36} />
-          </button>
-        ) : (
-          <Link
-            to="/"
-            className="text-deep-sage hover:opacity-70 transition-opacity"
-            aria-label="Home"
-          >
-            <Logo height={36} />
-          </Link>
-        )}
+          {onLogoClick ? (
+            <button
+              onClick={onLogoClick}
+              className="text-deep-sage hover:opacity-70 transition-opacity"
+              aria-label="Restart quiz"
+            >
+              <Logo height={36} />
+            </button>
+          ) : (
+            <Link
+              to="/"
+              className="text-deep-sage hover:opacity-70 transition-opacity"
+              aria-label="Home"
+            >
+              <Logo height={36} />
+            </Link>
+          )}
+        </div>
 
         {showCounter ? (
           <span className="tabular-nums">
