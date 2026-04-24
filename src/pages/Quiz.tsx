@@ -264,6 +264,7 @@ export function Quiz() {
 
   // ══ VALUE-DROP ══
   if (currentStep.type === 'value-drop') {
+    const illustration = valueDropIllustrations[currentStep.icon as keyof typeof valueDropIllustrations];
     return (
       <Shell
         progress={progress}
@@ -277,29 +278,41 @@ export function Quiz() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.35 }}
-            className="w-full max-w-xl bg-white rounded-3xl shadow-[0_8px_40px_-12px_rgba(58,58,58,0.12)] p-7 sm:p-10"
+            className="w-full max-w-3xl bg-white rounded-3xl shadow-[0_8px_40px_-12px_rgba(58,58,58,0.12)] p-6 sm:p-10"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-terracotta/10 text-terracotta text-xs font-medium mb-6">
-              Did you know
+            <div className="grid grid-cols-1 sm:grid-cols-[180px_1fr] md:grid-cols-[220px_1fr] gap-6 sm:gap-8 md:gap-10 items-start">
+              {/* Image / illustration */}
+              <div className="flex sm:block justify-center">
+                <div className="w-32 h-32 sm:w-full sm:h-auto sm:aspect-square rounded-2xl bg-gradient-to-br from-sage-mist/25 to-deep-sage/10 flex items-center justify-center text-deep-sage p-4 sm:p-6">
+                  {illustration}
+                </div>
+              </div>
+
+              {/* Text */}
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-terracotta/10 text-terracotta text-xs font-medium mb-5">
+                  Did you know
+                </div>
+
+                <p className="font-sans text-base sm:text-lg text-soft-black leading-[1.55] mb-6 whitespace-pre-line">
+                  {currentStep.text}
+                </p>
+
+                {currentStep.subtext && (
+                  <p className="text-xs font-medium uppercase tracking-wider text-soft-black/55 mb-6">
+                    {currentStep.subtext}
+                  </p>
+                )}
+
+                <button
+                  onClick={handleNext}
+                  className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-deep-sage text-warm-linen font-sans font-medium text-base px-7 py-3.5 rounded-full hover:bg-deep-sage/90 active:scale-[0.98] transition-all"
+                >
+                  {currentStep.cta}
+                  <ArrowRight size={18} className="group-hover:translate-x-0.5 transition-transform" />
+                </button>
+              </div>
             </div>
-
-            <p className="font-sans text-lg sm:text-xl text-soft-black leading-[1.55] mb-8 whitespace-pre-line">
-              {currentStep.text}
-            </p>
-
-            {currentStep.subtext && (
-              <p className="text-xs font-medium uppercase tracking-wider text-soft-black/55 mb-8">
-                {currentStep.subtext}
-              </p>
-            )}
-
-            <button
-              onClick={handleNext}
-              className="group w-full inline-flex items-center justify-center gap-2 bg-deep-sage text-warm-linen font-sans font-medium text-base px-6 py-4 rounded-full hover:bg-deep-sage/90 active:scale-[0.98] transition-all"
-            >
-              {currentStep.cta}
-              <ArrowRight size={18} className="group-hover:translate-x-0.5 transition-transform" />
-            </button>
           </motion.div>
         </main>
       </Shell>
@@ -308,6 +321,56 @@ export function Quiz() {
 
   return null;
 }
+
+// ── Value-drop illustrations ─────────────────────────────────────────
+
+const valueDropIllustrations = {
+  brain: (
+    <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full" strokeLinecap="round" strokeLinejoin="round">
+      {/* brain outline */}
+      <path d="M40 50 C 30 50, 28 38, 38 32 C 40 22, 56 20, 60 30 C 64 20, 80 22, 82 32 C 92 38, 90 50, 80 50 C 90 56, 88 70, 78 72 C 78 84, 64 86, 60 78 C 56 86, 42 84, 42 72 C 32 70, 30 56, 40 50 Z" />
+      <path d="M60 30 L 60 78" strokeDasharray="2 3" />
+      <path d="M48 44 Q 54 48, 48 56" />
+      <path d="M72 44 Q 66 48, 72 56" />
+      <path d="M44 64 Q 50 66, 50 72" />
+      <path d="M76 64 Q 70 66, 70 72" />
+      {/* cortisol arrows */}
+      <path d="M22 30 L 32 36" strokeWidth="1.2" />
+      <path d="M30 34 L 32 36 L 30 38" strokeWidth="1.2" />
+      <path d="M98 30 L 88 36" strokeWidth="1.2" />
+      <path d="M90 34 L 88 36 L 90 38" strokeWidth="1.2" />
+    </svg>
+  ),
+  chart: (
+    <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full" strokeLinecap="round" strokeLinejoin="round">
+      {/* axes */}
+      <path d="M22 22 L 22 96 L 100 96" />
+      {/* bars */}
+      <rect x="32" y="74" width="10" height="22" fill="currentColor" opacity="0.15" />
+      <rect x="32" y="74" width="10" height="22" />
+      <rect x="50" y="60" width="10" height="36" fill="currentColor" opacity="0.25" />
+      <rect x="50" y="60" width="10" height="36" />
+      <rect x="68" y="42" width="10" height="54" fill="currentColor" opacity="0.4" />
+      <rect x="68" y="42" width="10" height="54" />
+      <rect x="86" y="30" width="10" height="66" fill="currentColor" opacity="0.55" />
+      <rect x="86" y="30" width="10" height="66" />
+      {/* trend line */}
+      <path d="M37 70 L 55 56 L 73 38 L 91 26" strokeWidth="1.2" strokeDasharray="3 2" />
+      <circle cx="91" cy="26" r="2.5" fill="currentColor" />
+    </svg>
+  ),
+  spiral: (
+    <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full" strokeLinecap="round" strokeLinejoin="round">
+      {/* spiral / loop */}
+      <path d="M60 60 m -32 0 a 32 32 0 1 0 64 0 a 32 32 0 1 0 -64 0" />
+      <path d="M60 60 m -22 0 a 22 22 0 1 0 44 0 a 22 22 0 1 0 -44 0" opacity="0.6" />
+      <path d="M60 60 m -12 0 a 12 12 0 1 0 24 0 a 12 12 0 1 0 -24 0" opacity="0.4" />
+      <circle cx="60" cy="60" r="3" fill="currentColor" />
+      {/* arrow on outer ring */}
+      <path d="M88 52 L 92 60 L 84 60" strokeWidth="1.4" />
+    </svg>
+  ),
+};
 
 // ── Shell & progress ─────────────────────────────────────────────────
 
