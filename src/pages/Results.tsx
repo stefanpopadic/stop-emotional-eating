@@ -333,14 +333,9 @@ export function Results() {
 
         {/* Footer */}
         <footer className="bg-soft-black text-warm-linen/60 py-10 px-4 sm:px-6 font-sans text-xs sm:text-[13px] pb-24 lg:pb-10">
-          <div className="max-w-3xl mx-auto text-center space-y-3">
+          <div className="max-w-3xl mx-auto text-center">
             <p>
-              Need support? <strong className="text-warm-linen/80">NEDA Helpline:</strong> 1-800-931-2237
-              {' · '}
-              <strong className="text-warm-linen/80">988 Crisis Lifeline:</strong> Call or text 988
-            </p>
-            <p>
-              Educational information only. Not medical or mental health care.{' '}
+              &copy; {new Date().getFullYear()} Stop Emotional Eating ·{' '}
               <Link to="/privacy" className="underline hover:text-warm-linen">Privacy</Link>{' · '}
               <Link to="/terms" className="underline hover:text-warm-linen">Terms</Link>
             </p>
