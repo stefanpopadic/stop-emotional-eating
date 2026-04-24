@@ -635,23 +635,33 @@
 
     <!-- PURCHASE WALL OVERLAY (shown when user tries to access ch2+) -->
     <div id="purchase-wall" style="display:none;">
-        <div class="login-card">
-            <h1 class="login-title">Unlock the Full Guide</h1>
+        <div class="login-card" style="max-width: 540px;">
+            <h1 class="login-title">Lose the weight by breaking the cycle.</h1>
+            <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14pt; color: var(--soft-black); margin: 0.5rem 0 2rem 0; line-height: 1.5;">No more willpower. No more 6 AM workouts. The reason you can't lose the weight isn't your body — it's the loop your brain runs every time stress, boredom, or restriction hits.</p>
 
-            <p style="margin-bottom: 2rem; font-size: 12pt; color: var(--soft-black); line-height: 1.6;">10 chapters covering the emotional eating loop, your 6 drivers, what cravings actually mean, the choice point toolkit, and a 7-day practice to rewire the pattern.</p>
-
-            <div style="margin-bottom: 2.5rem;">
-                <input type="password" id="password-input" class="password-input" placeholder="Enter your access code" />
-                <button id="login-submit" class="login-btn">Unlock full guide</button>
-                <div id="login-error">That code did not work. Check your purchase email and try again.</div>
+            <div style="text-align: left; background: var(--oat); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                <p style="font-size: 10pt; color: var(--terracotta); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; margin: 0 0 0.75rem 0;">What's inside (single $27 ebook)</p>
+                <ul style="margin: 0; padding-left: 1.2rem; font-size: 11.5pt; color: var(--soft-black); line-height: 1.7;">
+                    <li>The 4 weight-loss blockers, fully mapped</li>
+                    <li>The 21-day daily cycle-breaker schedule</li>
+                    <li>The 90-second pattern interrupt (works on any craving)</li>
+                    <li>Trigger Cheat Sheet — printable, fridge-ready</li>
+                    <li>The post-binge recovery protocol (so one slip doesn't blow the week)</li>
+                </ul>
             </div>
 
-            <div style="padding-top: 2rem; border-top: 1px solid rgba(196, 168, 130, 0.3);">
-                <p style="font-size: 10.5pt; color: var(--muted-teal); margin-top: 0; margin-bottom: 1rem;">Don't have an access code?</p>
+            <div style="margin-bottom: 1.5rem;">
                 <a href="https://mindfullstef.gumroad.com/l/stop-emotional-eating" class="buy-btn">
-                    Get the 21-Day Plan <span class="price-current">$27</span> <span class="price-old">($42)</span>
+                    Get the ebook <span class="price-current">· $27</span>
                 </a>
-                <p class="buy-guarantee">One-time payment. Instant access. 30-day money-back guarantee.</p>
+                <p class="buy-guarantee" style="font-size: 10pt;">30-day cycle break promise: try the 90-second method on one craving. If you don't feel the loop break, email me — full refund, keep the ebook.</p>
+            </div>
+
+            <div style="padding-top: 1.5rem; border-top: 1px solid rgba(196, 168, 130, 0.3);">
+                <p style="font-size: 10pt; color: var(--muted-teal); margin: 0 0 0.75rem 0;">Already bought? Enter your access code:</p>
+                <input type="password" id="password-input" class="password-input" placeholder="Access code" />
+                <button id="login-submit" class="login-btn">Unlock full guide</button>
+                <div id="login-error">That code did not work. Check your purchase email and try again.</div>
             </div>
         </div>
     </div>
@@ -836,13 +846,13 @@
 <div id="ch1-locked-content" class="locked-blur-wrapper">
 <!-- Purchase overlay — before blurred content so sticky works from top -->
 <div class="locked-blur-overlay" id="ch1-blur-overlay">
-    <div style="padding: 3rem 2rem; text-align: center; max-width: 480px;">
-        <p style="font-family: 'Cormorant Garamond', serif; font-size: 28pt; color: var(--deep-sage); margin: 0 0 0.75rem 0; line-height: 1.2;">This content is locked.</p>
-        <p style="font-size: 12pt; color: var(--soft-black); max-width: 420px; margin: 0 auto 2rem auto; line-height: 1.7;">The full guide has 10 chapters, practical tools, cheat sheets, and a 7-day rewiring practice. Get instant access.</p>
+    <div style="padding: 3rem 2rem; text-align: center; max-width: 520px;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-size: 28pt; color: var(--deep-sage); margin: 0 0 0.75rem 0; line-height: 1.2;">Lose the weight by breaking the cycle.</p>
+        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14pt; color: var(--soft-black); max-width: 460px; margin: 0 auto 2rem auto; line-height: 1.6;">Every diet works for 2 weeks. Then your hormones override your willpower and the weight comes back — with interest. The full plan breaks that loop in 21 days.</p>
         <a href="https://mindfullstef.gumroad.com/l/stop-emotional-eating" class="buy-btn" style="display: inline-flex; max-width: 360px; justify-content: center;">
-            Get the 21-Day Plan <span class="price-current">$27</span> <span class="price-old">($42)</span>
+            Get the ebook <span class="price-current">· $27</span>
         </a>
-        <p style="font-size: 9.5pt; color: var(--muted-teal); margin-top: 1rem; margin-bottom: 2rem;">One-time payment. Instant access. 30-day money-back guarantee.</p>
+        <p style="font-size: 9.5pt; color: var(--muted-teal); margin-top: 1rem; margin-bottom: 2rem;">30-day cycle break promise. If the 90-second method doesn't break the loop, full refund — keep the ebook.</p>
         <button onclick="app.showPurchaseWall(1)" style="background: none; border: none; font-family: 'Karla', sans-serif; font-size: 11pt; color: var(--deep-sage); text-decoration: underline; cursor: pointer; opacity: 0.8;">I already bought this — enter my access code</button>
     </div>
 </div>

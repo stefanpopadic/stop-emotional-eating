@@ -31,13 +31,13 @@ type ResultData = {
 };
 
 export const resultsData: Record<
-  'stress-soother' | 'comfort-seeker' | 'autopilot-eater' | 'perfectionist-restrictor',
+  'stress-regainer' | 'emotional-refueler' | 'unconscious-saboteur' | 'diet-rebounder',
   ResultData
 > = {
-  'stress-soother': {
-    headline: "{name}, you're running on stress.",
+  'stress-regainer': {
+    headline: "{name}, stress is putting the weight back on.",
     subhead:
-      "Your nervous system is stuck in overdrive. When cortisol stays elevated, your brain stops making thoughtful decisions and starts grabbing the fastest relief it can find. That's not a character flaw. That's biochemistry.",
+      "You lose 5 lbs, then a hard week hits and 8 lbs come back. This isn't bad luck. Chronic cortisol drives both the binge AND the fat storage. Until the stress loop breaks, the scale will keep climbing — no matter what diet you try.",
     science: {
       title: "What's happening in your brain",
       body: "When stress is chronic, your hypothalamic-pituitary-adrenal (HPA) axis stays activated. Cortisol floods your system. This does two things at once: it dials down your prefrontal cortex (the part that plans and decides) and dials up your limbic system (the part that wants reward now). Your brain literally becomes worse at saying no and better at finding fast comfort. Food is the most accessible reward most people have.",
@@ -102,10 +102,10 @@ export const resultsData: Record<
     },
   },
 
-  'comfort-seeker': {
-    headline: "{name}, you're emotionally running on empty.",
+  'emotional-refueler': {
+    headline: "{name}, food is the only diet you can't quit.",
     subhead:
-      "Your brain isn't looking for food. It's looking for connection, warmth, and safety. When those aren't available, food activates the same opioid pathways that human touch does. You're not weak. Your brain is improvising.",
+      "Your brain isn't looking for calories. It's looking for warmth, comfort, safety. When those aren't there, food activates the same opioid pathways as a hug — and the weight piles on. You can't out-diet a brain that's using food as medicine. You have to give it what it's actually asking for.",
     science: {
       title: "What's happening in your brain",
       body: "Loneliness, sadness, and emotional depletion reduce activity in your brain's social bonding circuits --the same pathways that use oxytocin and endogenous opioids. When these drop, your brain goes looking for the next best source of warmth and reward. Food --especially sweet, warm, and rich food --activates the mu-opioid receptors in your brain. These are literally the same receptors activated by physical comfort and human connection.",
@@ -170,10 +170,10 @@ export const resultsData: Record<
     },
   },
 
-  'autopilot-eater': {
-    headline: "{name}, your brain automated this.",
+  'unconscious-saboteur': {
+    headline: "{name}, the weight creeps back without you noticing.",
     subhead:
-      "You're not eating because you're emotional or stressed. You're eating because your basal ganglia turned this into a habit loop. The cue fires, the routine runs, and you're three bites in before your conscious brain even shows up. This isn't a willpower problem. It's a neuroscience problem.",
+      "You're not eating because you're stressed or sad. You're eating because your basal ganglia turned this into an automatic habit. The cue fires, the routine runs, three bites in before your conscious brain shows up — and the scale climbs a quarter pound at a time until you realize you've gained 10. This isn't willpower. It's neuroscience. And it's fixable.",
     science: {
       title: "What's happening in your brain",
       body: "Your basal ganglia --the brain region responsible for habit formation --has encoded eating as an automatic response to specific cues (time of day, location, activity, emotional state). Once a behavior becomes a habit, it moves from your prefrontal cortex (conscious decision-making) to your basal ganglia (automatic execution). This is the same mechanism that lets you drive home without thinking about the route. Efficient, but hard to override because the conscious brain isn't involved anymore.",
@@ -238,10 +238,10 @@ export const resultsData: Record<
     },
   },
 
-  'perfectionist-restrictor': {
-    headline: "{name}, your body is fighting back.",
+  'diet-rebounder': {
+    headline: "{name}, every diet works for 2 weeks. Then collapses.",
     subhead:
-      "You've been restricting --calories, food groups, meals, or just white-knuckling your way through the day. Your brain interprets this as famine. It responded by cranking up every hunger and craving signal it has. The binge isn't a failure of discipline. It's your body's survival response to perceived starvation.",
+      "You restrict, you lose 5 lbs, then your body declares a famine and overrides every conscious choice you make. The rebound binge isn't a failure of discipline — it's your hypothalamus protecting you from what it thinks is starvation. The harder you diet, the bigger the rebound, the more weight you regain. The diet itself is the trap.",
     science: {
       title: "What's happening in your brain",
       body: "When you restrict food intake, your hypothalamus detects an energy deficit and activates a cascade of hormonal responses designed to make you eat. This is the same system that kept your ancestors alive during actual famines. It doesn't know you're dieting --it thinks you're starving. And it will override your conscious intentions every single time, because survival outranks willpower in every brain that has ever existed.",

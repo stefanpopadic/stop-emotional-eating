@@ -21,34 +21,34 @@ export const quizFlow = [
   {
     id: 'trigger',
     type: 'question',
-    question: "When you're on a diet, when do the cravings usually hit?",
+    question: "When your last diet stopped working, what broke first?",
     options: [
-      { id: 'A', text: 'After a stressful day. I was disciplined all day, then something breaks', value: 'stress' },
-      { id: 'B', text: "When I'm bored or have nothing to do. The diet feels impossible to follow", value: 'boredom' },
-      { id: 'C', text: 'When I feel low, lonely, or emotionally drained. Food is the only comfort', value: 'emotional' },
-      { id: 'D', text: 'At night. I hold it together all day, then lose it when I finally sit down', value: 'nighttime' },
+      { id: 'A', text: 'Stress hit and I caved. The day was too much and food was the only relief', value: 'stress' },
+      { id: 'B', text: 'Boredom became the entertainment. The diet felt impossible to stick with', value: 'boredom' },
+      { id: 'C', text: 'An emotional crash. I felt low or lonely, and food was the only comfort', value: 'emotional' },
+      { id: 'D', text: 'Nighttime. I held it together all day, then lost it after dinner', value: 'nighttime' },
     ],
   },
   {
     id: 'food',
     type: 'question',
-    question: 'When you break your diet, what do you usually reach for?',
+    question: 'When the diet broke, what did you reach for?',
     options: [
       { id: 'A', text: 'Something salty or crunchy — chips, crackers, nuts', value: 'salty' },
       { id: 'B', text: 'Something sweet — chocolate, ice cream, cookies', value: 'sweet' },
       { id: 'C', text: 'Carbs — bread, pasta, cereal, toast', value: 'carbs' },
-      { id: 'D', text: "Whatever is closest. I just need something right now", value: 'impulsive' },
+      { id: 'D', text: "Whatever was closest. I just needed something right now", value: 'impulsive' },
     ],
   },
   {
     id: 'aftermath',
     type: 'question',
-    question: 'After you break the diet, how do you usually feel?',
+    question: 'What happened after the binge — and the next morning on the scale?',
     options: [
-      { id: 'A', text: 'Guilty. I tell myself I ruined everything and need to start over', value: 'guilt' },
-      { id: 'B', text: "Empty. The food didn't actually fix what I was feeling", value: 'numb' },
-      { id: 'C', text: 'Better for a moment, then right back to wanting more', value: 'cycle' },
-      { id: 'D', text: "I barely notice. It happens so automatically I don't even think about it", value: 'autopilot' },
+      { id: 'A', text: 'Guilt. I told myself I ruined the week and had to start over Monday', value: 'guilt' },
+      { id: 'B', text: "Empty. The food didn't fix anything and the weight came right back", value: 'numb' },
+      { id: 'C', text: 'Better for a moment, then more cravings, more weight, more shame', value: 'cycle' },
+      { id: 'D', text: "I barely noticed until I stepped on the scale and the number was up again", value: 'autopilot' },
     ],
   },
   {
@@ -56,40 +56,40 @@ export const quizFlow = [
     type: 'value-drop',
     icon: 'brain',
     text:
-      "Here's what your diet plan never told you:\n\nWhen you restrict food, your cortisol rises. When cortisol rises, your brain demands quick-reward food — sugar, salt, carbs. The harder you diet, the louder the cravings get.\n\nThis is not a willpower problem. Your hormones are literally working against your diet. That's why discipline alone never sticks.",
+      "Here's why every diet you've tried failed:\n\nWhen you restrict food, your cortisol spikes and your leptin drops. Your brain reads this as starvation and demands sugar, salt and carbs to refuel. The harder you diet, the louder the cravings get — and the more weight you regain when you finally break.\n\nThis is not a willpower problem. Your hormones are literally working against the diet. That is why the weight always comes back.",
     cta: 'Keep going',
   },
   {
     id: 'awareness',
     type: 'question',
-    question: 'When a craving hits during your diet, how much warning do you get?',
+    question: 'When a craving hits, do you catch it before it costs you the week of progress?',
     options: [
       { id: 'A', text: "I feel it building. I know it's coming but I can't stop it", value: 'high' },
       { id: 'B', text: 'Sometimes I catch it, sometimes I only realize after I already ate', value: 'moderate' },
-      { id: 'C', text: "I don't notice until it's over. It just happens", value: 'low' },
+      { id: 'C', text: "I don't notice until it's over. The week is already blown", value: 'low' },
       { id: 'D', text: "I never thought about it this way. I just assumed I was weak", value: 'new' },
     ],
   },
   {
     id: 'duration',
     type: 'question',
-    question: 'How long have you been struggling to stick with diets?',
+    question: 'How long have you been losing and regaining the same weight?',
     options: [
       { id: 'A', text: "Less than a year. It's a recent frustration", value: 'recent' },
-      { id: 'B', text: 'A few years. I lose weight, gain it back, repeat', value: 'recurring' },
-      { id: 'C', text: "As long as I can remember. I've never been able to stay consistent", value: 'lifelong' },
+      { id: 'B', text: 'A few years. I lose 5-15 lbs, then gain it all back, repeat', value: 'recurring' },
+      { id: 'C', text: "As long as I can remember. The weight always wins in the end", value: 'lifelong' },
       { id: 'D', text: 'It got much worse after a specific life event', value: 'event' },
     ],
   },
   {
     id: 'past',
     type: 'question',
-    question: 'What have you already tried to make your diet work?',
+    question: 'What weight-loss approaches have you already tried?',
     options: [
-      { id: 'A', text: 'Multiple diets — keto, calorie counting, intermittent fasting. They all work, then stop', value: 'diets' },
+      { id: 'A', text: 'Multiple diets — keto, calorie counting, intermittent fasting. They all worked, then stopped', value: 'diets' },
       { id: 'B', text: 'Pure willpower. I just try harder each time', value: 'willpower' },
-      { id: 'C', text: "Therapy or self-help. I understand the problem but I still can't stop", value: 'therapy' },
-      { id: 'D', text: "Nothing structured. I just keep starting over every Monday", value: 'nothing' },
+      { id: 'C', text: "Therapy or self-help. I understand the problem but the weight is still there", value: 'therapy' },
+      { id: 'D', text: "Nothing structured. I keep starting over every Monday", value: 'nothing' },
     ],
   },
   {
@@ -97,17 +97,17 @@ export const quizFlow = [
     type: 'value-drop',
     icon: 'chart',
     text:
-      "Here's why every diet eventually fails:\n\nPeople who can identify what they're actually feeling before the craving — stressed, lonely, bored, exhausted — are far more likely to stay on track.\n\nNot because they have more discipline. Because they catch the emotional trigger before it hijacks the diet.\n\nThat's exactly what this quiz is mapping for you.",
+      "Here's what separates women who lose the weight from women who don't:\n\nIt's not willpower. It's not metabolism. It's not the diet plan.\n\nIt's the ability to identify the emotional trigger before the binge — stress, loneliness, boredom, exhaustion, restriction-rebound. Women who catch the trigger first are 3-4× more likely to keep the weight off long-term.\n\nThat is exactly what this quiz is mapping for you.",
     subtext: 'Based on peer-reviewed behavioral psychology research',
     cta: 'Continue',
   },
   {
     id: 'desire',
     type: 'question',
-    question: 'If you could finally stick with your diet, what would matter most?',
+    question: 'If you could finally lose the weight and keep it off, what would matter most?',
     options: [
       { id: 'A', text: 'Feeling in control around food without constantly fighting myself', value: 'control' },
-      { id: 'B', text: 'Ending the guilt cycle of breaking the diet and starting over', value: 'peace' },
+      { id: 'B', text: 'Ending the binge-guilt-restart cycle that ruins every diet', value: 'peace' },
       { id: 'C', text: 'Understanding why I keep sabotaging myself despite knowing better', value: 'understanding' },
       { id: 'D', text: 'Actually losing the weight and keeping it off this time', value: 'weight' },
     ],
@@ -118,8 +118,8 @@ export const quizFlow = [
     question: 'Where are you right now with all of this?',
     options: [
       { id: 'A', text: "Ready to try something different. Dieting alone clearly isn't enough", value: 'ready' },
-      { id: 'B', text: "Skeptical. I've been let down by too many approaches", value: 'skeptical' },
-      { id: 'C', text: "Exhausted. I'm tired of the cycle but don't know what else to do", value: 'overwhelmed' },
+      { id: 'B', text: "Skeptical. I've been let down by too many programs", value: 'skeptical' },
+      { id: 'C', text: "Exhausted. I'm done with the cycle but don't know what else to do", value: 'overwhelmed' },
       { id: 'D', text: 'Curious. I want to understand what is actually going on first', value: 'proxy' },
     ],
   },
@@ -128,51 +128,51 @@ export const quizFlow = [
     type: 'value-drop',
     icon: 'spiral',
     text:
-      "One last thing before your result:\n\nEvery diet you've tried addressed the food. None of them addressed why you eat.\n\nThe craving that breaks your diet is not about hunger. It's your brain using food to solve a problem — stress, loneliness, exhaustion, or the rebound from restricting all day.\n\nYour result reveals which emotional pattern is sabotaging your diet and what to do about it.",
+      "One last thing before your result:\n\nEvery diet treats the food. None of them treat the cycle.\n\nThe binge that breaks your diet is not about hunger. It is your brain using food to solve a problem — stress, loneliness, exhaustion, or the rebound from restricting all day. Until that loop breaks, the weight will keep coming back no matter what you eat.\n\nYour result reveals which loop is keeping the weight on, and the first move to break it.",
     cta: 'See my result',
   },
   {
     id: 'email',
     type: 'email',
-    headline: 'Your result is ready.',
+    headline: 'Your weight-loss blocker is identified.',
     subhead:
-      "Enter your email and I'll show you your emotional eating type, what is driving it, and the best first step to try this week.",
+      "Enter your email and I'll show you which emotional eating loop is keeping the weight on, and the first step to break it this week.",
     cta: 'Show me my result',
-    belowCta: "You'll also get your result by email, plus a few practical tips you can actually use. Unsubscribe anytime.",
-    privacy: 'No spam. No food guilt. Just useful help.',
+    belowCta: "Your full 21-day cycle-breaker plan + result by email. No spam, unsubscribe anytime.",
+    privacy: 'No spam. No food guilt. Just the plan that actually works.',
   },
 ];
 
 export function calculateQuizResult(answers: Record<string, string>) {
   let scores = {
-    'stress-soother': 0,
-    'comfort-seeker': 0,
-    'autopilot-eater': 0,
-    'perfectionist-restrictor': 0,
+    'stress-regainer': 0,
+    'emotional-refueler': 0,
+    'unconscious-saboteur': 0,
+    'diet-rebounder': 0,
   };
 
-  if (answers.trigger === 'stress') scores['stress-soother'] += 2;
-  if (answers.food === 'sweet' || answers.food === 'carbs') scores['stress-soother'] += 1;
-  if (answers.aftermath === 'cycle') scores['stress-soother'] += 1;
-  if (answers.past === 'diets') scores['stress-soother'] += 1;
+  if (answers.trigger === 'stress') scores['stress-regainer'] += 2;
+  if (answers.food === 'sweet' || answers.food === 'carbs') scores['stress-regainer'] += 1;
+  if (answers.aftermath === 'cycle') scores['stress-regainer'] += 1;
+  if (answers.past === 'diets') scores['stress-regainer'] += 1;
 
-  if (answers.trigger === 'emotional') scores['comfort-seeker'] += 2;
-  if (answers.aftermath === 'numb' || answers.aftermath === 'guilt') scores['comfort-seeker'] += 1;
-  if (answers.duration === 'lifelong' || answers.duration === 'event') scores['comfort-seeker'] += 1;
-  if (answers.desire === 'understanding') scores['comfort-seeker'] += 1;
+  if (answers.trigger === 'emotional') scores['emotional-refueler'] += 2;
+  if (answers.aftermath === 'numb' || answers.aftermath === 'guilt') scores['emotional-refueler'] += 1;
+  if (answers.duration === 'lifelong' || answers.duration === 'event') scores['emotional-refueler'] += 1;
+  if (answers.desire === 'understanding') scores['emotional-refueler'] += 1;
 
-  if (answers.aftermath === 'autopilot' || answers.awareness === 'low') scores['autopilot-eater'] += 2;
-  if (answers.trigger === 'nighttime' || answers.trigger === 'boredom') scores['autopilot-eater'] += 1;
-  if (answers.past === 'nothing') scores['autopilot-eater'] += 1;
-  if (answers.awareness === 'new') scores['autopilot-eater'] += 1;
+  if (answers.aftermath === 'autopilot' || answers.awareness === 'low') scores['unconscious-saboteur'] += 2;
+  if (answers.trigger === 'nighttime' || answers.trigger === 'boredom') scores['unconscious-saboteur'] += 1;
+  if (answers.past === 'nothing') scores['unconscious-saboteur'] += 1;
+  if (answers.awareness === 'new') scores['unconscious-saboteur'] += 1;
 
-  if (answers.past === 'diets' || answers.past === 'willpower') scores['perfectionist-restrictor'] += 2;
-  if (answers.aftermath === 'guilt') scores['perfectionist-restrictor'] += 1;
-  if (answers.desire === 'control') scores['perfectionist-restrictor'] += 1;
-  if (answers.trigger === 'stress') scores['perfectionist-restrictor'] += 1;
+  if (answers.past === 'diets' || answers.past === 'willpower') scores['diet-rebounder'] += 2;
+  if (answers.aftermath === 'guilt') scores['diet-rebounder'] += 1;
+  if (answers.desire === 'control') scores['diet-rebounder'] += 1;
+  if (answers.trigger === 'stress') scores['diet-rebounder'] += 1;
 
   let maxScore = -1;
-  let resultType = 'stress-soother';
+  let resultType = 'stress-regainer';
   let ties: string[] = [];
 
   for (const [type, score] of Object.entries(scores)) {
@@ -186,10 +186,10 @@ export function calculateQuizResult(answers: Record<string, string>) {
   }
 
   if (ties.length > 1) {
-    if (answers.desire === 'control' && ties.includes('perfectionist-restrictor')) return 'perfectionist-restrictor';
-    if (answers.desire === 'understanding' && ties.includes('comfort-seeker')) return 'comfort-seeker';
-    if (answers.desire === 'peace' && ties.includes('stress-soother')) return 'stress-soother';
-    if (answers.desire === 'weight' && ties.includes('autopilot-eater')) return 'autopilot-eater';
+    if (answers.desire === 'control' && ties.includes('diet-rebounder')) return 'diet-rebounder';
+    if (answers.desire === 'understanding' && ties.includes('emotional-refueler')) return 'emotional-refueler';
+    if (answers.desire === 'peace' && ties.includes('stress-regainer')) return 'stress-regainer';
+    if (answers.desire === 'weight' && ties.includes('unconscious-saboteur')) return 'unconscious-saboteur';
   }
 
   return resultType;

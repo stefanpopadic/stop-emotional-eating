@@ -5,12 +5,12 @@ import { resultsData } from '../lib/resultsData';
 import { Logo } from '../components/Logo';
 import { ArrowRight } from 'lucide-react';
 
-type ArchetypeKey = 'stress-soother' | 'comfort-seeker' | 'autopilot-eater' | 'perfectionist-restrictor';
+type ArchetypeKey = 'stress-regainer' | 'emotional-refueler' | 'unconscious-saboteur' | 'diet-rebounder';
 
 const archetypeConfig: Record<ArchetypeKey, { label: string; display: string; accent: string; accentHex: string; mark: ReactNode }> = {
-  'stress-soother': {
-    label: 'Archetype I',
-    display: 'The Stress Soother',
+  'stress-regainer': {
+    label: 'Blocker I',
+    display: 'The Stress Regainer',
     accent: 'text-muted-teal',
     accentHex: '#8AABA7',
     mark: (
@@ -22,9 +22,9 @@ const archetypeConfig: Record<ArchetypeKey, { label: string; display: string; ac
       </svg>
     ),
   },
-  'comfort-seeker': {
-    label: 'Archetype II',
-    display: 'The Comfort Seeker',
+  'emotional-refueler': {
+    label: 'Blocker II',
+    display: 'The Emotional Refueler',
     accent: 'text-terracotta',
     accentHex: '#D4856A',
     mark: (
@@ -35,9 +35,9 @@ const archetypeConfig: Record<ArchetypeKey, { label: string; display: string; ac
       </svg>
     ),
   },
-  'autopilot-eater': {
-    label: 'Archetype III',
-    display: 'The Autopilot Eater',
+  'unconscious-saboteur': {
+    label: 'Blocker III',
+    display: 'The Unconscious Saboteur',
     accent: 'text-sand',
     accentHex: '#C4A882',
     mark: (
@@ -48,9 +48,9 @@ const archetypeConfig: Record<ArchetypeKey, { label: string; display: string; ac
       </svg>
     ),
   },
-  'perfectionist-restrictor': {
-    label: 'Archetype IV',
-    display: 'The Perfectionist',
+  'diet-rebounder': {
+    label: 'Blocker IV',
+    display: 'The Diet Rebounder',
     accent: 'text-dusty-blush',
     accentHex: '#D6C5B0',
     mark: (
@@ -115,8 +115,8 @@ export function Results() {
   const { type } = useParams<{ type: string }>();
   const [searchParams] = useSearchParams();
 
-  const validTypes: ArchetypeKey[] = ['stress-soother', 'comfort-seeker', 'autopilot-eater', 'perfectionist-restrictor'];
-  const resultType: ArchetypeKey = type && validTypes.includes(type as ArchetypeKey) ? (type as ArchetypeKey) : 'stress-soother';
+  const validTypes: ArchetypeKey[] = ['stress-regainer', 'emotional-refueler', 'unconscious-saboteur', 'diet-rebounder'];
+  const resultType: ArchetypeKey = type && validTypes.includes(type as ArchetypeKey) ? (type as ArchetypeKey) : 'stress-regainer';
   const data = resultsData[resultType];
   const cfg = archetypeConfig[resultType];
 
@@ -160,7 +160,7 @@ export function Results() {
               transition={{ duration: 0.6 }}
             >
               <div className="flex items-center gap-3 mb-8">
-                <span className={`eyebrow ${cfg.accent}`}>{cfg.label} · Your Result</span>
+                <span className={`eyebrow ${cfg.accent}`}>{cfg.label} · Your Weight-Loss Blocker</span>
               </div>
               <h1 className="font-serif font-medium text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-deep-sage leading-[0.95] tracking-tight mb-8">
                 {cfg.display}
@@ -309,20 +309,20 @@ export function Results() {
         <section className="bg-deep-sage text-warm-linen px-4 sm:px-6 md:px-12 py-20 md:py-28">
           <div className="max-w-5xl mx-auto grid md:grid-cols-[1.2fr_1fr] gap-12 md:gap-20 items-center">
             <FadeIn>
-              <span className="eyebrow text-warm-linen/70 block mb-6">Go deeper</span>
+              <span className="eyebrow text-warm-linen/70 block mb-6">This was the surface</span>
               <h2 className="font-serif font-medium text-4xl sm:text-5xl md:text-6xl leading-[1.02] tracking-tight mb-8">
-                This was the surface.<br />The guide goes all the way down.
+                The full 21-day plan to break this loop and lose the weight.
               </h2>
               <p className="font-serif italic text-xl md:text-2xl text-warm-linen/80 leading-relaxed mb-10 max-w-xl">
-                Your result mapped the pattern. The full guide gives you the complete framework.
+                Same loop you just identified — broken in 21 days. Written for women who are done dieting.
               </p>
 
               <div className="border-t border-warm-linen/20">
                 {[
-                  { n: '01', title: 'The emotional eating loop', sub: 'Why willpower fails by design' },
-                  { n: '02', title: 'Your six internal drivers', sub: 'The hormones behind every craving' },
-                  { n: '03', title: 'The choice-point toolkit', sub: 'Catch the loop before it closes' },
-                  { n: '04', title: 'A seven-day practice', sub: 'Rewire the default response' },
+                  { n: '01', title: 'The 4 weight-loss blockers, fully mapped', sub: 'Why every diet you tried failed' },
+                  { n: '02', title: 'The 21-day cycle-breaker schedule', sub: 'Daily replacements that retrain the loop' },
+                  { n: '03', title: 'The 90-second pattern interrupt', sub: 'Works on any craving, in real time' },
+                  { n: '04', title: 'Post-binge recovery protocol', sub: "So one slip doesn't blow the week" },
                 ].map((c) => (
                   <div key={c.n} className="grid grid-cols-[48px_1fr] gap-4 py-4 border-b border-warm-linen/20">
                     <span className="numeral text-warm-linen/60 text-lg">{c.n}</span>
@@ -341,7 +341,7 @@ export function Results() {
                 <div className="aspect-[3/4] bg-warm-linen text-deep-sage shadow-2xl flex flex-col justify-between p-6 md:p-8">
                   <div>
                     <span className="eyebrow" style={{ color: cfg.accentHex }}>
-                      The complete guide
+                      The 21-day cycle breaker
                     </span>
                   </div>
                   <div>
@@ -352,7 +352,7 @@ export function Results() {
                       Stop<br />Emotional<br />Eating
                     </h3>
                     <span className="rule-accent mt-4 mb-3" style={{ color: cfg.accentHex }} />
-                    <p className="font-serif italic text-sm text-soft-black/70">A 21-day plan</p>
+                    <p className="font-serif italic text-sm text-soft-black/70">Lose the weight by breaking the cycle</p>
                   </div>
                 </div>
               </div>
@@ -364,11 +364,11 @@ export function Results() {
                   href="https://mindfullstef.gumroad.com/l/stop-emotional-eating"
                   className="group inline-flex items-center justify-between gap-4 w-full bg-terracotta text-warm-linen font-sans text-base px-6 py-4 rounded-md hover:bg-terracotta/90 transition-colors"
                 >
-                  <span className="font-medium">Get the 21-Day Plan</span>
+                  <span className="font-medium">Get the ebook · $27</span>
                   <ArrowRight size={18} className="group-hover:translate-x-0.5 transition-transform" />
                 </a>
                 <p className="font-sans text-xs text-warm-linen/50 mt-4 leading-relaxed">
-                  21 days. 10 chapters. Science-backed.<br />30-day money-back guarantee.
+                  21-day plan. Single $27 payment.<br />30-day money-back guarantee.
                 </p>
               </div>
             </FadeIn>
