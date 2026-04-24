@@ -326,49 +326,47 @@ function Shell({
 }) {
   return (
     <div className="min-h-screen bg-warm-linen flex flex-col pb-24">
-      <header className="px-4 sm:px-6 pt-5 pb-2">
-        <div className="max-w-xl mx-auto flex items-center justify-between gap-3">
-          <div className="flex items-center gap-1">
-            <button
-              onClick={onBack}
-              disabled={!onBack}
-              aria-label="Back"
-              className={`w-9 h-9 -ml-2 rounded-full flex items-center justify-center transition-all ${
-                onBack
-                  ? 'text-soft-black/70 hover:bg-soft-black/5 hover:text-soft-black'
-                  : 'text-transparent pointer-events-none'
-              }`}
-            >
-              <ChevronLeft size={20} />
-            </button>
-
-            {onLogoClick ? (
-              <button
-                onClick={onLogoClick}
-                className="text-deep-sage hover:opacity-70 transition-opacity"
-                aria-label="Restart quiz"
-              >
-                <Logo height={28} />
-              </button>
-            ) : (
-              <Link
-                to="/"
-                className="text-deep-sage hover:opacity-70 transition-opacity"
-                aria-label="Home"
-              >
-                <Logo height={28} />
-              </Link>
-            )}
-          </div>
-
-          <span
-            className={`text-sm font-medium tabular-nums ${
-              stepLabel ? 'text-soft-black/70' : 'text-transparent'
+      <header className="px-5 sm:px-8 pt-5 pb-2 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-1">
+          <button
+            onClick={onBack}
+            disabled={!onBack}
+            aria-label="Back"
+            className={`w-9 h-9 -ml-2 rounded-full flex items-center justify-center transition-all ${
+              onBack
+                ? 'text-soft-black/70 hover:bg-soft-black/5 hover:text-soft-black'
+                : 'text-transparent pointer-events-none'
             }`}
           >
-            {stepLabel ?? '0'}
-          </span>
+            <ChevronLeft size={20} />
+          </button>
+
+          {onLogoClick ? (
+            <button
+              onClick={onLogoClick}
+              className="text-deep-sage hover:opacity-70 transition-opacity"
+              aria-label="Restart quiz"
+            >
+              <Logo height={28} />
+            </button>
+          ) : (
+            <Link
+              to="/"
+              className="text-deep-sage hover:opacity-70 transition-opacity"
+              aria-label="Home"
+            >
+              <Logo height={28} />
+            </Link>
+          )}
         </div>
+
+        <span
+          className={`text-sm font-medium tabular-nums ${
+            stepLabel ? 'text-soft-black/70' : 'text-transparent'
+          }`}
+        >
+          {stepLabel ?? '0'}
+        </span>
       </header>
 
       {children}
