@@ -667,35 +667,30 @@
 </head>
 <body>
 
-    <!-- PURCHASE WALL OVERLAY (shown when user tries to access ch2+) -->
+    <!-- ACCESS GATE OVERLAY -->
     <div id="purchase-wall" style="display:none;">
-        <div class="login-card" style="max-width: 540px;">
-            <h1 class="login-title">Lose the weight by breaking the cycle.</h1>
-            <p style="font-family: 'PP Object Sans', sans-serif; font-style: italic; font-size: 14pt; color: var(--soft-black); margin: 0.5rem 0 2rem 0; line-height: 1.5;">No more willpower. No more 6 AM workouts. The reason you can't lose the weight isn't your body — it's the loop your brain runs every time stress, boredom, or restriction hits.</p>
+        <div class="login-card" style="max-width: 460px; padding: 3rem 2.5rem; text-align: left;">
+            <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--deep-sage); margin-bottom: 3rem;">
+                <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 16 m -2 0 a 2 2 0 1 0 4 0 a 2 2 0 1 0 -4 0" />
+                    <path d="M16 16 m -6 0 a 6 6 0 1 0 12 0 a 6 6 0 1 0 -12 0" opacity="0.6" />
+                    <path d="M16 16 m -10 0 a 10 10 0 1 0 20 0 a 10 10 0 1 0 -20 0" opacity="0.3" />
+                </svg>
+                <span style="font-size: 9pt; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; line-height: 1.1;">Stop<br/>Emotional<br/>Eating</span>
+            </a>
 
-            <div style="text-align: left; background: var(--oat); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
-                <p style="font-size: 10pt; color: var(--terracotta); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; margin: 0 0 0.75rem 0;">What's inside (single $27 ebook)</p>
-                <ul style="margin: 0; padding-left: 1.2rem; font-size: 11.5pt; color: var(--soft-black); line-height: 1.7;">
-                    <li>The 4 weight-loss blockers, fully mapped</li>
-                    <li>The 21-day daily cycle-breaker schedule</li>
-                    <li>The 90-second pattern interrupt (works on any craving)</li>
-                    <li>Trigger Cheat Sheet — printable, fridge-ready</li>
-                    <li>The post-binge recovery protocol (so one slip doesn't blow the week)</li>
-                </ul>
-            </div>
+            <h1 style="font-family: 'PP Object Sans', sans-serif; font-weight: 700; font-size: 26pt; color: var(--soft-black); line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 0.6rem 0;">Your full guide.</h1>
+            <p style="font-family: 'PP Object Sans', sans-serif; font-size: 12pt; color: var(--soft-black); opacity: 0.7; line-height: 1.5; margin: 0 0 2rem 0;">Enter the access code from your purchase email to unlock all 14 chapters.</p>
 
-            <div style="margin-bottom: 1.5rem;">
-                <a href="https://mindfullstef.gumroad.com/l/stop-emotional-eating" class="buy-btn">
-                    Get the ebook <span class="price-current">· $27</span>
-                </a>
-                <p class="buy-guarantee" style="font-size: 10pt;">30-day cycle break promise: try the 90-second method on one craving. If you don't feel the loop break, email me — full refund, keep the ebook.</p>
-            </div>
+            <input type="password" id="password-input" class="password-input" placeholder="Access code" style="text-align: left; padding: 0.95rem 1rem; font-size: 11pt;" />
+            <button id="login-submit" class="login-btn" style="margin-top: 0.5rem; background-color: var(--terracotta);">Unlock the guide</button>
+            <div id="login-error" style="text-align: left;">That code did not work. Check your purchase email and try again.</div>
 
-            <div style="padding-top: 1.5rem; border-top: 1px solid rgba(196, 168, 130, 0.3);">
-                <p style="font-size: 10pt; color: var(--muted-teal); margin: 0 0 0.75rem 0;">Already bought? Enter your access code:</p>
-                <input type="password" id="password-input" class="password-input" placeholder="Access code" />
-                <button id="login-submit" class="login-btn">Unlock full guide</button>
-                <div id="login-error">That code did not work. Check your purchase email and try again.</div>
+            <div style="margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(196, 168, 130, 0.3);">
+                <p style="font-family: 'PP Object Sans', sans-serif; font-size: 10.5pt; color: var(--soft-black); opacity: 0.65; margin: 0;">
+                    Don't have a code yet?
+                    <a href="https://mindfullstef.gumroad.com/l/stop-emotional-eating" style="color: var(--terracotta); text-decoration: none; font-weight: 700; margin-left: 4px;">Get the ebook &rarr;</a>
+                </p>
             </div>
         </div>
     </div>
