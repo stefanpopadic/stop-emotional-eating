@@ -19,6 +19,18 @@ export type ValueDrop = {
 
 export const quizFlow = [
   {
+    id: 'gender',
+    type: 'intro',
+    headline: 'Find out why your diet keeps breaking.',
+    subhead:
+      "A 2-minute quiz to spot the loop you're stuck in — and the first step to break it this week.",
+    prompt: 'To start, choose what fits you:',
+    options: [
+      { id: 'A', text: 'Female', value: 'female' },
+      { id: 'B', text: 'Male', value: 'male' },
+    ],
+  },
+  {
     id: 'timing',
     type: 'question',
     question: 'When do you usually break the diet?',

@@ -291,6 +291,64 @@ export function Quiz() {
     );
   }
 
+  // ══ INTRO ══
+  if (currentStep.type === 'intro') {
+    return (
+      <Shell progress={0}>
+        <main className="flex-grow flex items-center justify-center px-5 sm:px-6 py-8 sm:py-12">
+          <div className="w-full max-w-xl">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45 }}
+              className="text-center"
+            >
+              {/* Illustration */}
+              <div className="mx-auto w-full max-w-[280px] aspect-square rounded-3xl bg-gradient-to-br from-sage-mist/30 via-deep-sage/10 to-warm-linen flex items-center justify-center text-deep-sage mb-8 sm:mb-10 p-8">
+                <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+                  <circle cx="60" cy="60" r="44" opacity="0.35" />
+                  <circle cx="60" cy="60" r="32" opacity="0.55" />
+                  <circle cx="60" cy="60" r="20" />
+                  <path d="M60 60 m -10 0 a 10 10 0 1 0 20 0 a 10 10 0 1 0 -20 0" />
+                  <circle cx="60" cy="60" r="2.2" fill="currentColor" />
+                  <path d="M88 36 L 100 24" />
+                  <path d="M100 24 L 96 24 M100 24 L 100 28" />
+                </svg>
+              </div>
+
+              <h1 className="font-sans font-bold text-[28px] sm:text-4xl md:text-[42px] text-soft-black leading-[1.12] tracking-tight mb-4 sm:mb-5 text-balance">
+                {currentStep.headline}
+              </h1>
+              <p className="font-sans text-base sm:text-lg text-soft-black/70 leading-[1.55] mb-8 sm:mb-10 max-w-md mx-auto text-balance">
+                {currentStep.subhead}
+              </p>
+
+              <p className="font-sans font-medium text-[13px] uppercase tracking-[0.16em] text-soft-black/55 mb-4">
+                {currentStep.prompt}
+              </p>
+
+              <div className="flex flex-col gap-3 max-w-sm mx-auto">
+                {currentStep.options?.map((option) => (
+                  <button
+                    key={option.id}
+                    onClick={() => handleAnswer(currentStep.id, option.value)}
+                    className="w-full bg-white border border-soft-black/10 rounded-2xl px-6 py-4 sm:py-[18px] text-soft-black font-sans font-semibold text-base sm:text-[17px] uppercase tracking-wide hover:border-deep-sage hover:bg-deep-sage/5 active:scale-[0.99] transition-all shadow-[0_2px_12px_-4px_rgba(58,58,58,0.08)]"
+                  >
+                    {option.text}
+                  </button>
+                ))}
+              </div>
+
+              <p className="mt-6 font-sans text-xs text-soft-black/50">
+                Free · 2 minutes · No credit card
+              </p>
+            </motion.div>
+          </div>
+        </main>
+      </Shell>
+    );
+  }
+
   // ══ QUESTION ══
   if (currentStep.type === 'question') {
     return (
