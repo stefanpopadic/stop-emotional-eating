@@ -265,52 +265,55 @@ export function Quiz() {
   // ══ VALUE-DROP ══
   if (currentStep.type === 'value-drop') {
     const illustration = valueDropIllustrations[currentStep.icon as keyof typeof valueDropIllustrations];
+    const paragraphs = currentStep.text.split('\n\n').filter(Boolean);
+    const lead = paragraphs[0] ?? currentStep.text;
+    const trailing = paragraphs.slice(1).join('\n\n');
+
     return (
       <Shell
         progress={progress}
         onBack={currentStepIndex > 0 ? handleBack : undefined}
         stepLabel={`${currentStepIndex + 1} / ${totalSteps}`}
+        bottomAction={
+          <button
+            onClick={handleNext}
+            className="group w-full inline-flex items-center justify-center gap-2 bg-deep-sage text-warm-linen font-sans font-semibold text-base sm:text-lg px-8 py-4 rounded-2xl hover:bg-deep-sage/90 active:scale-[0.99] transition-all"
+          >
+            {currentStep.cta}
+            <ArrowRight size={20} className="group-hover:translate-x-0.5 transition-transform" />
+          </button>
+        }
       >
-        <main className="flex-grow flex items-center justify-center px-4 sm:px-6 py-10 sm:py-16">
+        <main className="flex-grow px-5 sm:px-6 pt-6 pb-12">
           <motion.div
             key={currentStep.id}
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.35 }}
-            className="w-full max-w-6xl bg-white rounded-3xl shadow-[0_8px_40px_-12px_rgba(58,58,58,0.12)] overflow-hidden grid grid-cols-1 sm:grid-cols-[45%_1fr] items-stretch"
+            className="w-full max-w-md mx-auto"
           >
-            {/* Image / illustration — full bleed */}
-            <div className="bg-gradient-to-br from-sage-mist/25 to-deep-sage/10 flex items-center justify-center text-deep-sage p-10 sm:p-16 min-h-[220px] sm:min-h-[560px]">
-              <div className="w-full h-full max-w-[380px]">
+            <p className="font-sans text-lg sm:text-xl text-soft-black leading-[1.5] mb-8 whitespace-pre-line">
+              {lead}
+            </p>
+
+            <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-sage-mist/25 to-deep-sage/10 aspect-[4/5] sm:aspect-square flex items-center justify-center text-deep-sage p-10 mb-8">
+              <div className="w-full h-full max-w-[280px]">
                 {illustration}
               </div>
             </div>
 
-            {/* Text */}
-            <div className="p-8 sm:p-14 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-terracotta/10 text-terracotta text-xs font-medium mb-6 self-start">
-                Did you know
-              </div>
-
-              <p className="font-sans text-lg sm:text-xl md:text-2xl text-soft-black leading-[1.5] mb-8 whitespace-pre-line">
-                {currentStep.text}
+            {trailing && (
+              <p className="font-sans text-lg sm:text-xl text-soft-black leading-[1.5] mb-6 whitespace-pre-line">
+                {trailing}
               </p>
+            )}
 
-              {currentStep.subtext && (
-                <p className="text-xs font-medium uppercase tracking-wider text-soft-black/55 mb-8">
-                  {currentStep.subtext}
-                </p>
-              )}
-
-              <button
-                onClick={handleNext}
-                className="group w-full sm:w-auto self-start inline-flex items-center justify-center gap-2 bg-deep-sage text-warm-linen font-sans font-medium text-base sm:text-lg px-8 py-4 rounded-full hover:bg-deep-sage/90 active:scale-[0.98] transition-all"
-              >
-                {currentStep.cta}
-                <ArrowRight size={20} className="group-hover:translate-x-0.5 transition-transform" />
-              </button>
-            </div>
+            {currentStep.subtext && (
+              <p className="text-xs font-medium uppercase tracking-wider text-soft-black/55">
+                {currentStep.subtext}
+              </p>
+            )}
           </motion.div>
         </main>
       </Shell>
@@ -378,15 +381,17 @@ function Shell({
   onBack,
   progress = 0,
   stepLabel,
+  bottomAction,
 }: {
   children: React.ReactNode;
   onLogoClick?: () => void;
   onBack?: () => void;
   progress?: number;
   stepLabel?: string;
+  bottomAction?: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-warm-linen flex flex-col pb-24">
+    <div className={`min-h-screen bg-warm-linen flex flex-col ${bottomAction ? 'pb-44 sm:pb-40' : 'pb-24'}`}>
       <header className="px-4 sm:px-6 pt-5 pb-2 flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           {onBack && (
@@ -430,18 +435,21 @@ function Shell({
       {children}
 
       <div className="fixed bottom-0 left-0 right-0 bg-warm-linen/95 backdrop-blur-sm border-t border-soft-black/10 px-4 sm:px-6 py-4 z-10">
-        <div className="max-w-xl mx-auto flex items-center gap-3">
-          <div className="flex-grow h-2.5 rounded-full bg-soft-black/10 overflow-hidden">
-            <motion.div
-              className="h-full bg-deep-sage rounded-full"
-              initial={false}
-              animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.45, ease: 'easeOut' }}
-            />
+        <div className="max-w-md mx-auto space-y-3">
+          {bottomAction}
+          <div className="flex items-center gap-3">
+            <div className="flex-grow h-2.5 rounded-full bg-soft-black/10 overflow-hidden">
+              <motion.div
+                className="h-full bg-deep-sage rounded-full"
+                initial={false}
+                animate={{ width: `${progress}%` }}
+                transition={{ duration: 0.45, ease: 'easeOut' }}
+              />
+            </div>
+            <span className="text-xs font-semibold tabular-nums text-deep-sage w-10 text-right">
+              {progress}%
+            </span>
           </div>
-          <span className="text-xs font-semibold tabular-nums text-deep-sage w-10 text-right">
-            {progress}%
-          </span>
         </div>
       </div>
     </div>
