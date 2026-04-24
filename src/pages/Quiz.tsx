@@ -390,53 +390,47 @@ function Shell({
 
   return (
     <div className={`min-h-screen bg-warm-linen flex flex-col ${bottomAction ? 'pb-32 sm:pb-28' : ''}`}>
-      {/* Header — 3-column: back / logo center / counter */}
-      <header className="px-4 sm:px-6 pt-5 pb-3 grid grid-cols-3 items-center gap-3">
-        <div className="justify-self-start">
-          {onBack ? (
-            <button
-              onClick={onBack}
-              aria-label="Back"
-              className="-ml-2 inline-flex items-center gap-1 px-2 py-1.5 rounded-lg text-soft-black/70 hover:bg-soft-black/5 hover:text-soft-black transition-all"
-            >
-              <ChevronLeft size={20} />
-              <span className="font-sans text-sm font-medium">Back</span>
-            </button>
-          ) : (
-            <span aria-hidden className="block w-px h-px" />
-          )}
+      {/* Header — logo left, counter right; back rendered above when present */}
+      {onBack && (
+        <div className="px-4 sm:px-6 pt-4">
+          <button
+            onClick={onBack}
+            aria-label="Back"
+            className="-ml-2 inline-flex items-center gap-1 px-2 py-1.5 rounded-lg text-soft-black/70 hover:bg-soft-black/5 hover:text-soft-black transition-all"
+          >
+            <ChevronLeft size={20} />
+            <span className="font-sans text-sm font-medium">Back</span>
+          </button>
         </div>
+      )}
 
-        <div className="justify-self-center">
-          {onLogoClick ? (
-            <button
-              onClick={onLogoClick}
-              className="text-deep-sage hover:opacity-70 transition-opacity"
-              aria-label="Restart quiz"
-            >
-              <Logo height={36} />
-            </button>
-          ) : (
-            <Link
-              to="/"
-              className="text-deep-sage hover:opacity-70 transition-opacity"
-              aria-label="Home"
-            >
-              <Logo height={36} />
-            </Link>
-          )}
-        </div>
+      <header className="px-4 sm:px-6 pt-3 pb-3 flex items-center justify-between gap-3">
+        {onLogoClick ? (
+          <button
+            onClick={onLogoClick}
+            className="text-deep-sage hover:opacity-70 transition-opacity"
+            aria-label="Restart quiz"
+          >
+            <Logo height={36} />
+          </button>
+        ) : (
+          <Link
+            to="/"
+            className="text-deep-sage hover:opacity-70 transition-opacity"
+            aria-label="Home"
+          >
+            <Logo height={36} />
+          </Link>
+        )}
 
-        <div className="justify-self-end">
-          {showCounter ? (
-            <span className="tabular-nums">
-              <span className="font-sans font-bold text-base text-soft-black">{currentStep}</span>
-              <span className="font-sans text-sm text-soft-black/50"> / {totalSteps}</span>
-            </span>
-          ) : (
-            <span aria-hidden className="block w-px h-px" />
-          )}
-        </div>
+        {showCounter ? (
+          <span className="tabular-nums">
+            <span className="font-sans font-bold text-base text-soft-black">{currentStep}</span>
+            <span className="font-sans text-sm text-soft-black/50"> / {totalSteps}</span>
+          </span>
+        ) : (
+          <span aria-hidden className="block w-px h-px" />
+        )}
       </header>
 
       {/* Progress bar — top, full width, thin */}
