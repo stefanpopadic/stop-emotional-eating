@@ -668,26 +668,31 @@
 <body>
 
     <!-- ACCESS GATE OVERLAY -->
-    <div id="purchase-wall" style="display:none;">
-        <div class="login-card" style="max-width: 460px; padding: 3rem 2.5rem; text-align: left;">
-            <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--deep-sage); margin-bottom: 3rem;">
-                <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <div id="purchase-wall" style="display:none; background: var(--warm-linen); background-image: url(&quot;data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.015'/%3E%3C/svg%3E&quot;);">
+        <header style="position: absolute; top: 0; left: 0; right: 0; padding: 1.5rem 1.5rem; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid rgba(58, 58, 58, 0.08);">
+            <a href="/" style="display: inline-flex; align-items: center; gap: 9px; text-decoration: none; color: var(--deep-sage);">
+                <svg width="26" height="26" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M16 16 m -2 0 a 2 2 0 1 0 4 0 a 2 2 0 1 0 -4 0" />
                     <path d="M16 16 m -6 0 a 6 6 0 1 0 12 0 a 6 6 0 1 0 -12 0" opacity="0.6" />
                     <path d="M16 16 m -10 0 a 10 10 0 1 0 20 0 a 10 10 0 1 0 -20 0" opacity="0.3" />
                 </svg>
-                <span style="font-size: 9pt; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; line-height: 1.1;">Stop<br/>Emotional<br/>Eating</span>
+                <span style="font-family: 'PP Object Sans', sans-serif; font-size: 8.5pt; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; line-height: 1.1;">Stop<br/>Emotional<br/>Eating</span>
             </a>
+        </header>
 
-            <h1 style="font-family: 'PP Object Sans', sans-serif; font-weight: 700; font-size: 26pt; color: var(--soft-black); line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 0.6rem 0;">Your full guide.</h1>
-            <p style="font-family: 'PP Object Sans', sans-serif; font-size: 12pt; color: var(--soft-black); opacity: 0.7; line-height: 1.5; margin: 0 0 2rem 0;">Enter the access code from your purchase email to unlock all 14 chapters.</p>
+        <div style="width: 100%; max-width: 460px; padding: 5rem 1.5rem 3rem; text-align: left;">
+            <h1 style="font-family: 'PP Object Sans', sans-serif; font-weight: 700; font-size: 30pt; color: var(--soft-black); line-height: 1.1; letter-spacing: -0.015em; margin: 0 0 0.75rem 0;">Your full guide.</h1>
+            <p style="font-family: 'PP Object Sans', sans-serif; font-size: 12.5pt; color: rgba(58, 58, 58, 0.7); line-height: 1.55; margin: 0 0 2.25rem 0;">Enter the access code from your purchase email to unlock all 14 chapters.</p>
 
-            <input type="password" id="password-input" class="password-input" placeholder="Access code" style="text-align: left; padding: 0.95rem 1rem; font-size: 11pt;" />
-            <button id="login-submit" class="login-btn" style="margin-top: 0.5rem; background-color: var(--terracotta);">Unlock the guide</button>
-            <div id="login-error" style="text-align: left;">That code did not work. Check your purchase email and try again.</div>
+            <label for="password-input" style="display: block; font-family: 'PP Object Sans', sans-serif; font-size: 9pt; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: rgba(58, 58, 58, 0.55); margin-bottom: 0.5rem;">Access code</label>
+            <input type="password" id="password-input" placeholder="Paste your code here" style="width: 100%; box-sizing: border-box; background: white; border: 1px solid rgba(58, 58, 58, 0.12); border-radius: 14px; padding: 1rem 1.1rem; font-family: 'PP Object Sans', sans-serif; font-size: 12pt; color: var(--soft-black); outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease;" onfocus="this.style.borderColor='var(--deep-sage)'; this.style.boxShadow='0 0 0 3px rgba(45, 95, 93, 0.12)';" onblur="this.style.borderColor='rgba(58, 58, 58, 0.12)'; this.style.boxShadow='none';" />
 
-            <div style="margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(196, 168, 130, 0.3);">
-                <p style="font-family: 'PP Object Sans', sans-serif; font-size: 10.5pt; color: var(--soft-black); opacity: 0.65; margin: 0;">
+            <button id="login-submit" style="width: 100%; margin-top: 0.75rem; padding: 1.05rem; background-color: var(--terracotta); color: white; border: none; border-radius: 14px; font-family: 'PP Object Sans', sans-serif; font-size: 11pt; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 700; cursor: pointer; transition: background-color 0.2s ease, transform 0.05s ease;" onmouseover="this.style.backgroundColor='#c47657';" onmouseout="this.style.backgroundColor='var(--terracotta)';">Unlock the guide</button>
+
+            <div id="login-error" style="font-family: 'PP Object Sans', sans-serif; color: var(--terracotta); font-size: 10pt; margin-top: 0.75rem; text-align: left; opacity: 0; transition: opacity 0.3s ease;">That code did not work. Check your purchase email and try again.</div>
+
+            <div style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(58, 58, 58, 0.1);">
+                <p style="font-family: 'PP Object Sans', sans-serif; font-size: 11pt; color: rgba(58, 58, 58, 0.65); margin: 0;">
                     Don't have a code yet?
                     <a href="https://mindfullstef.gumroad.com/l/stop-emotional-eating" style="color: var(--terracotta); text-decoration: none; font-weight: 700; margin-left: 4px;">Get the ebook &rarr;</a>
                 </p>
