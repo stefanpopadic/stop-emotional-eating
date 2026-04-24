@@ -48,8 +48,8 @@
   --color-sage-mist: #A8B88F;
   --color-dusty-blush: #D6C5B0;
 
-  --font-serif: "Cormorant Garamond", serif;
-  --font-sans: "PP Object Sans", "Karla", sans-serif;
+  --font-serif: "PP Object Sans", sans-serif;
+  --font-sans: "PP Object Sans", sans-serif;
 }
 
 @layer base {
@@ -75,12 +75,7 @@
     }
   }
 
-  h1, h2 {
-    @apply font-serif;
-    font-feature-settings: "liga", "dlig";
-  }
-
-  h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6 {
     @apply font-sans;
   }
 
@@ -107,11 +102,10 @@
   }
 
   .drop-cap::first-letter {
-    @apply font-serif float-left text-7xl md:text-8xl leading-[0.85] pr-3 pt-1 text-deep-sage;
+    @apply font-sans font-bold float-left text-7xl md:text-8xl leading-[0.85] pr-3 pt-1 text-deep-sage;
   }
 
   .numeral {
-    @apply font-serif text-sand/70 tabular-nums;
-    font-feature-settings: "onum";
+    @apply font-sans text-sand/70 tabular-nums;
   }
 }

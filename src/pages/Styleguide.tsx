@@ -28,7 +28,7 @@ function Section({ id, title, eyebrow, children }: { id: string; title: string; 
         <span className="inline-block font-sans font-medium text-xs uppercase tracking-widest text-sand mb-4">
           {eyebrow}
         </span>
-        <h2 className="font-serif font-semibold text-3xl md:text-4xl text-deep-sage mb-10">
+        <h2 className="font-sans font-bold text-3xl md:text-4xl text-deep-sage mb-10">
           {title}
         </h2>
         {children}
@@ -49,7 +49,7 @@ function Swatch({ name, hex, varName, usage, text = 'dark' }: { name: string; he
         </span>
       </div>
       <div className="p-5">
-        <p className="font-serif font-semibold text-xl text-deep-sage mb-1">{name}</p>
+        <p className="font-sans font-bold text-xl text-deep-sage mb-1">{name}</p>
         <code className="block font-sans text-xs text-sand mb-3">{varName}</code>
         <p className="font-sans text-sm text-soft-black/70 leading-relaxed">{usage}</p>
       </div>
@@ -91,7 +91,7 @@ export function Styleguide() {
           <span className="inline-block bg-oat font-sans font-medium text-xs uppercase tracking-widest text-deep-sage px-4 py-2 rounded-full mb-6">
             Stop Emotional Eating · Style Guide
           </span>
-          <h1 className="font-serif font-semibold text-5xl md:text-6xl text-deep-sage mb-6 leading-[1.05]">
+          <h1 className="font-sans font-bold text-5xl md:text-6xl text-deep-sage mb-6 leading-[1.05]">
             The system that runs the whole site.
           </h1>
           <p className="font-sans text-xl text-soft-black/80 leading-relaxed max-w-2xl">
@@ -128,19 +128,19 @@ export function Styleguide() {
       <Section id="foundations" eyebrow="01 · Foundations" title="What the brand feels like">
         <div className="grid md:grid-cols-3 gap-6">
           <Card title="Voice">
-            <p className="font-serif text-2xl text-deep-sage leading-snug mb-3">Warm, plain, science-backed.</p>
+            <p className="font-sans font-bold text-2xl text-deep-sage leading-snug mb-3">Warm, plain, science-backed.</p>
             <p className="font-sans text-soft-black/70 leading-relaxed">
               Never preachy, never clinical, never cutesy. Talk like a smart friend who has read the research.
             </p>
           </Card>
           <Card title="Tone">
-            <p className="font-serif text-2xl text-deep-sage leading-snug mb-3">Editorial, not marketing.</p>
+            <p className="font-sans font-bold text-2xl text-deep-sage leading-snug mb-3">Editorial, not marketing.</p>
             <p className="font-sans text-soft-black/70 leading-relaxed">
               Think longform magazine. Serif headlines, generous whitespace, no exclamation marks.
             </p>
           </Card>
           <Card title="Feel">
-            <p className="font-serif text-2xl text-deep-sage leading-snug mb-3">Paper, not pixels.</p>
+            <p className="font-sans font-bold text-2xl text-deep-sage leading-snug mb-3">Paper, not pixels.</p>
             <p className="font-sans text-soft-black/70 leading-relaxed">
               Warm linen backgrounds, subtle paper texture, sand-colored rules. Screens should feel like a book.
             </p>
@@ -164,7 +164,7 @@ export function Styleguide() {
         </div>
 
         <div className="mt-10 p-6 md:p-8 rounded-2xl bg-deep-sage text-warm-linen">
-          <h3 className="font-serif font-semibold text-2xl mb-3">Usage rules</h3>
+          <h3 className="font-sans font-bold text-2xl mb-3">Usage rules</h3>
           <ul className="font-sans space-y-2 text-warm-linen/90 leading-relaxed">
             <li className="flex gap-3"><Check size={18} className="flex-shrink-0 mt-1 text-muted-teal" /> Terracotta is reserved for action. If it's not clickable, it shouldn't be terracotta.</li>
             <li className="flex gap-3"><Check size={18} className="flex-shrink-0 mt-1 text-muted-teal" /> Deep sage is the brand. Use it for the logo, hero headlines, and any dark-background section.</li>
@@ -178,17 +178,17 @@ export function Styleguide() {
       {/* ═══ TYPOGRAPHY ═══ */}
       <Section id="typography" eyebrow="03 · Typography" title="Type system">
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <Card title="Serif — Cormorant Garamond">
-            <p className="font-serif text-5xl text-deep-sage leading-none mb-2">Aa</p>
+          <Card title="Display — PP Object Sans">
+            <p className="font-sans font-bold text-5xl text-deep-sage leading-none mb-2">Aa</p>
             <p className="font-sans text-soft-black/70 leading-relaxed mb-3">
-              Used for h1 and h2 only. Editorial, literary, feels like a book jacket.
+              Used for h1 and h2. Bold weight, tight tracking. The whole site runs on one typeface.
             </p>
-            <CodeLabel>font-serif</CodeLabel>
+            <CodeLabel>font-sans font-bold</CodeLabel>
           </Card>
-          <Card title="Sans — Karla">
+          <Card title="Body — PP Object Sans">
             <p className="font-sans text-5xl text-deep-sage leading-none mb-2">Aa</p>
             <p className="font-sans text-soft-black/70 leading-relaxed mb-3">
-              Used for body, h3-h6, UI, labels, buttons. Clean, humanist, easy on the eyes.
+              Same family at regular weight. Used for body, h3-h6, UI, labels, buttons.
             </p>
             <CodeLabel>font-sans</CodeLabel>
           </Card>
@@ -196,16 +196,16 @@ export function Styleguide() {
 
         <div className="space-y-8 bg-white rounded-2xl p-8 md:p-12 border border-sand/30">
           <div>
-            <h1 className="font-serif font-semibold text-5xl md:text-6xl text-deep-sage leading-[1.05] mb-2">
+            <h1 className="font-sans font-bold text-5xl md:text-6xl text-deep-sage leading-[1.05] mb-2">
               Headline · H1
             </h1>
-            <CodeLabel>font-serif font-semibold text-5xl md:text-6xl text-deep-sage leading-[1.05]</CodeLabel>
+            <CodeLabel>font-sans font-bold text-5xl md:text-6xl text-deep-sage leading-[1.05]</CodeLabel>
           </div>
           <div>
-            <h2 className="font-serif font-semibold text-3xl md:text-4xl text-deep-sage mb-2">
+            <h2 className="font-sans font-bold text-3xl md:text-4xl text-deep-sage mb-2">
               Section title · H2
             </h2>
-            <CodeLabel>font-serif font-semibold text-3xl md:text-4xl text-deep-sage</CodeLabel>
+            <CodeLabel>font-sans font-bold text-3xl md:text-4xl text-deep-sage</CodeLabel>
           </div>
           <div>
             <h3 className="font-sans font-semibold text-xl text-deep-sage mb-2">
@@ -333,7 +333,7 @@ export function Styleguide() {
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-white rounded-2xl p-8 border border-sand/30">
             <BookOpen className="text-terracotta mb-4" size={28} />
-            <h3 className="font-serif font-semibold text-2xl text-deep-sage mb-2">Light card</h3>
+            <h3 className="font-sans font-bold text-2xl text-deep-sage mb-2">Light card</h3>
             <p className="font-sans text-soft-black/70 leading-relaxed">
               Default white card on warm-linen sections. Soft sand border, generous padding, no shadow.
             </p>
@@ -342,7 +342,7 @@ export function Styleguide() {
 
           <div className="bg-oat rounded-2xl p-8 border border-sand/30">
             <CalendarDaysIcon />
-            <h3 className="font-serif font-semibold text-2xl text-deep-sage mb-2 mt-4">Oat card</h3>
+            <h3 className="font-sans font-bold text-2xl text-deep-sage mb-2 mt-4">Oat card</h3>
             <p className="font-sans text-soft-black/70 leading-relaxed">
               Alternative background for pages already on warm-linen. Used inside sections that need layering.
             </p>
@@ -351,7 +351,7 @@ export function Styleguide() {
 
           <div className="bg-deep-sage text-warm-linen rounded-2xl p-8">
             <Brain className="text-warm-linen mb-4" size={28} strokeWidth={1.5} />
-            <h3 className="font-serif font-semibold text-2xl mb-2">Dark card</h3>
+            <h3 className="font-sans font-bold text-2xl mb-2">Dark card</h3>
             <p className="font-sans text-warm-linen/80 leading-relaxed">
               For value-drops, insights, and "pay attention" moments inside a flow. Feels heavy on purpose.
             </p>

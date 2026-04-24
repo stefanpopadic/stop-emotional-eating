@@ -5,7 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stop Emotional Eating | Member Access</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Karla:wght@400;500;700&display=swap');
+        @font-face {
+            font-family: 'PP Object Sans';
+            src: url('/fonts/PPObjectSans-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'PP Object Sans';
+            src: url('/fonts/PPObjectSans-Slanted.woff2') format('woff2');
+            font-weight: 400;
+            font-style: italic;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'PP Object Sans';
+            src: url('/fonts/PPObjectSans-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'PP Object Sans';
+            src: url('/fonts/PPObjectSans-BoldSlanted.woff2') format('woff2');
+            font-weight: 700;
+            font-style: italic;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'PP Object Sans';
+            src: url('/fonts/PPObjectSans-Heavy.woff2') format('woff2');
+            font-weight: 800;
+            font-style: normal;
+            font-display: swap;
+        }
 
         :root {
             --deep-sage: #2D5F5D;
@@ -27,7 +61,7 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            font-family: 'Karla', sans-serif;
+            font-family: 'PP Object Sans', sans-serif;
             background-color: var(--warm-linen);
             color: var(--soft-black);
             -webkit-font-smoothing: antialiased;
@@ -66,7 +100,7 @@
         }
 
         .login-title {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'PP Object Sans', sans-serif;
             font-size: 32pt;
             color: var(--deep-sage);
             margin-bottom: 0.5rem;
@@ -89,7 +123,7 @@
             border: 1px solid var(--sand);
             background-color: white;
             border-radius: 6px;
-            font-family: 'Karla', sans-serif;
+            font-family: 'PP Object Sans', sans-serif;
             font-size: 11pt;
             margin-bottom: 0.75rem;
             transition: all 0.3s ease;
@@ -110,7 +144,7 @@
             color: white;
             border: none;
             border-radius: 6px;
-            font-family: 'Karla', sans-serif;
+            font-family: 'PP Object Sans', sans-serif;
             font-size: 10pt;
             letter-spacing: 0.05em;
             text-transform: uppercase;
@@ -234,7 +268,7 @@
         }
 
         .sidebar-title {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'PP Object Sans', sans-serif;
             color: var(--deep-sage);
             font-size: 18pt;
             font-weight: 600;
@@ -349,7 +383,7 @@
 
         /* Typography inside content */
         h1.chapter-title {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'PP Object Sans', sans-serif;
             font-size: 38pt;
             font-weight: 400;
             color: var(--deep-sage);
@@ -370,8 +404,8 @@
             background-color: var(--terracotta);
         }
 
-        h2 { font-family: 'Cormorant Garamond', serif; font-size: 24pt; color: var(--deep-sage); font-weight: 500; margin-top: 4.5rem; margin-bottom: 1.25rem; letter-spacing: -0.01em; }
-        h3 { font-family: 'Cormorant Garamond', serif; font-size: 18pt; font-style: italic; color: var(--soft-black); font-weight: 500; margin-top: 2.5rem; margin-bottom: 1rem; }
+        h2 { font-family: 'PP Object Sans', sans-serif; font-size: 24pt; color: var(--deep-sage); font-weight: 500; margin-top: 4.5rem; margin-bottom: 1.25rem; letter-spacing: -0.01em; }
+        h3 { font-family: 'PP Object Sans', sans-serif; font-size: 18pt; font-style: italic; color: var(--soft-black); font-weight: 500; margin-top: 2.5rem; margin-bottom: 1rem; }
         h4 { font-size: 12pt; font-weight: 700; color: var(--terracotta); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2rem; margin-bottom: 1rem; }
 
         p, li, td { font-size: 13pt; line-height: 1.8; color: var(--soft-black); }
@@ -387,7 +421,7 @@
             border-left: 4px solid var(--muted-teal);
             margin: 3rem 0;
             padding: 2.5rem 3rem;
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'PP Object Sans', sans-serif;
             font-size: 18pt;
             font-style: italic;
             color: var(--deep-sage);
@@ -399,7 +433,7 @@
             position: absolute;
             top: -10px;
             left: 20px;
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'PP Object Sans', sans-serif;
             font-size: 60pt;
             color: var(--muted-teal);
             opacity: 0.2;
@@ -414,7 +448,7 @@
         }
         
         .science-box-title {
-            font-family: 'Karla', sans-serif;
+            font-family: 'PP Object Sans', sans-serif;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -488,7 +522,7 @@
         hr { border: none; height: auto; margin: 4rem 0; text-align: center; }
         hr::after {
             content: '\2666 \2666 \2666';
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'PP Object Sans', sans-serif;
             color: var(--sand);
             font-size: 12pt;
             letter-spacing: 0.5em;
@@ -511,7 +545,7 @@
             border: 1px solid var(--deep-sage);
             padding: 0.75rem 1.5rem;
             border-radius: 4px;
-            font-family: 'Karla', sans-serif;
+            font-family: 'PP Object Sans', sans-serif;
             font-size: 10pt;
             font-weight: 700;
             letter-spacing: 0.1em;
@@ -637,7 +671,7 @@
     <div id="purchase-wall" style="display:none;">
         <div class="login-card" style="max-width: 540px;">
             <h1 class="login-title">Lose the weight by breaking the cycle.</h1>
-            <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14pt; color: var(--soft-black); margin: 0.5rem 0 2rem 0; line-height: 1.5;">No more willpower. No more 6 AM workouts. The reason you can't lose the weight isn't your body — it's the loop your brain runs every time stress, boredom, or restriction hits.</p>
+            <p style="font-family: 'PP Object Sans', sans-serif; font-style: italic; font-size: 14pt; color: var(--soft-black); margin: 0.5rem 0 2rem 0; line-height: 1.5;">No more willpower. No more 6 AM workouts. The reason you can't lose the weight isn't your body — it's the loop your brain runs every time stress, boredom, or restriction hits.</p>
 
             <div style="text-align: left; background: var(--oat); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
                 <p style="font-size: 10pt; color: var(--terracotta); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; margin: 0 0 0.75rem 0;">What's inside (single $27 ebook)</p>
@@ -847,13 +881,13 @@
 <!-- Purchase overlay — before blurred content so sticky works from top -->
 <div class="locked-blur-overlay" id="ch1-blur-overlay">
     <div style="padding: 3rem 2rem; text-align: center; max-width: 520px;">
-        <p style="font-family: 'Cormorant Garamond', serif; font-size: 28pt; color: var(--deep-sage); margin: 0 0 0.75rem 0; line-height: 1.2;">Lose the weight by breaking the cycle.</p>
-        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14pt; color: var(--soft-black); max-width: 460px; margin: 0 auto 2rem auto; line-height: 1.6;">Every diet works for 2 weeks. Then your hormones override your willpower and the weight comes back — with interest. The full plan breaks that loop in 21 days.</p>
+        <p style="font-family: 'PP Object Sans', sans-serif; font-size: 28pt; color: var(--deep-sage); margin: 0 0 0.75rem 0; line-height: 1.2;">Lose the weight by breaking the cycle.</p>
+        <p style="font-family: 'PP Object Sans', sans-serif; font-style: italic; font-size: 14pt; color: var(--soft-black); max-width: 460px; margin: 0 auto 2rem auto; line-height: 1.6;">Every diet works for 2 weeks. Then your hormones override your willpower and the weight comes back — with interest. The full plan breaks that loop in 21 days.</p>
         <a href="https://mindfullstef.gumroad.com/l/stop-emotional-eating" class="buy-btn" style="display: inline-flex; max-width: 360px; justify-content: center;">
             Get the ebook <span class="price-current">· $27</span>
         </a>
         <p style="font-size: 9.5pt; color: var(--muted-teal); margin-top: 1rem; margin-bottom: 2rem;">30-day cycle break promise. If the 90-second method doesn't break the loop, full refund — keep the ebook.</p>
-        <button onclick="app.showPurchaseWall(1)" style="background: none; border: none; font-family: 'Karla', sans-serif; font-size: 11pt; color: var(--deep-sage); text-decoration: underline; cursor: pointer; opacity: 0.8;">I already bought this — enter my access code</button>
+        <button onclick="app.showPurchaseWall(1)" style="background: none; border: none; font-family: 'PP Object Sans', sans-serif; font-size: 11pt; color: var(--deep-sage); text-decoration: underline; cursor: pointer; opacity: 0.8;">I already bought this — enter my access code</button>
     </div>
 </div>
 <div class="locked-blur-content">

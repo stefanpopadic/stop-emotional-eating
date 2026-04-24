@@ -60,14 +60,14 @@ export function Privacy() {
       <main className="flex-grow py-16 sm:py-24 px-4 sm:px-6">
         <article className="max-w-[62ch] mx-auto">
           <span className="eyebrow block mb-6">Last updated · April 2026</span>
-          <h1 className="font-serif font-medium text-5xl sm:text-6xl md:text-7xl text-deep-sage leading-[0.98] tracking-tight mb-14">
+          <h1 className="font-sans font-bold text-5xl sm:text-6xl md:text-7xl text-deep-sage leading-[0.98] tracking-tight mb-14">
             Privacy
           </h1>
 
           <div className="divide-y divide-soft-black/15 border-t border-b border-soft-black/15">
             {sections.map((s) => (
               <section key={s.title} className="py-8 sm:py-10">
-                <h2 className="font-serif font-medium text-2xl md:text-3xl text-deep-sage mb-5 tracking-tight">
+                <h2 className="font-sans font-bold text-2xl md:text-3xl text-deep-sage mb-5 tracking-tight">
                   {s.title}
                 </h2>
                 <div className="space-y-4 font-sans text-base md:text-[17px] text-soft-black/85 leading-[1.7]">
