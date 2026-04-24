@@ -99,8 +99,7 @@ function SectionBlock({
   return (
     <FadeIn>
       <div className="py-2">
-        <div className="flex items-center gap-2.5 mb-4">
-          <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: accentHex }} />
+        <div className="mb-4">
           <span className="font-sans font-medium text-[11px] uppercase tracking-[0.18em] text-soft-black/55">
             {eyebrow}
           </span>
