@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronLeft, Check, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ArrowRight } from 'lucide-react';
 import { quizFlow, calculateQuizResult } from '../lib/quizData';
 import { Logo } from '../components/Logo';
 
@@ -209,9 +209,10 @@ export function Quiz() {
       <Shell
         progress={progress}
         onBack={currentStepIndex > 0 ? handleBack : undefined}
-        stepLabel={`${currentStepIndex + 1} / ${totalSteps}`}
+        currentStep={currentStepIndex + 1}
+        totalSteps={totalSteps}
       >
-        <main className="flex-grow flex items-start sm:items-center justify-center px-4 sm:px-6 pt-6 sm:pt-10 pb-10">
+        <main className="flex-grow flex items-start justify-center px-5 sm:px-6 pt-8 sm:pt-12 pb-16">
           <div className="w-full max-w-xl">
             <AnimatePresence mode="wait">
               <motion.div
@@ -221,7 +222,7 @@ export function Quiz() {
                 exit={{ opacity: 0, x: -16 }}
                 transition={{ duration: 0.25 }}
               >
-                <h2 className="font-sans font-semibold text-2xl sm:text-3xl md:text-4xl text-soft-black leading-[1.2] tracking-tight mb-8 sm:mb-10 text-balance">
+                <h2 className="font-sans font-bold text-[26px] sm:text-3xl md:text-[34px] text-soft-black leading-[1.2] tracking-tight mb-8 sm:mb-10 text-balance">
                   {currentStep.question}
                 </h2>
 
@@ -232,23 +233,14 @@ export function Quiz() {
                       <button
                         key={option.id}
                         onClick={() => handleAnswer(currentStep.id, option.value)}
-                        className={`group relative w-full text-left rounded-2xl border-2 px-5 py-4 sm:px-6 sm:py-5 transition-all active:scale-[0.99] flex items-center gap-4 ${
+                        className={`w-full text-left rounded-2xl border px-5 py-4 sm:px-6 sm:py-[18px] transition-colors active:scale-[0.99] ${
                           isSelected
-                            ? 'border-deep-sage bg-deep-sage/5 shadow-[0_4px_20px_-8px_rgba(114,140,123,0.4)]'
-                            : 'border-soft-black/10 bg-white hover:border-deep-sage/40 hover:shadow-[0_4px_20px_-12px_rgba(58,58,58,0.15)]'
+                            ? 'border-deep-sage bg-deep-sage/5'
+                            : 'border-soft-black/15 bg-transparent hover:border-deep-sage/50 hover:bg-soft-black/[0.02]'
                         }`}
                       >
-                        <span className="font-sans text-base sm:text-[17px] text-soft-black leading-[1.45] flex-grow">
+                        <span className="font-sans text-base sm:text-[17px] text-soft-black leading-[1.45]">
                           {option.text}
-                        </span>
-                        <span
-                          className={`shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
-                            isSelected
-                              ? 'border-deep-sage bg-deep-sage text-warm-linen'
-                              : 'border-soft-black/20 bg-transparent text-transparent group-hover:border-deep-sage/40'
-                          }`}
-                        >
-                          <Check size={14} strokeWidth={3} />
                         </span>
                       </button>
                     );
@@ -273,7 +265,8 @@ export function Quiz() {
       <Shell
         progress={progress}
         onBack={currentStepIndex > 0 ? handleBack : undefined}
-        stepLabel={`${currentStepIndex + 1} / ${totalSteps}`}
+        currentStep={currentStepIndex + 1}
+        totalSteps={totalSteps}
         bottomAction={
           <button
             onClick={handleNext}
@@ -380,30 +373,41 @@ function Shell({
   onLogoClick,
   onBack,
   progress = 0,
-  stepLabel,
+  currentStep,
+  totalSteps,
   bottomAction,
 }: {
   children: React.ReactNode;
   onLogoClick?: () => void;
   onBack?: () => void;
   progress?: number;
-  stepLabel?: string;
+  currentStep?: number;
+  totalSteps?: number;
   bottomAction?: React.ReactNode;
 }) {
+  const showCounter = currentStep != null && totalSteps != null;
+  const showProgress = progress > 0;
+
   return (
-    <div className={`min-h-screen bg-warm-linen flex flex-col ${bottomAction ? 'pb-44 sm:pb-40' : 'pb-24'}`}>
-      <header className="px-4 sm:px-6 pt-5 pb-2 flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2">
-          {onBack && (
+    <div className={`min-h-screen bg-warm-linen flex flex-col ${bottomAction ? 'pb-32 sm:pb-28' : ''}`}>
+      {/* Header — 3-column: back / logo center / counter */}
+      <header className="px-4 sm:px-6 pt-5 pb-3 grid grid-cols-3 items-center gap-3">
+        <div className="justify-self-start">
+          {onBack ? (
             <button
               onClick={onBack}
               aria-label="Back"
-              className="w-9 h-9 -ml-2 rounded-full flex items-center justify-center text-soft-black/70 hover:bg-soft-black/5 hover:text-soft-black transition-all"
+              className="-ml-2 inline-flex items-center gap-1 px-2 py-1.5 rounded-lg text-soft-black/70 hover:bg-soft-black/5 hover:text-soft-black transition-all"
             >
               <ChevronLeft size={20} />
+              <span className="font-sans text-sm font-medium">Back</span>
             </button>
+          ) : (
+            <span aria-hidden className="block w-px h-px" />
           )}
+        </div>
 
+        <div className="justify-self-center">
           {onLogoClick ? (
             <button
               onClick={onLogoClick}
@@ -423,35 +427,42 @@ function Shell({
           )}
         </div>
 
-        <span
-          className={`text-sm font-medium tabular-nums ${
-            stepLabel ? 'text-soft-black/70' : 'text-transparent'
-          }`}
-        >
-          {stepLabel ?? '0'}
-        </span>
+        <div className="justify-self-end">
+          {showCounter ? (
+            <span className="tabular-nums">
+              <span className="font-sans font-bold text-base text-soft-black">{currentStep}</span>
+              <span className="font-sans text-sm text-soft-black/50"> / {totalSteps}</span>
+            </span>
+          ) : (
+            <span aria-hidden className="block w-px h-px" />
+          )}
+        </div>
       </header>
+
+      {/* Progress bar — top, full width, thin */}
+      {showProgress && (
+        <div className="px-4 sm:px-6 pb-2">
+          <div className="h-1.5 rounded-full bg-soft-black/10 overflow-hidden">
+            <motion.div
+              className="h-full bg-deep-sage rounded-full"
+              initial={false}
+              animate={{ width: `${progress}%` }}
+              transition={{ duration: 0.45, ease: 'easeOut' }}
+            />
+          </div>
+        </div>
+      )}
 
       {children}
 
-      <div className="fixed bottom-0 left-0 right-0 bg-warm-linen/95 backdrop-blur-sm border-t border-soft-black/10 px-4 sm:px-6 py-4 z-10">
-        <div className="max-w-md mx-auto space-y-3">
-          {bottomAction}
-          <div className="flex items-center gap-3">
-            <div className="flex-grow h-2.5 rounded-full bg-soft-black/10 overflow-hidden">
-              <motion.div
-                className="h-full bg-deep-sage rounded-full"
-                initial={false}
-                animate={{ width: `${progress}%` }}
-                transition={{ duration: 0.45, ease: 'easeOut' }}
-              />
-            </div>
-            <span className="text-xs font-semibold tabular-nums text-deep-sage w-10 text-right">
-              {progress}%
-            </span>
+      {/* Sticky bottom CTA — only when bottomAction provided */}
+      {bottomAction && (
+        <div className="fixed bottom-0 left-0 right-0 bg-warm-linen/95 backdrop-blur-sm border-t border-soft-black/10 px-4 sm:px-6 py-4 z-10">
+          <div className="max-w-md mx-auto">
+            {bottomAction}
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
