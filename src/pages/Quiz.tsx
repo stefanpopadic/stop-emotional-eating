@@ -325,59 +325,69 @@ function Shell({
   stepLabel?: string;
 }) {
   return (
-    <div className="min-h-screen bg-warm-linen flex flex-col">
-      <header className="px-4 sm:px-6 pt-4 pb-3">
-        <div className="max-w-xl mx-auto flex items-center justify-between gap-3 mb-3">
-          <button
-            onClick={onBack}
-            disabled={!onBack}
-            aria-label="Back"
-            className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${
-              onBack
-                ? 'text-soft-black/70 hover:bg-soft-black/5 hover:text-soft-black'
-                : 'text-transparent pointer-events-none'
-            }`}
-          >
-            <ChevronLeft size={20} />
-          </button>
-
-          {onLogoClick ? (
+    <div className="min-h-screen bg-warm-linen flex flex-col pb-24">
+      <header className="px-4 sm:px-6 pt-5 pb-2">
+        <div className="max-w-xl mx-auto flex items-center justify-between gap-3">
+          <div className="flex items-center gap-1">
             <button
-              onClick={onLogoClick}
-              className="text-deep-sage hover:opacity-70 transition-opacity"
-              aria-label="Restart quiz"
+              onClick={onBack}
+              disabled={!onBack}
+              aria-label="Back"
+              className={`w-9 h-9 -ml-2 rounded-full flex items-center justify-center transition-all ${
+                onBack
+                  ? 'text-soft-black/70 hover:bg-soft-black/5 hover:text-soft-black'
+                  : 'text-transparent pointer-events-none'
+              }`}
             >
-              <Logo height={26} />
+              <ChevronLeft size={20} />
             </button>
-          ) : (
-            <Link
-              to="/"
-              className="text-deep-sage hover:opacity-70 transition-opacity"
-              aria-label="Home"
-            >
-              <Logo height={26} />
-            </Link>
-          )}
+
+            {onLogoClick ? (
+              <button
+                onClick={onLogoClick}
+                className="text-deep-sage hover:opacity-70 transition-opacity"
+                aria-label="Restart quiz"
+              >
+                <Logo height={28} />
+              </button>
+            ) : (
+              <Link
+                to="/"
+                className="text-deep-sage hover:opacity-70 transition-opacity"
+                aria-label="Home"
+              >
+                <Logo height={28} />
+              </Link>
+            )}
+          </div>
 
           <span
-            className={`text-xs font-medium tabular-nums w-9 text-right ${
-              stepLabel ? 'text-soft-black/55' : 'text-transparent'
+            className={`text-sm font-medium tabular-nums ${
+              stepLabel ? 'text-soft-black/70' : 'text-transparent'
             }`}
           >
             {stepLabel ?? '0'}
           </span>
         </div>
-
-        <div className="max-w-xl mx-auto h-1.5 rounded-full bg-soft-black/8 overflow-hidden">
-          <motion.div
-            className="h-full bg-deep-sage rounded-full"
-            initial={false}
-            animate={{ width: `${progress}%` }}
-            transition={{ duration: 0.45, ease: 'easeOut' }}
-          />
-        </div>
       </header>
+
       {children}
+
+      <div className="fixed bottom-0 left-0 right-0 bg-warm-linen/95 backdrop-blur-sm border-t border-soft-black/10 px-4 sm:px-6 py-4 z-10">
+        <div className="max-w-xl mx-auto flex items-center gap-3">
+          <div className="flex-grow h-2.5 rounded-full bg-soft-black/10 overflow-hidden">
+            <motion.div
+              className="h-full bg-deep-sage rounded-full"
+              initial={false}
+              animate={{ width: `${progress}%` }}
+              transition={{ duration: 0.45, ease: 'easeOut' }}
+            />
+          </div>
+          <span className="text-xs font-semibold tabular-nums text-deep-sage w-10 text-right">
+            {progress}%
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
