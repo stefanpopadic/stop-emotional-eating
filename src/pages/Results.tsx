@@ -137,21 +137,13 @@ export function Results() {
         <Link to="/" className="text-deep-sage hover:opacity-70 transition-opacity">
           <Logo height={34} />
         </Link>
-        <div className="flex items-center gap-3">
-          <span className="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-soft-black/10">
-            <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: cfg.accentHex }} />
-            <span className="font-sans font-medium text-[11px] uppercase tracking-[0.16em] text-soft-black/70">
-              {cfg.label}
-            </span>
-          </span>
-          <a
-            href={checkoutUrl}
-            className="hidden md:inline-flex items-center gap-2 bg-terracotta text-warm-linen font-sans font-medium text-sm px-4 py-2 rounded-full hover:bg-terracotta/90 transition-colors"
-          >
-            Get the plan · $27
-            <ArrowRight size={14} />
-          </a>
-        </div>
+        <a
+          href={checkoutUrl}
+          className="hidden md:inline-flex items-center gap-2 bg-terracotta text-warm-linen font-sans font-medium text-sm px-4 py-2 rounded-full hover:bg-terracotta/90 transition-colors"
+        >
+          Get full ebook
+          <ArrowRight size={14} />
+        </a>
       </header>
 
       <main className="flex-grow">
