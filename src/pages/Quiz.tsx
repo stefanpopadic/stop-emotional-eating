@@ -344,7 +344,7 @@ function Shell({
               className="text-deep-sage hover:opacity-70 transition-opacity"
               aria-label="Restart quiz"
             >
-              <Logo height={28} />
+              <Logo height={36} />
             </button>
           ) : (
             <Link
@@ -352,7 +352,7 @@ function Shell({
               className="text-deep-sage hover:opacity-70 transition-opacity"
               aria-label="Home"
             >
-              <Logo height={28} />
+              <Logo height={36} />
             </Link>
           )}
         </div>
