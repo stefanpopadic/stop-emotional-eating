@@ -268,13 +268,15 @@ export function Quiz() {
         currentStep={currentStepIndex + 1}
         totalSteps={totalSteps}
         bottomAction={
-          <button
-            onClick={handleNext}
-            className="group w-full inline-flex items-center justify-center gap-2 bg-deep-sage text-warm-linen font-sans font-semibold text-base sm:text-lg px-8 py-4 rounded-2xl hover:bg-deep-sage/90 active:scale-[0.99] transition-all"
-          >
-            {currentStep.cta}
-            <ArrowRight size={20} className="group-hover:translate-x-0.5 transition-transform" />
-          </button>
+          <div className="flex justify-center">
+            <button
+              onClick={handleNext}
+              className="group inline-flex items-center justify-center gap-2 bg-deep-sage text-warm-linen font-sans font-semibold text-sm sm:text-base px-6 py-2.5 rounded-full hover:bg-deep-sage/90 active:scale-[0.99] transition-all"
+            >
+              {currentStep.cta}
+              <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+            </button>
+          </div>
         }
       >
         <main className="flex-grow px-5 sm:px-6 pt-6 pb-12">
@@ -389,7 +391,8 @@ function Shell({
   const showProgress = progress > 0;
 
   return (
-    <div className={`min-h-screen bg-warm-linen flex flex-col ${bottomAction ? 'pb-32 sm:pb-28' : ''}`}>
+    <div className={`min-h-screen bg-warm-linen flex flex-col pt-20 ${bottomAction ? 'pb-28' : ''}`}>
+      <div className="fixed top-0 left-0 right-0 z-20 bg-warm-linen/95 backdrop-blur-sm">
       <header className="px-4 sm:px-6 pt-5 pb-3 flex items-center justify-between gap-3">
         <div className="flex items-center gap-1">
           {onBack && (
@@ -444,6 +447,7 @@ function Shell({
           </div>
         </div>
       )}
+      </div>
 
       {children}
 
