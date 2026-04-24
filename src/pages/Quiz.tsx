@@ -278,40 +278,38 @@ export function Quiz() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.35 }}
-            className="w-full max-w-3xl bg-white rounded-3xl shadow-[0_8px_40px_-12px_rgba(58,58,58,0.12)] p-6 sm:p-10"
+            className="w-full max-w-3xl bg-white rounded-3xl shadow-[0_8px_40px_-12px_rgba(58,58,58,0.12)] overflow-hidden grid grid-cols-1 sm:grid-cols-[40%_1fr] items-stretch"
           >
-            <div className="grid grid-cols-1 sm:grid-cols-[180px_1fr] md:grid-cols-[220px_1fr] gap-6 sm:gap-8 md:gap-10 items-start">
-              {/* Image / illustration */}
-              <div className="flex sm:block justify-center">
-                <div className="w-32 h-32 sm:w-full sm:h-auto sm:aspect-square rounded-2xl bg-gradient-to-br from-sage-mist/25 to-deep-sage/10 flex items-center justify-center text-deep-sage p-4 sm:p-6">
-                  {illustration}
-                </div>
+            {/* Image / illustration — full bleed */}
+            <div className="bg-gradient-to-br from-sage-mist/25 to-deep-sage/10 flex items-center justify-center text-deep-sage p-8 sm:p-10 min-h-[180px] sm:min-h-[420px]">
+              <div className="w-full h-full max-w-[260px]">
+                {illustration}
+              </div>
+            </div>
+
+            {/* Text */}
+            <div className="p-6 sm:p-10 flex flex-col justify-center">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-terracotta/10 text-terracotta text-xs font-medium mb-5 self-start">
+                Did you know
               </div>
 
-              {/* Text */}
-              <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-terracotta/10 text-terracotta text-xs font-medium mb-5">
-                  Did you know
-                </div>
+              <p className="font-sans text-base sm:text-lg text-soft-black leading-[1.55] mb-6 whitespace-pre-line">
+                {currentStep.text}
+              </p>
 
-                <p className="font-sans text-base sm:text-lg text-soft-black leading-[1.55] mb-6 whitespace-pre-line">
-                  {currentStep.text}
+              {currentStep.subtext && (
+                <p className="text-xs font-medium uppercase tracking-wider text-soft-black/55 mb-6">
+                  {currentStep.subtext}
                 </p>
+              )}
 
-                {currentStep.subtext && (
-                  <p className="text-xs font-medium uppercase tracking-wider text-soft-black/55 mb-6">
-                    {currentStep.subtext}
-                  </p>
-                )}
-
-                <button
-                  onClick={handleNext}
-                  className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-deep-sage text-warm-linen font-sans font-medium text-base px-7 py-3.5 rounded-full hover:bg-deep-sage/90 active:scale-[0.98] transition-all"
-                >
-                  {currentStep.cta}
-                  <ArrowRight size={18} className="group-hover:translate-x-0.5 transition-transform" />
-                </button>
-              </div>
+              <button
+                onClick={handleNext}
+                className="group w-full sm:w-auto self-start inline-flex items-center justify-center gap-2 bg-deep-sage text-warm-linen font-sans font-medium text-base px-7 py-3.5 rounded-full hover:bg-deep-sage/90 active:scale-[0.98] transition-all"
+              >
+                {currentStep.cta}
+                <ArrowRight size={18} className="group-hover:translate-x-0.5 transition-transform" />
+              </button>
             </div>
           </motion.div>
         </main>
