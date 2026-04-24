@@ -212,8 +212,8 @@ export function Quiz() {
         currentStep={currentStepIndex + 1}
         totalSteps={totalSteps}
       >
-        <main className="flex-grow flex items-start justify-center px-5 sm:px-6 pt-8 sm:pt-12 pb-16">
-          <div className="w-full max-w-xl">
+        <main className="flex-grow flex items-start lg:items-center justify-center px-5 sm:px-6 pt-8 sm:pt-12 pb-16">
+          <div className="w-full max-w-6xl">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentStep.id}
@@ -221,8 +221,9 @@ export function Quiz() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -16 }}
                 transition={{ duration: 0.25 }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start"
               >
-                <h2 className="font-sans font-bold text-[26px] sm:text-3xl md:text-[34px] text-soft-black leading-[1.2] tracking-tight mb-8 sm:mb-10 text-balance">
+                <h2 className="font-sans font-bold text-[26px] sm:text-3xl lg:text-[38px] xl:text-[42px] text-soft-black leading-[1.15] tracking-tight text-balance lg:sticky lg:top-24">
                   {currentStep.question}
                 </h2>
 
